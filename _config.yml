@@ -93,7 +93,7 @@ analytics:
 author:
   name:            "Jennifer Haliewicz"
   avatar:          "profile.png"
-  bio:             "Master’s student in Human Language Technology at the University of Arizona"
+  bio:             "Master’s student in Human Language<br>Technology at the University of Arizona"
   location:        "Portland, OR"
   github:          "rofljen"
   linkedin:        "https://www.linkedin.com/in/jhaliewicz"
