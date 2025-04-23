@@ -54,13 +54,11 @@
   .page__inner-wrap,
   .wrapper,
   .site-wrapper {
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 auto !important;
-  }
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
   
-  /* Actual card container */
   .page-card,
   .site-summary,
   .professional-summary,
@@ -68,7 +66,7 @@
   .education-item,
   .tech-skills,
   .service-item {
-    background-color: rgba(255, 255, 255, 0.45);
+    background-color: rgba(255, 255, 255, 0.6);
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -138,7 +136,7 @@
       flex-direction: column;
       padding: 1rem;
     }
-  
+  }
     .sidebar {
       width: 100%;
       max-width: 100%;
@@ -146,13 +144,8 @@
     }
   
     .page {
-      max-width: 100%;
-      padding: 0;
+      flex: 1;
+      padding: 1.5rem;
+      background: transparent !important;
+      box-shadow: none !important;
     }
-  
-    .page-card,
-    .site-summary {
-      max-width: 100%;
-    }
-  }
-  
