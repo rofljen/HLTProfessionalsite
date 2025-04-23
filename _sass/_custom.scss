@@ -8,6 +8,7 @@
     --dark-green: #4a8d7c;
     --text-dark: #333333;
     --text-light: #666666;
+    --sidebar-width: 20rem;
   }
   
   /* Global layout + text */
@@ -60,24 +61,6 @@
     padding: 0 !important;
   }
   
-  /* Clean card styling */
-  .page-card,
-  .site-summary,
-  .professional-summary,
-  .experience-item,
-  .education-item,
-  .tech-skills,
-  .service-item {
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    margin: 1.5rem auto;
-    line-height: 1.5;
-    font-size: 1rem;
-    max-width: 700px;
-  }
-  
   /* Content area */
   .page__content {
     overflow: visible;
@@ -113,20 +96,7 @@
     font-weight: 600;
     color: var(--dark-green);
   }
-  
-  /* Inline content blocks */
-  .contact-info,
-  .post-contact,
-  .summary-content,
-  .content {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    background-color: rgba(255, 255, 255, 0.6);
-    padding: 1rem;
-    border-radius: 8px;
-  }
-  
+    
   .date {
     font-style: italic;
     color: var(--text-light);
@@ -157,5 +127,10 @@
     .no-background {
       background: transparent !important;
     }
+  }
+
+  .boxed-panel {
+    background: transparent !important;
+    box-shadow: none        !important;
   }
   
