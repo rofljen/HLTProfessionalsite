@@ -2,128 +2,59 @@
 
 // --- Color variables ---
 $site-background: #e8f1e8;
-$card-background: lighten($site-background, 40%);
+$card-background: lighten($site-background, 15%);
 
-// --- Apply site background ---
+// --- Spacing & Radius variables ---
+$card-padding: 1rem;
+$card-radius: 0.5rem;
+
+// --- Global Overrides ---
+html {
+  font-size: 95%; // Slightly reduce overall font size
+}
+
 body {
   background-color: $site-background;
 }
 
-// --- Constrain main content width and center ---
+// --- Main Content Container Overrides ---
 .page__inner,
 .page__inner-wrap {
   max-width: 800px;
-  margin: 2rem auto !important;
-  padding: 2rem 1rem !important;
-}
-
-// --- Style the page inner wrap as a card container ---
-.page .page__inner-wrap {
-  background-color: $card-background !important;
-  border-radius: 0.5rem !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-
-// --- Ensure standalone .card components also get the same styling ---
-.card {
-  background-color: $card-background !important;
-  border-radius: 0.5rem !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-
-// --- Optional typography tweak ---
-html {
-  font-size: 95%;
-}
-
-// --- CV-specific card styling: wrap each section element ---
-.page-card {
-  // professional summary paragraphs
-  .professional-summary p {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // education entries
-  .education-item {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // technical skills grid cards
-  .tech-skills > div {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // work experience entries
-  .experience-item {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // service & leadership entries
-  .service-item {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-}
-
-// --- Home page summary cards: wrap each paragraph or element ---
-.page-card .site-summary > * {
+  margin: 2rem auto;
+  padding: 2rem 1rem;
   background-color: $card-background;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  border-radius: $card-radius;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+// --- .card Component Overrides ---
+.card {
+  background-color: $card-background;
+  border-radius: $card-radius;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: $card-padding;
+  margin-bottom: $card-padding;
+}
+
+// --- CV-Specific Section Cards ---
 .page-card {
-  // professional summary paragraphs
-  .professional-summary p {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // education entries
-  .education-item {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // technical skills grid cards
-  .tech-skills > div {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // work experience entries
-  .experience-item {
-    background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // service & leadership entries
+  .professional-summary p,
+  .education-item,
+  .tech-skills > div,
+  .experience-item,
   .service-item {
     background-color: $card-background;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    border-radius: $card-radius;
+    padding: $card-padding;
+    margin-bottom: $card-padding;
   }
+}
+
+// --- Home Page Summary Cards ---
+.site-summary > * {
+  background-color: $card-background;
+  border-radius: $card-radius;
+  padding: $card-padding;
+  margin-bottom: $card-padding;
 }
