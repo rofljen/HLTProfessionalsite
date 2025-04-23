@@ -79,3 +79,13 @@ body {
 .sidebar li {
   overflow-wrap: break-word;
 }
+
+// ─── Sidebar Word‐Breaking Overrides ───
+.sidebar {
+  /* allow wrapping at normal word boundaries */
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+
+  /* ensure we haven’t accidentally disabled wrapping elsewhere */
+  white-space: normal !important;
+}
