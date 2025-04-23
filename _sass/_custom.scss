@@ -11,7 +11,7 @@
     --text-light:    #666666;
   
     /* sidebar width (was ~10rem by default) */
-    --sidebar-width: 20rem;
+    --sidebar-width: 30rem;
   }
   
   /* Global typography & background */
@@ -63,12 +63,6 @@
     max-width:        800px;
   }
   
-  /* 5) Responsive sanity */
-  @media (max-width: 768px) {
-    .page-header__aside {
-      flex:      0 0 100% !important;
-      max-width: 100%   !important;
-    }
     .home .page__inner-wrap,
     .site-summary,
     .professional-summary,
