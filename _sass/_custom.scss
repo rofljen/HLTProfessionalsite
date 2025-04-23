@@ -3,128 +3,82 @@
    ============================ */
 
    :root {
-    --mint-green: #e8f1e8;
-    --coral-pink: #e8c8c8;
-    --dark-green: #4a8d7c;
-    --text-dark: #333333;
-    --text-light: #666666;
+    /* your color palette */
+    --mint-green:    #e8f1e8;
+    --coral-pink:    #e8c8c8;
+    --dark-green:    #4a8d7c;
+    --text-dark:     #333333;
+    --text-light:    #666666;
+  
+    /* sidebar width (was ~10rem by default) */
     --sidebar-width: 20rem;
   }
   
-  /* Global layout + text */
+  /* Global typography & background */
   html, body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.5;
     background-color: var(--mint-green);
-    color: var(--text-dark);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+    color:            var(--text-dark);
+    font-family:      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+                      sans-serif;
+    font-size:        0.9rem;
+    line-height:      1.5;
+    margin:           0;
+    padding:          0;
+    overflow-x:       hidden;
   }
   
-  /* Main layout */
-  #main {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 2rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 1rem; /* smaller gap between sidebar and content */
+  /* 1) Widen the theme sidebar */
+  .page-header__aside {
+    flex:      0 0 var(--sidebar-width) !important;
+    max-width: var(--sidebar-width) !important;
   }
   
-  /* Sidebar layout */
-  .sidebar {
-    flex: 0 0 275px;
-    padding: 1rem;
-    margin-left: 2rem; /* extra margin before sidebar */
-  }
-  
-  /* Main content container */
-  .page {
-    flex: 1;
-    padding: 0;
-    margin: 0;
+  /* 2) Strip out the theme’s default boxed panels everywhere */
+  .boxed-panel {
     background: transparent !important;
-    box-shadow: none !important;
-    max-width: 800px;
+    box-shadow: none        !important;
   }
   
-  /* Remove background from wrappers */
-  .page__inner-wrap,
-  .wrapper,
-  .site-wrapper {
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
+  /* 3) HOME PAGE: wrap ALL content in one big semi-transparent card */
+  .home .page__inner-wrap {
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow:       0 2px 12px rgba(0, 0, 0, 0.08);
+    border-radius:    10px;
+    padding:          2rem;
+    margin-bottom:    2rem;
   }
   
-  /* Content area */
-  .page__content {
-    overflow: visible;
-    max-height: none;
-    padding: 0;
-    background: transparent !important;
+  /* 4) CV PAGE SECTIONS: each section in its own card */
+  .site-summary,
+  .professional-summary,
+  .experience-item,
+  .education-item,
+  .tech-skills,
+  .service-item {
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow:       0 2px 12px rgba(0, 0, 0, 0.08);
+    border-radius:    8px;
+    padding:          1.5rem;
+    margin:           1.5rem auto;
+    max-width:        800px;
   }
   
-  /* Typography */
-  h1, h2, h3 {
-    color: var(--dark-green);
-    margin-bottom: 1rem;
-  }
-  
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    border-bottom: 2px solid var(--mint-green);
-    padding-bottom: 0.25rem;
-  }
-  
-  /* Lists */
-  ul {
-    list-style: disc;
-    padding-left: 1.25rem;
-  }
-  
-  .tech b,
-  .tech-skills b {
-    font-weight: 600;
-    color: var(--dark-green);
-  }
-    
-  .date {
-    font-style: italic;
-    color: var(--text-light);
-    font-size: 0.85rem;
-  }
-  
-  /* Responsive tweaks */
+  /* 5) Responsive sanity */
   @media (max-width: 768px) {
-    #main {
-      flex-direction: column;
-      padding: 1rem;
+    .page-header__aside {
+      flex:      0 0 100% !important;
+      max-width: 100%   !important;
     }
-  
-    .sidebar {
-      width: 100%;
-      max-width: 100%;
-      margin-left: 0;
-      margin-bottom: 2rem;
-    }
-  
-    .page {
-      flex: 1;
-      padding: 1.5rem;
-      background: transparent !important;
-      box-shadow: none !important;
-    }
-
-    .no-background {
-      background: transparent !important;
+    .home .page__inner-wrap,
+    .site-summary,
+    .professional-summary,
+    .experience-item,
+    .education-item,
+    .tech-skills,
+    .service-item {
+      margin-left:  auto;
+      margin-right: auto;
+      width:        95%;
     }
   }
+  
