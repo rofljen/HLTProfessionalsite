@@ -1,134 +1,33 @@
-// Custom styling overrides for Minimal Mistakes theme
-
-// --- Color variables ---
-$site-background: #e8f1e8;
-$card-background: lighten($site-background, 15%);
-
-// --- Spacing & Radius variables ---
-$card-padding: 1rem;
-$card-radius: 0.5rem;
-
-// --- Global Overrides ---
-html {
-  font-size: 95%; // Slightly reduce overall font size
-}
-
-body {
-  background-color: $site-background;
-}
-
-// --- Main Content Container Overrides ---
-.page__inner,
-.page__inner-wrap {
-  max-width: 1000px;  // increase overall container width
-  margin: 2rem auto;
-  padding: 2rem 1rem;
-  background-color: $card-background;
-  border-radius: $card-radius;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-// --- .card Component Overrides ---
-.card {
-  background-color: $card-background;
-  border-radius: $card-radius;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: $card-padding;
-  margin-bottom: $card-padding;
-}
-
-// --- CV-Specific Section Cards ---
-.page-card {
-  .contact-info p,
-  .professional-summary p,
-  .education-item,
-  .tech-skills > div,
-  .experience-item,
-  .service-item {
-    background-color: $card-background;
-    border-radius: $card-radius;
-    padding: $card-padding;
-    margin-bottom: $card-padding;
-  }
-}
-
-// --- Home Page Summary Cards ---
-.site-summary > * {
-  background-color: $card-background;
-  border-radius: $card-radius;
-  padding: $card-padding;
-  margin-bottom: $card-padding;
-}
-
-// --- Sidebar & main wrapper layout ---
-#main {
-  padding-left: 1rem;   // move everything right a bit
-  display: flex;
-  gap: 1.5rem;          // space between sidebar & content
-}
-
-// --- Sidebar Overrides ---
-.sidebar {
-  flex: 0 0 280px;      // fixed width sidebar
-  margin-left: 1.5rem;  // extra breathing room on the left
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
-  white-space: normal !important;
-}
-
-// --- Main Content Flex ---
-.page {
-  flex: 1;              // take the rest of the space
-  max-width: 1000px;     // increased cap to allow wider about me
-}
-
-// --- Sidebar links wrap ---
-.sidebar a,
-.sidebar p,
-.sidebar li {
-  overflow-wrap: break-word;
-}
-// ─── Center the CV card wrapper ───
-.page-card .card {
-  margin: 0 auto;      // top/bottom 0, left/right auto
-  max-width: 900px;     // or whatever width you prefer
-}
 @media (max-width: 768px) {
-  // Let the layout flow full width on mobile
-  .page__inner,
-  .page__inner-wrap,
-  .page {
-    max-width: 100%;
-    padding: 1rem !important;
+  // Stack sidebar and main content vertically
+  #main {
+    display: block !important;
+    padding-left: 0 !important;
     margin: 0 !important;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+    flex: none !important;
+  }
+
+  .page,
+  .page__inner,
+  .page__inner-wrap {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
     box-shadow: none;
     border-radius: 0;
   }
 
-  // Sidebar goes above or disappears if needed
-  #main {
-    flex-direction: column;
-    padding-left: 0;
-    gap: 0;
-  }
-
-  .sidebar {
-    flex: 1 1 auto;
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 1rem;
-  }
-
-  .page-card .card {
-    max-width: 100%;
-    margin: 0;
-    padding: 1rem;
-  }
-
   .card,
+  .page-card .card,
   .site-summary > * {
+    max-width: 100% !important;
+    margin: 0 0 1rem 0 !important;
     padding: 1rem;
-    margin-bottom: 1rem;
     border-radius: 0.5rem;
   }
 }
