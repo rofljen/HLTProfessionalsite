@@ -15,29 +15,29 @@ html, body {
   line-height: 1.5;
   background-color: var(--mint-green);
   color: var(--text-dark);
-  margin: 0 auto;
+  margin: 0;
   padding: 0.5rem;
-  max-width: 900px;
 }
 
-/* Main Page Layout Centering */
 #main {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 1rem;
 }
 
 .site-wrapper,
-.page {
-  height: auto !important;
-  overflow: visible !important;
-}
-
 .page,
 .page__inner-wrap {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  margin: 0 auto !important;
   float: none !important;
+  width: 100%;
+  max-width: 900px;
 }
 
 .page__content {
@@ -71,7 +71,7 @@ section {
   margin-bottom: 1.25rem;
 }
 
-/* Text + Info Elements */
+/* Info Blocks */
 .contact-info,
 .post-contact,
 .summary-content,
@@ -82,31 +82,28 @@ section {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-/* Card Blocks (Experience, Education, etc.) */
+/* Card Blocks */
 .experience-item,
 .education-item,
 .service-item,
 .tech-skills,
-.professional-summary {
+.professional-summary,
+.site-summary {
   background-color: rgba(255, 255, 255, 0.6);
   padding: 1.25rem;
   border-radius: 10px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   margin: 1.25rem auto;
   max-width: 700px;
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
+/* Slightly different tone for summary section */
 .site-summary {
   background-color: rgba(255, 255, 255, 0.45);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  margin: 1.5rem auto;
-  max-width: 700px;
-  line-height: 1.5;
   font-size: 1rem;
+  padding: 1.5rem;
 }
 
 /* Typography + Utilities */
