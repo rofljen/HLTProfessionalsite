@@ -79,8 +79,8 @@ html {
   }
 }
 
-// --- Homepage (splash) cards: wrap each content element ---
-.splash .page__content > * {
+// --- Home page summary cards: wrap each paragraph or element ---
+.page-card .site-summary > * {
   background-color: $card-background;
   border-radius: 0.5rem;
   padding: 1rem;
