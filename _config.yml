@@ -10,10 +10,10 @@ locale:            "en-US"
 title:             "Jennifer Haliewicz / HLT Portfolio"
 name:              &name "Jennifer Haliewicz"
 description:       &description "Portfolio for the University of Arizona HLT program"
-url:               "https://rofljen.github.io"
+url:               "https://www.jenniferhaliewicz.com"
 remote_theme:      mmistakes/minimal-mistakes
-baseurl:           "/HLTSite2"
-repository:        "rofljen/HLTSite2"
+baseurl:           
+repository:        "rofljen/HLTProfessionalsite"
 teaser:
 breadcrumbs:       false
 words_per_minute:  160
