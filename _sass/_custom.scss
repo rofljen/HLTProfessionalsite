@@ -59,45 +59,32 @@ body {
   padding: $card-padding;
   margin-bottom: $card-padding;
 }
-// ─── Sidebar & main wrapper padding ───
+
+// --- Sidebar & main wrapper layout ---
 #main {
-  padding-left: 1rem;  // move everything right a bit
+  padding-left: 1rem;   // move everything right a bit
   display: flex;
-  gap: 1.5rem;            // space between sidebar & content
+  gap: 1.5rem;          // space between sidebar & content
 }
 
+// --- Sidebar Overrides ---
 .sidebar {
-  flex: 0 0 280px;        // fixed width sidebar
+  flex: 0 0 280px;      // fixed width sidebar
+  margin-left: 1.5rem;  // extra breathing room on the left
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  white-space: normal !important;
 }
 
+// --- Main Content Flex ---
 .page {
-  flex: 1;                // take the rest of the space
-  max-width: 700px;       // optional cap on how wide content can grow
-}
-}
-
-.sidebar {
-  margin-left: 1.5rem;     // extra breathing room on the left
-}
-// ─── Sidebar word‐wrapping ───
-.sidebar {
-  word-wrap: break-word;      // for older browsers
-  overflow-wrap: break-word;  // modern spec
+  flex: 1;              // take the rest of the space
+  max-width: 700px;     // optional cap on how wide content can grow
 }
 
-// also ensure links and other blocks inside wrap
+// --- Sidebar links wrap ---
 .sidebar a,
 .sidebar p,
 .sidebar li {
   overflow-wrap: break-word;
-}
-
-// ─── Sidebar Word‐Breaking Overrides ───
-.sidebar {
-  /* allow wrapping at normal word boundaries */
-  overflow-wrap: anywhere !important;
-  word-break: break-word !important;
-
-  /* ensure we haven’t accidentally disabled wrapping elsewhere */
-  white-space: normal !important;
 }
