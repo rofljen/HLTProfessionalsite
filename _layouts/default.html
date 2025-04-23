@@ -16,8 +16,15 @@ layout: compress
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
+    <!-- 👇 Wrap both sidebar and page content in #main -->
     <div id="main" role="main">
-      {{ content }}
+      <div class="sidebar">
+        {% include sidebar.html %}
+      </div>
+
+      <div class="page">
+        {{ content }}
+      </div>
     </div>
 
     <div class="page__footer">
