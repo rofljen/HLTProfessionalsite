@@ -1,0 +1,111 @@
+:root {
+    --mint-green: #e8f1e8;
+    --coral-pink: #e8c8c8;
+    --dark-green: #4a8d7c;
+    --text-dark: #333333;
+    --text-light: #666666;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.5rem;
+  }
+  
+  header {
+    background: var(--mint-green);
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  h1 {
+    color: var(--dark-green);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-info,
+  .post-contact,
+  .summary-content,
+  .content {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+  
+  section {
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    color: var(--dark-green);
+    border-bottom: 2px solid var(--mint-green);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .experience-item,
+  .education-item,
+  .service-item,
+  .tech-skills,
+  .professional-summary {
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.45);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 2rem auto;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+  
+  .company-name,
+  .degree,
+  .summary,
+  .content-head {
+    font-weight: bold;
+    color: var(--dark-green);
+  }
+  
+  .date {
+    font-style: italic;
+    color: var(--text-light);
+  }
+  
+  ul {
+    list-style: disc;
+    margin-left: 1rem;
+  }
+  
+  .tech b {
+    font-weight: bold;
+    font-style: italic;
+    color: var(--text-light);
+  }
+  
+  .tech-skills b {
+    font-weight: bold;
+    color: var(--dark-green);
+    margin-bottom: 0.2rem;
+  }
+  
+  .site-summary {
+    background-color: rgba(255, 255, 255, 0.45);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 2rem auto;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+  
+  .code-link {
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+  
