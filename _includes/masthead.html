@@ -3,8 +3,7 @@
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        <button aria-label="Toggle navigation"><div class="navicon"></div></button>
+      <nav id="site-nav">
         <ul class="visible-links">
           <li class="masthead__menu-item masthead__menu-item--lg">
             <a href="{{ base_path | default: '/' }}">{{ site.title }}</a>
@@ -15,7 +14,6 @@
             </li>
           {% endfor %}
         </ul>
-        <!-- removed hidden-links to avoid duplicate items -->
       </nav>
     </div>
   </div>
