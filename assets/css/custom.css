@@ -6,6 +6,7 @@
   --text-light: #666666;
 }
 
+/* Layout and General Body Styles */
 html, body {
   height: auto !important;
   overflow: auto !important;
@@ -19,10 +20,24 @@ html, body {
   max-width: 900px;
 }
 
+/* Main Page Layout Centering */
+#main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .site-wrapper,
 .page {
   height: auto !important;
   overflow: visible !important;
+}
+
+.page,
+.page__inner-wrap {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;
 }
 
 .page__content {
@@ -30,6 +45,7 @@ html, body {
   max-height: none !important;
 }
 
+/* Header */
 header {
   background: var(--mint-green);
   padding: 0.75rem 1rem;
@@ -55,6 +71,7 @@ section {
   margin-bottom: 1.25rem;
 }
 
+/* Text + Info Elements */
 .contact-info,
 .post-contact,
 .summary-content,
@@ -65,6 +82,7 @@ section {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+/* Card Blocks (Experience, Education, etc.) */
 .experience-item,
 .education-item,
 .service-item,
@@ -80,6 +98,18 @@ section {
   line-height: 1.5;
 }
 
+.site-summary {
+  background-color: rgba(255, 255, 255, 0.45);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin: 1.5rem auto;
+  max-width: 700px;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+/* Typography + Utilities */
 .company-name,
 .degree,
 .summary,
@@ -106,26 +136,8 @@ ul {
   font-size: 0.95rem;
 }
 
-.site-summary {
-  background-color: rgba(255, 255, 255, 0.45);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  margin: 1.5rem auto;
-  max-width: 700px;
-  line-height: 1.5;
-  font-size: 1rem;
-}
-
 .code-link {
   font-weight: bold;
   margin-top: 1.5rem;
   display: block;
 }
-.page,
-.page__inner-wrap {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  float: none !important;
-}
-
