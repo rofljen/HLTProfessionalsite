@@ -59,3 +59,12 @@ body {
   padding: $card-padding;
   margin-bottom: $card-padding;
 }
+// ─── Sidebar & main wrapper padding ───
+#main {
+  padding-left: 1.5rem;  // move everything right a bit
+}
+
+.sidebar {
+  margin-left: 1rem;     // extra breathing room on the left
+}
+
