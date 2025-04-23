@@ -20,7 +20,7 @@ body {
 // --- Main Content Container Overrides ---
 .page__inner,
 .page__inner-wrap {
-  max-width: 850px;
+  max-width: 900px;
   margin: 2rem auto;
   padding: 2rem 1rem;
   background-color: $card-background;
@@ -79,7 +79,7 @@ body {
 // --- Main Content Flex ---
 .page {
   flex: 1;              // take the rest of the space
-  max-width: 850px;     // optional cap on how wide content can grow
+  max-width: 800px;     // increased cap to allow wider about me
 }
 
 // --- Sidebar links wrap ---
