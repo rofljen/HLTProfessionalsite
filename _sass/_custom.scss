@@ -1,3 +1,98 @@
+// --- Color variables ---
+$site-background: #e8f1e8;
+$card-background: lighten($site-background, 15%);
+
+// --- Spacing & Radius variables ---
+$card-padding: 1rem;
+$card-radius: 0.5rem;
+
+// --- Global Overrides ---
+html {
+  font-size: 95%; // Slightly reduce overall font size
+}
+
+body {
+  background-color: $site-background;
+}
+
+// --- Main Content Container Overrides ---
+.page__inner,
+.page__inner-wrap {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background-color: $card-background;
+  border-radius: $card-radius;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+// --- .card Component Overrides ---
+.card {
+  background-color: $card-background;
+  border-radius: $card-radius;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: $card-padding;
+  margin-bottom: $card-padding;
+}
+
+// --- CV-Specific Section Cards ---
+.page-card {
+  .contact-info p,
+  .professional-summary p,
+  .education-item,
+  .tech-skills > div,
+  .experience-item,
+  .service-item {
+    background-color: $card-background;
+    border-radius: $card-radius;
+    padding: $card-padding;
+    margin-bottom: $card-padding;
+  }
+}
+
+// --- Home Page Summary Cards ---
+.site-summary > * {
+  background-color: $card-background;
+  border-radius: $card-radius;
+  padding: $card-padding;
+  margin-bottom: $card-padding;
+}
+
+// --- Sidebar & main wrapper layout ---
+#main {
+  padding-left: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+// --- Sidebar Overrides ---
+.sidebar {
+  flex: 0 0 280px;
+  margin-left: 1.5rem;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+}
+
+// --- Main Content Flex ---
+.page {
+  flex: 1;
+  max-width: 1000px;
+}
+
+// --- Sidebar links wrap ---
+.sidebar a,
+.sidebar p,
+.sidebar li {
+  overflow-wrap: break-word;
+}
+
+// ─── Center the CV card wrapper ───
+.page-card .card {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
 @media (max-width: 768px) {
   // Stack sidebar and main content vertically
   #main {
