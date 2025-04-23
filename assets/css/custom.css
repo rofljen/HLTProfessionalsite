@@ -26,18 +26,19 @@
   #main {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
-    gap: 2rem;
     padding: 2rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 1rem; /* smaller gap between sidebar and content */
   }
   
   /* Sidebar layout */
   .sidebar {
     flex: 0 0 275px;
     padding: 1rem;
+    margin-left: 2rem; /* extra margin before sidebar */
   }
   
   /* Main content container */
@@ -50,15 +51,16 @@
     max-width: 800px;
   }
   
-  /* Remove background from inner wrap */
+  /* Remove background from wrappers */
   .page__inner-wrap,
   .wrapper,
   .site-wrapper {
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-}
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
   
+  /* Clean card styling */
   .page-card,
   .site-summary,
   .professional-summary,
@@ -76,11 +78,12 @@
     max-width: 700px;
   }
   
-  /* Page content area */
+  /* Content area */
   .page__content {
     overflow: visible;
     max-height: none;
     padding: 0;
+    background: transparent !important;
   }
   
   /* Typography */
@@ -136,10 +139,11 @@
       flex-direction: column;
       padding: 1rem;
     }
-  }
+  
     .sidebar {
       width: 100%;
       max-width: 100%;
+      margin-left: 0;
       margin-bottom: 2rem;
     }
   
@@ -149,3 +153,5 @@
       background: transparent !important;
       box-shadow: none !important;
     }
+  }
+  
