@@ -7,10 +7,9 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
-title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "personal description"
+title                    : "Jennifer Haliewicz / HLT Portfolio"
+name                     : &name "Jennifer Haliewicz"
+description              : &description "Portfolio for the University of Arizona HLT program"
 url                      : "https://rofljen.github.io"
 baseurl                  : "/HLTSite2"
 repository               : "rofljen/HLTSite2"
