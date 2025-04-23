@@ -49,8 +49,6 @@ body {
     border-radius: $card-radius;
     padding: $card-padding;
     margin-bottom: $card-padding;
-    max-width: 900px;      // whatever width you prefer
-    margin: 0 auto; 
   }
 }
 
@@ -89,4 +87,9 @@ body {
 .sidebar p,
 .sidebar li {
   overflow-wrap: break-word;
+}
+// ─── Center the CV card wrapper ───
+.page-card .card {
+  margin: 0 auto;      // top/bottom 0, left/right auto
+  max-width: 900px;     // or whatever width you prefer
 }
