@@ -1,58 +1,129 @@
 // Custom styling overrides for Minimal Mistakes theme
 
 // --- Color variables ---
-$site-background: #e8f1e8;                 // main site background
-$card-background: lighten($site-background, 40%); // lighter version for cards
+$site-background: #e8f1e8;
+$card-background: lighten($site-background, 40%);
 
 // --- Apply site background ---
 body {
   background-color: $site-background;
 }
 
-// --- Constrain main content width ---
-.page__inner, .page__inner-wrap {
+// --- Constrain main content width and center ---
+.page__inner,
+.page__inner-wrap {
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2rem 1rem;
+  margin: 2rem auto !important;
+  padding: 2rem 1rem !important;
 }
 
-// --- Restyle all cards with a light background ---
+// --- Style the page inner wrap as a card container ---
+.page .page__inner-wrap {
+  background-color: $card-background !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+// --- Ensure standalone .card components also get the same styling ---
 .card {
   background-color: $card-background !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
-// --- Wrap the main page content in a card-like style ---
-.page__inner-wrap {
-  background-color: $card-background !important;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-}
-
-// --- Optional: tweak typography scale ---
+// --- Optional typography tweak ---
 html {
   font-size: 95%;
 }
-// ─── Constrain the overall #main area ───
-#main {
-  max-width: 1100px;       // limit how wide the whole section can go
-  margin: 0 auto;          // center it in the browser
-  display: flex;           // lay out sidebar + content side-by-side
-  flex-wrap: wrap;         // stack on mobile
-  gap: 2rem;               // space between sidebar and main content
-  padding: 0 1rem;         // horizontal gutter on small screens
+
+// --- CV-specific card styling: wrap each section element ---
+.page-card {
+  // professional summary paragraphs
+  .professional-summary p {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  // education entries
+  .education-item {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  // technical skills grid cards
+  .tech-skills > div {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  // work experience entries
+  .experience-item {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  // service & leadership entries
+  .service-item {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 
-// ─── Tame the sidebar ───
-.sidebar {
-  flex: 0 0 280px;         // fix its width
-  padding: 1rem;           // inner padding
-  word-wrap: break-word;   // force long text/link wraps
+// --- Homepage (splash) cards: wrap each content element ---
+.splash .page__content > * {
+  background-color: $card-background;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
+.page-card {
+  // professional summary paragraphs
+  .professional-summary p {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
 
-// ─── Ensure your main page area flexes ───
-.page {
-  flex: 1;                 // take up the rest of the space
+  // education entries
+  .education-item {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  // technical skills grid cards
+  .tech-skills > div {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  // work experience entries
+  .experience-item {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  // service & leadership entries
+  .service-item {
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
 }
-
