@@ -93,3 +93,42 @@ body {
   margin: 0 auto;      // top/bottom 0, left/right auto
   max-width: 900px;     // or whatever width you prefer
 }
+@media (max-width: 768px) {
+  // Let the layout flow full width on mobile
+  .page__inner,
+  .page__inner-wrap,
+  .page {
+    max-width: 100%;
+    padding: 1rem !important;
+    margin: 0 !important;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  // Sidebar goes above or disappears if needed
+  #main {
+    flex-direction: column;
+    padding-left: 0;
+    gap: 0;
+  }
+
+  .sidebar {
+    flex: 1 1 auto;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+
+  .page-card .card {
+    max-width: 100%;
+    margin: 0;
+    padding: 1rem;
+  }
+
+  .card,
+  .site-summary > * {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+  }
+}
