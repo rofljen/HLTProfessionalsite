@@ -21,6 +21,10 @@ future:            true
 read_more:         "disabled"
 talkmap_link:      false
 
+sidebar:
+  nav: "main"
+  author_profile: true
+  
 comments:
   provider:
   disqus:
