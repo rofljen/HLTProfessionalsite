@@ -122,3 +122,10 @@ ul {
   margin-top: 1.5rem;
   display: block;
 }
+.page,
+.page__inner-wrap {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;
+}
+
