@@ -1,10 +1,7 @@
 {% include base_path %}
 
-{% if page.author and site.data.authors[page.author] %}
-  {% assign author = site.data.authors[page.author] %}
-{% else %}
-  {% assign author = site.author %}
-{% endif %}
+<!-- Simple author profile using config-based site.author -->
+{% assign author = site.author %}
 
 <div class="author" itemscope itemtype="http://schema.org/Person">
 
@@ -19,7 +16,7 @@
   <div class="author__content">
     <h3 class="author__name" itemprop="name">{{ author.name }}</h3>
     {% if author.bio %}
-      <p class="author__bio" itemprop="description">{{ author.bio }}</p>
+      <p class="author__bio" itemprop="description">{{ author.bio | markdownify }}</p>
     {% endif %}
   </div>
 
@@ -28,22 +25,13 @@
       {% if author.location %}
         <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.location }}</li>
       {% endif %}
-      {% if author.employer %}
-        <li><i class="fa fa-fw fa-briefcase" aria-hidden="true"></i> {{ author.employer }}</li>
-      {% endif %}
-      {% if author.website %}
-        <li><a href="{{ author.website }}" itemprop="url"><i class="fas fa-fw fa-link"></i> Website</a></li>
-      {% endif %}
-      {% if author.email %}
-        <li><a href="mailto:{{ author.email }}" itemprop="email"><i class="fas fa-fw fa-envelope"></i> Email</a></li>
-      {% endif %}
       {% if author.github %}
         <li><a href="https://github.com/{{ author.github }}" itemprop="sameAs"><i class="fab fa-fw fa-github"></i> GitHub</a></li>
       {% endif %}
       {% if author.linkedin %}
         <li><a href="https://www.linkedin.com/in/{{ author.linkedin }}" itemprop="sameAs"><i class="fab fa-fw fa-linkedin"></i> LinkedIn</a></li>
       {% endif %}
-      <!-- Add other social links here similarly -->
+      <!-- add more fields as needed (email, website, etc.) -->
     </ul>
   </div>
 
