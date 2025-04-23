@@ -45,10 +45,13 @@ html, body {
   flex: 1;
   background-color: rgba(255, 255, 255, 0.6);
   padding: 1.5rem;
+}
+.page-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
-  max-width: 800px;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
 }
 
 /* Remove unwanted nested styling */
