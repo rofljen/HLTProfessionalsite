@@ -62,6 +62,18 @@ body {
 // ─── Sidebar & main wrapper padding ───
 #main {
   padding-left: 1rem;  // move everything right a bit
+  display: flex;
+  gap: 1.5rem;            // space between sidebar & content
+}
+
+.sidebar {
+  flex: 0 0 280px;        // fixed width sidebar
+}
+
+.page {
+  flex: 1;                // take the rest of the space
+  max-width: 700px;       // optional cap on how wide content can grow
+}
 }
 
 .sidebar {
