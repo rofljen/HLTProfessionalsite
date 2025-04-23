@@ -49,6 +49,8 @@ body {
     border-radius: $card-radius;
     padding: $card-padding;
     margin-bottom: $card-padding;
+    max-width: 900px;      // whatever width you prefer
+    margin: 0 auto; 
   }
 }
 
@@ -79,7 +81,7 @@ body {
 // --- Main Content Flex ---
 .page {
   flex: 1;              // take the rest of the space
-  max-width: 800px;     // increased cap to allow wider about me
+  max-width: 1000px;     // increased cap to allow wider about me
 }
 
 // --- Sidebar links wrap ---
