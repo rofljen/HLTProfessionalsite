@@ -4,10 +4,6 @@ layout: default
 
 {% include base_path %}
 
-<div class="sidebar">
-  {% include sidebar.html %}
-</div>
-
 <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
   {% if page.title %}
     <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
