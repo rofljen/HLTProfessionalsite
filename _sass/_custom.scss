@@ -34,3 +34,25 @@ body {
 html {
   font-size: 95%;
 }
+// ─── Constrain the overall #main area ───
+#main {
+  max-width: 1100px;       // limit how wide the whole section can go
+  margin: 0 auto;          // center it in the browser
+  display: flex;           // lay out sidebar + content side-by-side
+  flex-wrap: wrap;         // stack on mobile
+  gap: 2rem;               // space between sidebar and main content
+  padding: 0 1rem;         // horizontal gutter on small screens
+}
+
+// ─── Tame the sidebar ───
+.sidebar {
+  flex: 0 0 280px;         // fix its width
+  padding: 1rem;           // inner padding
+  word-wrap: break-word;   // force long text/link wraps
+}
+
+// ─── Ensure your main page area flexes ───
+.page {
+  flex: 1;                 // take up the rest of the space
+}
+
