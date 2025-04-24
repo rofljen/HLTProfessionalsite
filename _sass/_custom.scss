@@ -13,6 +13,7 @@ $card-radius: 0.5rem;
 // --- Fonts ---
 body {
   font-family: 'Lato', sans-serif;
+  font-size: 87.5%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -167,3 +168,21 @@ a:hover {
     border-radius: 0.5rem;
   }
 }
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+p, li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.author__bio,
+.author__content,
+.sidebar p,
+.sidebar li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
