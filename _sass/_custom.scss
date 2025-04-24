@@ -261,3 +261,79 @@ nav a.active {
     background-color: lighten($teal-accent, 40%);
   }
 }
+
+
+
+// =====================
+// 🔧 Improved Masthead & Nav Spacing
+// =====================
+
+#main {
+  margin-top: 1rem;
+}
+
+.page__inner,
+.page__inner-wrap {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.masthead__inner-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.greedy-nav {
+  margin-top: 1rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  background: $card-background;
+  border-radius: $card-radius;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 0;
+  }
+}
+
+.greedy-nav .visible-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+.greedy-nav .hidden-links {
+  margin-top: 0.25rem;
+  width: 100%;
+  max-width: 280px;
+
+  a {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+.page__title {
+  margin-top: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
+}
