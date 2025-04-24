@@ -131,17 +131,22 @@ a:hover {
   overflow-wrap: anywhere !important;
   word-break: break-word !important;
   white-space: normal !important;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  font-weight: semi-bold;
+  font-size: 1rem;       // previously 0.85rem
+  font-weight: 500;      // makes it a bit bolder
+  line-height: 1.5;
+  color: #333;
 }
 
 // --- Sidebar avatar ---
+.author__avatar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 .author__avatar img {
   border-radius: 50%;
-  max-width: 120px;
-  display: block;
-  margin: 0 auto 1rem auto;
+  max-width: 100px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
