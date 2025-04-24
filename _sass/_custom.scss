@@ -220,63 +220,44 @@ nav a.active {
 
 
 // =====================
-// 📱 Mobile-Aware Navigation
+// 📱 Mobile-Friendly Greedy Navigation
 // =====================
-.site-nav {
-  background: $mint-background;
-  border-bottom: 1px solid $teal-accent;
-  padding: 0.5rem 1rem;
-  position: relative;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  li a {
-    font-weight: bold;
-    color: $teal-accent;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-
-    &:hover {
-      color: darken($teal-accent, 15%);
-    }
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 3.5rem;
-    right: 1rem;
-    background: $card-background;
-    border: 1px solid $teal-accent;
-    border-radius: $card-radius;
-    padding: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-
-    &.show {
-      display: flex;
-    }
-  }
-}
-
-.nav-toggle {
+.greedy-nav button {
   display: none;
+  background: $teal-accent;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 0.5rem;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     display: block;
-    background: $teal-accent;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    border-radius: 0.5rem;
-    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    z-index: 1000;
+  }
+}
+
+.greedy-nav .hidden-links {
+  background: lighten($mint-background, 5%);
+  border: 1px solid $teal-accent;
+  border-radius: $card-radius;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.greedy-nav .hidden-links a {
+  display: block;
+  padding: 0.5rem;
+  color: $teal-accent;
+  text-decoration: none;
+
+  &:hover {
+    background-color: lighten($teal-accent, 40%);
   }
 }
