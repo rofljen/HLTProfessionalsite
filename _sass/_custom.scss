@@ -337,3 +337,71 @@ nav a.active {
     margin-top: 1rem;
   }
 }
+
+
+
+// =====================
+// ✨ Enhanced Sidebar Bio Styling
+// =====================
+
+.sidebar-bio {
+  background: $card-background;
+  border-radius: $card-radius;
+  border-top: 4px solid $teal-accent;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  color: #2c2c2c;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  &__img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 0 0 3px $card-background, 0 0 0 5px $teal-accent;
+  }
+
+  &__name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: $dark-green;
+    margin-bottom: 0.25rem;
+  }
+
+  &__title {
+    font-size: 0.95rem;
+    color: darken($teal-accent, 25%);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  &__desc {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  &__links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+
+    a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+        color: $teal-accent;
+      }
+    }
+  }
+}
