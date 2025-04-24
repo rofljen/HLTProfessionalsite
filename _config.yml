@@ -95,12 +95,13 @@ analytics:
 
 # Site Author
 author:
-  name:            "Jennifer Haliewicz"
-  avatar:          "/images/Jen2.jpg"
-  bio:             "Master’s student in Human Language<br>Technology at the University of Arizona"
-  location:        "Portland, OR"
-  github:          "rofljen"
-  linkedin:        "https://www.linkedin.com/in/jhaliewicz"
+  name: Jennifer Haliewicz
+  avatar: /images/jennifer.jpg
+  bio: |
+    I use language data and open tools to improve access, equity, and performance in NLP systems.
+  location: Portland, Oregon
+  github: rofljen
+  linkedin: jennifer-haliewicz
 
 # Reading Files
 include:
