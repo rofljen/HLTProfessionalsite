@@ -1,19 +1,18 @@
-
 <div class="sidebar-bio card" itemscope itemtype="http://schema.org/Person">
   <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="sidebar-bio__img">
-  <h2 class="sidebar-bio__name" itemprop="name">{{ site.author.name }}</h2>
-
-  {% if site.author.bio %}
-    <p class="sidebar-bio__desc" itemprop="description">{{ site.author.bio | markdownify }}</p>
-  {% endif %}
-
-  <ul class="sidebar-bio__links">
-    {% if site.author.github %}
-      <li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>
+  <div class="sidebar-bio__text">
+    <h2 class="sidebar-bio__name" itemprop="name">{{ site.author.name }}</h2>
+    {% if site.author.bio %}
+      <p class="sidebar-bio__desc" itemprop="description">{{ site.author.bio | markdownify }}</p>
     {% endif %}
-    {% if site.author.linkedin %}
-      <li><a href="https://linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>
-    {% endif %}
-    <li><a href="mailto:jennifer.haliewicz@gmail.com">Email</a></li>
-  </ul>
+    <ul class="sidebar-bio__links">
+      {% if site.author.github %}
+        <li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>
+      {% endif %}
+      {% if site.author.linkedin %}
+        <li><a href="https://linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>
+      {% endif %}
+      <li><a href="mailto:jennifer.haliewicz@gmail.com">Email</a></li>
+    </ul>
+  </div>
 </div>
