@@ -145,6 +145,7 @@ a:hover {
 
 .author__avatar img {
   border-radius: 50%;
+  width: auto !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -235,9 +236,10 @@ nav a.active {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
   &__img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+    display: block;
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover !important;
     margin: 0 0.75rem 0.5rem 0;
     border-radius: 50%;
     box-shadow: none;
