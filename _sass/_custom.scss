@@ -20,6 +20,12 @@ $card-radius: 0.5rem;
 html {
   font-size: 15px;
 }
+#main {
+  margin-top: 1rem; // or 2rem depending on how much space you want
+  padding-left: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
 
 body {
   font-family: 'Lato', sans-serif;
@@ -148,7 +154,7 @@ nav {
   background-color: $teal-accent;
   border-radius: $card-radius;
   padding: 0.75rem 1.5rem;
-  margin: 1rem auto;
+  margin: 0 auto 2rem auto;
   max-width: 1000px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   display: flex;
