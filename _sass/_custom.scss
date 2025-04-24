@@ -1,6 +1,10 @@
 // --- Color variables ---
-$site-background: #e8f1e8;
-$card-background: lighten($site-background, 15%);
+$mint-background: #e8f1e8;
+$teal-accent: #a7d0bf;
+$cool-blue: #9bc5d7;
+$card-background: lighten($mint-background, 15%);
+$site-background: $mint-background;
+$link-color: $cool-blue;
 
 // --- Spacing & Radius variables ---
 $card-padding: 1rem;
@@ -33,6 +37,10 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: $card-padding;
   margin-bottom: $card-padding;
+}
+
+h1, h2, h3, .sidebar h3 {
+  color: $teal-accent;
 }
 
 // --- CV-Specific Section Cards ---
@@ -126,4 +134,11 @@ body {
     padding: 1rem;
     border-radius: 0.5rem;
   }
+}
+ a, a:visited {
+    color: $cool-blue;
+}
+
+  a:hover {
+    color: darken($cool-blue, 15%);
 }
