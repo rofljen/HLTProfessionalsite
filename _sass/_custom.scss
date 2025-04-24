@@ -22,7 +22,7 @@ html {
   font-size: 15px;
 }
 #main {
-  margin-top: 1rem; // or 2rem depending on how much space you want
+  margin-top: 0.5rem; // or 2rem depending on how much space you want
   padding-left: 1rem;
   display: flex;
   gap: 1.5rem;
@@ -191,10 +191,13 @@ nav a.active {
   }
 
   .sidebar {
-    width: 100% !important;
-    margin: 0 0 1rem 0 !important;
-    flex: none !important;
-    padding: 0.5rem;
+    flex: 0 0 180px;  // narrower
+    margin-left: 1rem;
+    padding: 0;
+    box-shadow: none;
+    background: none;
+    font-size: 0.95rem;
+    text-align: left;
   }
 
   .page,
@@ -346,52 +349,52 @@ nav a.active {
 // =====================
 
 .sidebar-bio {
-  background: $card-background;
-  border-radius: $card-radius;
-  border-top: 4px solid $teal-accent;
-  padding: 1.25rem;
+  background: none;
+  border: none;
+  padding: 0;
   margin-bottom: 2rem;
-  text-align: center;
+  text-align: left;
   font-family: 'Lato', sans-serif;
   color: #2c2c2c;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
   &__img {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin: 0 0.75rem 0.5rem 0;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    margin-bottom: 0.5rem;
-    box-shadow: 0 0 0 3px $card-background, 0 0 0 5px $teal-accent;
+    box-shadow: none;
   }
 
   &__name {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: $dark-green;
     margin-bottom: 0.25rem;
   }
 
   &__title {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: darken($teal-accent, 25%);
     font-weight: 500;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   &__desc {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   &__links {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.25rem;
     font-size: 0.9rem;
 
     a {
