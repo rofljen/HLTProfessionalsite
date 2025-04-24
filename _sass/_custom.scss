@@ -22,12 +22,44 @@ $card-radius: 0.5rem;
 html {
   font-size: 15px;
 }
+
 body {
   font-family: 'Lato', sans-serif;
   font-size: 0.933rem;
   line-height: 1.5;
   background-color: $site-background;
   color: #333;
+}
+
+
+
+nav {
+  background-color: $teal-accent;
+  border-radius: $card-radius;
+  padding: 0.75rem 1.5rem;
+  margin: 0 auto 2rem auto;
+  max-width: 1000px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+nav a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+  background-color: darken($teal-accent, 10%);
+  text-decoration: none;
 }
 
 
@@ -65,13 +97,13 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #4a8d7c;
+  color: $dark-green;
   margin-bottom: 0.25rem;
 }
 
 .sidebar-bio__title {
   font-size: 0.9rem;
-  color: darken(#a7d0bf, 25%);
+  color: darken($teal-accent, 25%);
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
@@ -98,7 +130,7 @@ body {
 
     &:hover {
       text-decoration: underline;
-      color: #a7d0bf;
+      color: $teal-accent;
     }
   }
 }
