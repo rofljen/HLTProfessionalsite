@@ -1,38 +1,20 @@
-{% include base_path %}
 
-<!-- Simple author profile using config-based site.author -->
-{% assign author = site.author %}
+<div class="sidebar-bio card" itemscope itemtype="http://schema.org/Person">
+  <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="sidebar-bio__img">
+  <h2 class="sidebar-bio__name" itemprop="name">{{ site.author.name }}</h2>
 
-<div class="author" itemscope itemtype="http://schema.org/Person">
+  {% if site.author.bio %}
+    <p class="sidebar-bio__desc" itemprop="description">{{ site.author.bio | markdownify }}</p>
+  {% endif %}
 
-  <div class="author__avatar">
-    {% if author.avatar contains "://" %}
-      <img src="{{ author.avatar }}" alt="{{ author.name }}">
-    {% else %}
-    <img src="{{ author.avatar | prepend: base_path }}" alt="{{ author.name }}">
+  <ul class="sidebar-bio__links">
+    {% if site.author.github %}
+      <li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>
     {% endif %}
-  </div>
-
-  <div class="author__content">
-    <h3 class="author__name" itemprop="name">{{ author.name }}</h3>
-    {% if author.bio %}
-      <p class="author__bio" itemprop="description">{{ author.bio | markdownify }}</p>
+    {% if site.author.linkedin %}
+      <li><a href="https://linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>
     {% endif %}
-  </div>
-
-  <div class="author__links">
-    <ul class="author__urls social-icons">
-      {% if author.location %}
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.location }}</li>
-      {% endif %}
-      {% if author.github %}
-        <li><a href="https://github.com/{{ author.github }}" itemprop="sameAs"><i class="fab fa-fw fa-github"></i> GitHub</a></li>
-      {% endif %}
-      {% if author.linkedin %}
-        <li><a href="https://www.linkedin.com/in/{{ author.linkedin }}" itemprop="sameAs"><i class="fab fa-fw fa-linkedin"></i> LinkedIn</a></li>
-      {% endif %}
-      <!-- add more fields as needed (email, website, etc.) -->
-    </ul>
-  </div>
-
+    <li><a href="mailto:jennifer.haliewicz@gmail.com">Email</a></li>
+    <li><a href="/cv/">CV</a></li>
+  </ul>
 </div>
