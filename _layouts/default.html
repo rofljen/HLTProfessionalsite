@@ -14,31 +14,36 @@ layout: compress
   <body>
 
     {% include browser-upgrade.html %}
-    <!-- Navigation bar -->
-    {% include masthead.html %}
 
-    <div id="main" class="container" role="main">
-      {% if page.sidebar != false %}
-        <aside class="sidebar">
-          {% include sidebar.html %}
-        </aside>
-      {% endif %}
+    <!-- NavBar inside layout container -->
+    <div class="layout-container">
+      {% include masthead.html %}
+    </div>
 
-      <div class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}">
-        <!-- Page title -->
-        {% if page.title %}
-          <header class="page__header">
-            <h1 class="page__title">{{ page.title }}</h1>
-          </header>
+    <!-- Main content inside layout container -->
+    <div class="layout-container">
+      <div id="main" role="main">
+        {% if page.sidebar != false %}
+          <aside class="sidebar">
+            {% include sidebar.html %}
+          </aside>
         {% endif %}
 
-        <!-- Page content wrapper -->
-        <div class="page__inner-wrap">
-          {{ content }}
+        <div class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}">
+          {% if page.title %}
+            <header class="page__header">
+              <h1 class="page__title">{{ page.title }}</h1>
+            </header>
+          {% endif %}
+
+          <div class="page__inner-wrap">
+            {{ content }}
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Footer -->
     <div class="page__footer">
       <footer>
         {% include footer/custom.html %}
