@@ -20,27 +20,25 @@ layout: compress
       {% include masthead.html %}
     </div>
 
-    <!-- ✅ Main content area -->
-    <div id="main" role="main">
-      {% if page.sidebar != false %}
-        <div class="layout-container">
+    <!-- ✅ Main content area wrapped in layout-container -->
+    <div class="layout-container">
+      <div id="main" role="main">
+        {% if page.sidebar != false %}
           <aside class="sidebar">
             {% include sidebar.html %}
           </aside>
-        <div></div>
-      {% endif %}
-
-      <div class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}">
-
-        {% if page.title %}
-          <header class="page__header">
-            <h1 class="page__title">{{ page.title }}</h1>
-          </header>
         {% endif %}
 
-        <!-- ✅ Page content wrapper with layout-container applied -->
-        <div class="page__inner-wrap layout-container">
-          {{ content }}
+        <div class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}">
+          {% if page.title %}
+            <header class="page__header">
+              <h1 class="page__title">{{ page.title }}</h1>
+            </header>
+          {% endif %}
+
+          <div class="page__inner-wrap">
+            {{ content }}
+          </div>
         </div>
       </div>
     </div>
