@@ -201,7 +201,10 @@ nav#site-nav a.active {
 // 8) Responsive tweaks
 //───────────────────────────────────────────────────────────────────────────────
 @media (max-width: 768px) {
-  .layout-container { padding: 0 1rem; max-width: 100%; }
+  .layout-container {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
 
   #main {
     flex-direction: column;
@@ -211,7 +214,15 @@ nav#site-nav a.active {
   .sidebar {
     margin: 0 auto 1.5rem;
   }
-  .page__inner-wrap { max-width: 100% !important; }
+
+  .sidebar-bio__img {
+    display: block !important;
+    margin: 0 auto 1rem !important;
+  }
+
+  .page__inner-wrap {
+    max-width: 100% !important;
+  }
 
   nav#site-nav,
   nav.greedy-nav {
@@ -223,10 +234,21 @@ nav#site-nav a.active {
     padding: 0.5rem 0.75rem;
   }
 
-  // collapse the greedy-nav
-  nav.greedy-nav .visible-links { display: none !important; }
-  nav.greedy-nav button[aria-label="Toggle menu"] { display: inline-block !important; }
-  nav.greedy-nav .hidden-links.hidden { display: none !important; }
+  /* hide the full link list */
+  nav.greedy-nav .visible-links {
+    display: none !important;
+  }
+
+  /* show the toggle button (covers both <button> and class="hidden") */
+  nav.greedy-nav button,
+  nav.greedy-nav button.hidden {
+    display: inline-block !important;
+  }
+
+  /* keep the submenu collapsed until you tap */
+  nav.greedy-nav .hidden-links.hidden {
+    display: none !important;
+  }
   nav.greedy-nav .hidden-links:not(.hidden) {
     display: flex !important;
     flex-direction: column;
@@ -234,9 +256,17 @@ nav#site-nav a.active {
     margin-top: 1rem;
   }
 
+  /* remove bullets from sidebar bio links */
+  .sidebar-bio__links {
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+  }
+}
+
   // remove bullets in sidebar links
   .sidebar-bio__links { list-style: none !important; padding: 0; margin: 0; }
-}
+
 
 .sidebar-bio__img {
   display: block !important;
