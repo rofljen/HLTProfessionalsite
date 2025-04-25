@@ -116,7 +116,8 @@
    .card,
    .site-summary > *,
    .page-card .card,
-   .entry-card {
+   .entry-card,
+   .callout {
      background-color: $card-background;
      border-radius: $card-radius;
      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -155,14 +156,17 @@
      overflow-wrap: break-word;
    }
    
-   .author__avatar {
+   .author__avatar,
+   .avatar {
      display: flex;
      justify-content: center;
      margin-bottom: 1rem;
    }
    
+   .author__avatar img,
    .sidebar .author__avatar img,
-   .author__avatar img {
+   .avatar__photo,
+   .avatar__photo img {
      width: 120px !important;
      height: 120px !important;
      object-fit: cover !important;
@@ -180,7 +184,9 @@
      border-radius: $card-radius;
      padding: 0.75rem 1rem;
      margin: 0 auto 2rem auto;
-     max-width: 1000px;
+     /* allow full-width nav if desired */
+     max-width: none !important;
+     width: 100% !important;
      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
      display: flex;
      justify-content: center;
@@ -248,25 +254,9 @@
       Layout Container Helper
       ===================== */
    .layout-container {
-     max-width: 1000px;
+     max-width: none !important;
+     width: 100% !important;
      margin: 0 auto;
      padding: 0 1rem;
-   }
-   
-   /* =====================
-      Explicit Overrides
-      ===================== */
-   .page__inner,
-   .page__inner-wrap,
-   .card,
-   .entry-card {
-     max-width: 1000px !important;
-     margin-left: auto !important;
-     margin-right: auto !important;
-     width: 100% !important;
-   }
-   
-   .sidebar .author__avatar img {
-     border-radius: 50% !important;
    }
    
