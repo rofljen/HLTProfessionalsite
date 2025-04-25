@@ -1,19 +1,56 @@
-<div class="layout-container">
-  {% include masthead.html %}
-</div>
+---
+layout: compress
+---
 
-<div id="main" role="main">
-  <aside class="sidebar">
-    {% include sidebar.html %}
-  </aside>
+{% include base_path %}
 
-  <div class="page">
-    <header class="page__header">
-      <h1 class="page__title">{{ page.title }}</h1>
-    </header>
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
 
-    <div class="page__inner-wrap layout-container">
-      {{ content }}
+  <body>
+
+    {% include browser-upgrade.html %}
+
+    <!-- ✅ Nav Bar inside layout container -->
+    <div class="layout-container">
+      {% include masthead.html %}
     </div>
-  </div>
-</div>
+
+    <!-- ✅ Main content area -->
+    <div id="main" role="main">
+      {% if page.sidebar != false %}
+        <aside class="sidebar">
+          {% include sidebar.html %}
+        </aside>
+      {% endif %}
+
+      <div class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}">
+
+        {% if page.title %}
+          <header class="page__header">
+            <h1 class="page__title">{{ page.title }}</h1>
+          </header>
+        {% endif %}
+
+        <!-- ✅ Page content wrapper with layout-container applied -->
+        <div class="page__inner-wrap layout-container">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include footer.html %}
+      </footer>
+    </div>
+
+    {% include scripts.html %}
+  </body>
+</html>
