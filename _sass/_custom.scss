@@ -1,3 +1,6 @@
+/* =====================
+   🎨 Color Variables
+   ===================== */
    $mint-background: #e8f1e8;
    $teal-accent: #a7d0bf;
    $cool-blue: #9bc5d7;
@@ -85,7 +88,6 @@
      flex-wrap: nowrap;
      justify-content: space-between;
      align-items: flex-start;
-     /* allow full width so sidebar + content aren't squished */
      max-width: none;
      width: 100%;
      margin: 0 auto;
@@ -99,7 +101,8 @@
      min-width: 0;
      margin: 2rem auto;
      padding: 2rem 1rem;
-     max-width: 1000px;     /* content cards/container capped at 1000px */
+     max-width: 1000px !important;
+     width: 100% !important;
    }
    
    .page {
@@ -120,8 +123,8 @@
      padding: $card-padding;
      margin: 1rem auto $card-padding;
      border: 1px solid lighten($teal-accent, 25%);
-     max-width: 1000px;      /* ensure cards never exceed 1000px */
-     width: 100%;
+     max-width: 1000px !important;
+     width: 100% !important;
    }
    
    .entry-card {
@@ -140,7 +143,6 @@
      font-size: 1rem;
      font-weight: 500;
      line-height: 1.5;
-     color: #333;
      background: none;
      border: none;
      box-shadow: none;
@@ -159,6 +161,7 @@
      margin-bottom: 1rem;
    }
    
+   .sidebar .author__avatar img,
    .author__avatar img {
      width: 120px !important;
      height: 120px !important;
@@ -167,10 +170,6 @@
      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
      border: none !important;
      padding: 0 !important;
-     opacity: 1 !important;
-     filter: none !important;
-     transition: none !important;
-     mix-blend-mode: normal !important;
    }
    
    /* =====================
@@ -204,7 +203,6 @@
    nav a.active {
      background-color: lighten($dark-green, 25%);
      color: $dark-green !important;
-     text-decoration: none;
    }
    
    /* =====================
@@ -237,7 +235,6 @@
      nav {
        flex-wrap: nowrap;
        overflow-x: auto;
-       justify-content: center;
        gap: 0.25rem;
      }
    
@@ -254,5 +251,22 @@
      max-width: 1000px;
      margin: 0 auto;
      padding: 0 1rem;
+   }
+   
+   /* =====================
+      Explicit Overrides
+      ===================== */
+   .page__inner,
+   .page__inner-wrap,
+   .card,
+   .entry-card {
+     max-width: 1000px !important;
+     margin-left: auto !important;
+     margin-right: auto !important;
+     width: 100% !important;
+   }
+   
+   .sidebar .author__avatar img {
+     border-radius: 50% !important;
    }
    
