@@ -3,7 +3,7 @@
   <div class="sidebar-bio__text">
     <h2 class="sidebar-bio__name" itemprop="name">{{ site.author.name }}</h2>
     {% if site.author.bio %}
-      <p class="sidebar-bio__desc" itemprop="description">{{ site.author.bio | markdownify }}</p>
+      <p class="sidebar-bio__desc" itemprop="description">{{ site.author.bio | newline_to_br }}</p>
     {% endif %}
     <ul class="sidebar-bio__links">
       {% if site.author.github %}
