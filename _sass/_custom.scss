@@ -145,9 +145,10 @@ nav#site-nav a.active {
   margin: 0.5rem 0 0.25rem;
 }
 .sidebar-bio__desc {
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.4;
   color: #555;
+  font-weight: 400;
 }
 .sidebar-bio__links {
   text-align: center;
@@ -160,7 +161,8 @@ nav#site-nav a.active {
 .sidebar-bio__links a {
   color: $cool-blue;
   text-decoration: underline;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 //───────────────────────────────────────────────────────────────────────────────
@@ -234,4 +236,9 @@ nav#site-nav a.active {
 
   // remove bullets in sidebar links
   .sidebar-bio__links { list-style: none !important; padding: 0; margin: 0; }
+}
+
+.sidebar-bio__img {
+  display: block !important;
+  margin: 0 auto 1rem !important;  // auto-center horizontally + bottom gutter
 }
