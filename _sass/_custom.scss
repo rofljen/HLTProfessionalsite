@@ -10,13 +10,13 @@
    $link-color: $cool-blue;
    
    /* =====================
-      🔲 Layout Variables
+      🔢 Layout Variables
       ===================== */
    $card-padding: 1rem;
    $card-radius: 0.5rem;
    
    /* =====================
-      📐 Base Scaling & Fonts
+      📊 Base Scaling & Fonts
       ===================== */
    html {
      font-size: 15px;
@@ -86,20 +86,32 @@
    /* =====================
       📄 Page Layout
       ===================== */
+   #main {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     align-items: flex-start;
+     gap: 2rem;
+     max-width: 1000px;
+     margin: 0 auto;
+     padding: 1rem;
+   }
+   
    .page__inner,
    .page__inner-wrap {
-     max-width: 1000px;
+     flex: 1;
+     min-width: 0;
      margin: 2rem auto;
      padding: 2rem 1rem;
    }
    
    .page {
      flex: 1;
-     max-width: 1000px;
+     min-width: 0;
    }
    
    /* =====================
-      🧾 Card Components
+      🗞 Card Components
       ===================== */
    .card,
    .site-summary > *,
@@ -124,8 +136,8 @@
       ===================== */
    .sidebar {
      flex: 0 0 280px;
-     margin-left: 3.5rem;
-     margin-right: 1rem;
+     max-width: 280px;
+     margin: 0;
      font-size: 1rem;
      font-weight: 500;
      line-height: 1.5;
@@ -159,7 +171,7 @@
    }
    
    /* =====================
-      🧭 NavBar
+      🧱 NavBar
       ===================== */
    nav {
      background-color: $teal-accent;
@@ -197,13 +209,14 @@
       ===================== */
    @media (max-width: 768px) {
      #main {
-       display: block !important;
-       padding: 0 !important;
-       margin: 0 auto !important;
+       flex-direction: column;
+       align-items: center;
+       padding: 0 1rem !important;
      }
    
      .sidebar {
        width: 100%;
+       max-width: 320px;
        margin: 0 auto 1.5rem auto;
        text-align: center;
      }
