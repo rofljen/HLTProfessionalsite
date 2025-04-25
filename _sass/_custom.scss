@@ -88,13 +88,13 @@
       ===================== */
    #main {
      display: flex;
-     flex-wrap: wrap;
-     justify-content: space-between;
+     flex-wrap: nowrap;
+     justify-content: center;
      align-items: flex-start;
-     gap: 2rem;
      max-width: 1000px;
      margin: 0 auto;
      padding: 1rem;
+     gap: 2rem;
    }
    
    .page__inner,
@@ -103,6 +103,7 @@
      min-width: 0;
      margin: 2rem auto;
      padding: 2rem 1rem;
+     max-width: 1000px;
    }
    
    .page {
@@ -116,7 +117,8 @@
    .card,
    .site-summary > *,
    .page-card .card,
-   .entry-card {
+   .entry-card,
+   .sidebar {
      background-color: $card-background;
      border-radius: $card-radius;
      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -161,7 +163,7 @@
      height: 120px !important;
      object-fit: cover !important;
      border-radius: 50% !important;
-     box-shadow: none !important;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
      border: none !important;
      padding: 0 !important;
      opacity: 1 !important;
