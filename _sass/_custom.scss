@@ -124,7 +124,7 @@
      padding: $card-padding;
      margin: 1rem auto $card-padding;
      border: 1px solid lighten($teal-accent, 25%);
-     max-width: 1000px !important;
+     max-width: 850px !important;
      width: 100% !important;
    }
    
@@ -185,7 +185,7 @@
      padding: 0.75rem 1rem;
      margin: 0 auto 2rem auto;
      /* allow full-width nav if desired */
-     max-width: none !important;
+     max-width: 850px; !important;
      width: 100% !important;
      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
      display: flex;
