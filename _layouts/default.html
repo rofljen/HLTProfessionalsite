@@ -23,9 +23,11 @@ layout: compress
     <!-- ✅ Main content area -->
     <div id="main" role="main">
       {% if page.sidebar != false %}
-        <aside class="sidebar">
-          {% include sidebar.html %}
-        </aside>
+        <div class="layout-container">
+          <aside class="sidebar">
+            {% include sidebar.html %}
+          </aside>
+        <div></div>
       {% endif %}
 
       <div class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}">
