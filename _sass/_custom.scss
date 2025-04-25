@@ -47,7 +47,6 @@
      margin-bottom: 0.75rem;
      line-height: 1.3;
    }
-   
    h1 { font-size: 1.8rem; }
    h2 { font-size: 1.5rem; }
    h3 { font-size: 1.25rem; }
@@ -71,12 +70,10 @@
      color: $link-color;
      text-decoration: none;
    }
-   
    a:hover {
      color: darken($link-color, 15%);
      text-decoration: underline;
    }
-   
    .sidebar a.active,
    .sidebar a:hover {
      color: $cool-blue;
@@ -89,9 +86,11 @@
    #main {
      display: flex;
      flex-wrap: nowrap;
-     justify-content: center;
+     justify-content: space-between;
      align-items: flex-start;
-     max-width: 1000px;
+     /* allow full width so sidebar + content aren't squished */
+     max-width: none;
+     width: 100%;
      margin: 0 auto;
      padding: 1rem;
      gap: 2rem;
@@ -103,7 +102,7 @@
      min-width: 0;
      margin: 2rem auto;
      padding: 2rem 1rem;
-     max-width: 1000px;
+     max-width: 1000px;     /* content cards/container capped at 1000px */
    }
    
    .page {
@@ -117,14 +116,15 @@
    .card,
    .site-summary > *,
    .page-card .card,
-   .entry-card,
-   .sidebar {
+   .entry-card {
      background-color: $card-background;
      border-radius: $card-radius;
      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
      padding: $card-padding;
-     margin-bottom: $card-padding;
+     margin: 1rem auto $card-padding;
      border: 1px solid lighten($teal-accent, 25%);
+     max-width: 1000px;      /* ensure cards never exceed 1000px */
+     width: 100%;
    }
    
    .entry-card {
@@ -144,6 +144,10 @@
      font-weight: 500;
      line-height: 1.5;
      color: #333;
+     background: none;
+     border: none;
+     box-shadow: none;
+     padding: 0;
    }
    
    .sidebar a,
@@ -228,7 +232,7 @@
      .page__inner-wrap {
        max-width: 100% !important;
        margin: 0 auto !important;
-       padding: 1rem !important; 
+       padding: 1rem !important;
        box-shadow: none;
        border-radius: 0;
      }
