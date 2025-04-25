@@ -60,6 +60,17 @@ h4 { font-size: 1.125rem; }
 h5 { font-size: 1rem; }
 h6 { font-size: 0.95rem; }
 
+.page__title {
+  text-align: center;
+  font-size: 2.25rem;
+  margin-top: 0.5rem;       // reduces top space
+  margin-bottom: 1.5rem;    // space before cards
+  color: $dark-green;
+  font-weight: 700;
+  line-height: 1.2;
+  position: relative;
+}
+
 // =====================
 // 🔗 Links
 // =====================
