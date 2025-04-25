@@ -298,3 +298,9 @@ nav a.active {
     }
   }
 }
+.layout-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem; // matches .page__inner-wrap
+}
+
