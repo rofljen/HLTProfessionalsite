@@ -217,14 +217,22 @@ nav a.active {
   .sidebar {
     flex: none;
     width: 100%;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 1.5rem auto;
     text-align: center;
-    padding: 0;
+    padding: 0 1rem;
     box-shadow: none;
     background: none;
     font-size: 0.95rem;
   }
 
+  .sidebar-bio {
+    text-align: center;
+  }
+
+  .author__avatar {
+    justify-content: center;  // ✅ make sure image centers
+  }
+}
   .page,
   .page__inner,
   .page__inner-wrap {
