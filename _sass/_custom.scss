@@ -132,7 +132,8 @@ a:hover {
 // =====================
 .sidebar {
   flex: 0 0 280px;
-  margin-left: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 1rem;
   overflow-wrap: anywhere !important;
   word-break: break-word !important;
   white-space: normal !important;
@@ -176,7 +177,7 @@ nav {
 }
 
 nav a {
-  color: white;
+  color: $dark-green;
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
@@ -188,7 +189,7 @@ nav a {
 
 nav a:hover,
 nav a.active {
-  background-color: darken($teal-accent, 10%);
+  background-color: lighten($dark-green, 25%);
   text-decoration: none;
 }
 
