@@ -1,24 +1,25 @@
 // =============================================================================
 //  _sass/_custom.scss
-//  Custom overrides for your Minimal Mistakes Jekyll site
+//  Streamlined overrides for Minimal Mistakes Jekyll
 // =============================================================================
 
-// 1) Theme Colors
-$mint-bg:       #e8f1e8;
-$teal-accent:   #a7d0bf;
-$cool-blue:     #9bc5d7;
-$dark-green:    #4a8d7c;
+//───────────────────────────────────────────────────────────────────────────────
+// 1) Theme Colors & Dimensions
+//───────────────────────────────────────────────────────────────────────────────
+$mint-bg:     #e8f1e8;
+$teal-accent: #a7d0bf;
+$cool-blue:   #9bc5d7;
+$dark-green:  #4a8d7c;
 
-// 2) Dimensions & Layout
-$sidebar-w:     280px;
-$content-w:     850px;
-$layout-gap:    2rem;
-$card-pad:      1rem;
-$card-radius:   0.5rem;
+$sidebar-w:   280px;
+$content-w:   850px;
+$gap:         2rem;
+$card-pad:    1rem;
+$card-radius: 0.5rem;
 
-// ---------------------------------------------
-//  Base typography & colors
-// ---------------------------------------------
+//───────────────────────────────────────────────────────────────────────────────
+// 2) Base typography & body
+//───────────────────────────────────────────────────────────────────────────────
 html { font-size: 15px; }
 
 body {
@@ -30,7 +31,7 @@ body {
 }
 
 // Headings
-h1, h2, h3, h4, h5, h6 {
+h1,h2,h3,h4,h5,h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   color: $teal-accent;
@@ -48,35 +49,31 @@ h1, h2, h3, h4, h5, h6 {
 // Links
 a, a:visited { color: $cool-blue; text-decoration: none; }
 a:hover       { color: darken($cool-blue, 15%); text-decoration: underline; }
-.sidebar a.active,
-.sidebar a:hover {
-  color: $cool-blue;
-  font-weight: bold;
-}
 
-// ---------------------------------------------
-//  Layout containers & centering
-// ---------------------------------------------
+//───────────────────────────────────────────────────────────────────────────────
+// 3) Layout containers & centering
+//───────────────────────────────────────────────────────────────────────────────
+// Wrap nav + main together
 .layout-container {
-  max-width: calc(#{$content-w} + #{$sidebar-w} + #{$layout-gap});
+  max-width: calc(#{$content-w} + #{$sidebar-w} + #{$gap});
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-// Center the masthead nav
+// Center the masthead nav itself
 .masthead__inner-wrap {
   max-width: $content-w;
   margin: 0 auto;
 }
 
-// ---------------------------------------------
-//  Nav styling (inside .masthead__inner-wrap)
-// ---------------------------------------------
+//───────────────────────────────────────────────────────────────────────────────
+// 4) Nav styling
+//───────────────────────────────────────────────────────────────────────────────
 nav#site-nav,
 nav.greedy-nav {
   max-width: $content-w;
   margin: 0 auto;
-  background-color: #fff;
+  background: #fff;
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   padding: 0.75rem 1rem;
@@ -92,21 +89,20 @@ nav#site-nav a {
 }
 nav#site-nav a:hover,
 nav#site-nav a.active {
-  background-color: lighten($dark-green, 25%);
-  color: $dark-green !important;
+  background-color: lighten($dark-green,25%);
 }
 
-// ---------------------------------------------
-//  Main layout: sidebar + content
-// ---------------------------------------------
+//───────────────────────────────────────────────────────────────────────────────
+// 5) Main layout: sidebar + content
+//───────────────────────────────────────────────────────────────────────────────
 #main {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: $layout-gap;
-  margin: 0 auto;
-  padding: 1rem 0;
-  max-width: calc(#{$content-w} + #{$sidebar-w} + #{$layout-gap});
+  gap: $gap;
+  margin: 1rem auto 0;
+  padding: 0;
+  max-width: calc(#{$content-w} + #{$sidebar-w} + #{$gap});
 }
 
 // Sidebar
@@ -114,30 +110,63 @@ nav#site-nav a.active {
   flex: 0 0 $sidebar-w;
   max-width: $sidebar-w;
   background: transparent !important;
-  margin-left: 1rem;  // nudge to the right
+  margin-left: 0;   // flush under nav
 }
 
-// Remove default “card” styles from author panel
+//───────────────────────────────────────────────────────────────────────────────
+// 6) Author-bio panel
+//───────────────────────────────────────────────────────────────────────────────
+// Remove default card wrapper
 .sidebar-bio.card {
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-// Force a round avatar
+// Round avatar
 .sidebar-bio__img,
 .author__avatar img,
 .avatar__photo {
   width: 120px !important;
-  height: 120px !important;
+  height:120px !important;
   object-fit: cover !important;
   border-radius: 50% !important;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
 }
 
-// ---------------------------------------------
-//  Content wrapper (no background)
-// ---------------------------------------------
+// Text styling
+.sidebar-bio__text {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+.sidebar-bio__name {
+  font-size: 1.25rem;
+  color: $dark-green;
+  margin: 0.5rem 0 0.25rem;
+}
+.sidebar-bio__desc {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #555;
+}
+.sidebar-bio__links {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.sidebar-bio__links li {
+  display: inline-block;
+  margin: 0 0.25rem;
+}
+.sidebar-bio__links a {
+  color: $cool-blue;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+//───────────────────────────────────────────────────────────────────────────────
+// 7) Content cards
+//───────────────────────────────────────────────────────────────────────────────
+// Remove any bg from the wrapper
 .page__inner-wrap {
   flex: 1;
   max-width: $content-w;
@@ -147,13 +176,11 @@ nav#site-nav a.active {
   box-shadow: none !important;
 }
 
-// ---------------------------------------------
-//  Explicit cards (CV, portfolio, callouts…)
-// ---------------------------------------------
+// Explicit card elements
 .card,
 .entry-card,
 .callout {
-  background-color: lighten($mint-bg, 15%);
+  background-color: lighten($mint-bg,15%);
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: $card-pad;
@@ -162,46 +189,49 @@ nav#site-nav a.active {
   width: 100%;
 }
 
-// ---------------------------------------------
-//  “About Me” page: each paragraph is its own card
-// ---------------------------------------------
+// About page paragraphs
 .page__inner-wrap .site-summary > p {
-  background-color: lighten($mint-bg, 15%);
-  border-radius: $card-radius;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: $card-pad;
-  margin: $card-pad 0;
+  @extend .card;  // picks up the same card styles
+  margin: $card-pad 0; 
 }
 
-// ---------------------------------------------
-//  Responsive tweaks
-// ---------------------------------------------
+//───────────────────────────────────────────────────────────────────────────────
+// 8) Responsive tweaks
+//───────────────────────────────────────────────────────────────────────────────
 @media (max-width: 768px) {
   .layout-container { padding: 0 1rem; max-width: 100%; }
 
   #main {
     flex-direction: column;
     align-items: center;
-    padding: 0;
     max-width: 100%;
   }
-
   .sidebar {
     margin: 0 auto 1.5rem;
-    text-align: center;
   }
+  .page__inner-wrap { max-width: 100% !important; }
 
-  .page__inner-wrap {
-    max-width: 100% !important;
-  }
-
-  nav#site-nav {
-    overflow-x: auto;
+  nav#site-nav,
+  nav.greedy-nav {
     flex-wrap: nowrap;
+    overflow-x: auto;
   }
-
   nav#site-nav a {
     white-space: nowrap;
     padding: 0.5rem 0.75rem;
   }
+
+  // collapse the greedy-nav
+  nav.greedy-nav .visible-links { display: none !important; }
+  nav.greedy-nav button[aria-label="Toggle menu"] { display: inline-block !important; }
+  nav.greedy-nav .hidden-links.hidden { display: none !important; }
+  nav.greedy-nav .hidden-links:not(.hidden) {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  // remove bullets in sidebar links
+  .sidebar-bio__links { list-style: none !important; padding: 0; margin: 0; }
 }
