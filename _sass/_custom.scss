@@ -1,5 +1,5 @@
 /* =====================
-   🎨 Color Variables
+   🎨 Color & Layout Variables
    ===================== */
    $mint-background: #e8f1e8;
    $teal-accent: #a7d0bf;
@@ -9,14 +9,12 @@
    $site-background: $mint-background;
    $link-color: $cool-blue;
    
-   /* =====================
-      🔢 Layout Variables
-      ===================== */
    $card-padding: 1rem;
    $card-radius: 0.5rem;
+   $content-width: 850px;
    
    /* =====================
-      📊 Base Scaling & Fonts
+      Base Typography
       ===================== */
    html {
      font-size: 15px;
@@ -38,7 +36,7 @@
    }
    
    /* =====================
-      🧠 Headings
+      Headings
       ===================== */
    h1, h2, h3, h4, h5, h6 {
      font-family: 'Montserrat', sans-serif;
@@ -64,7 +62,7 @@
    }
    
    /* =====================
-      🔗 Links
+      Links
       ===================== */
    a, a:visited {
      color: $link-color;
@@ -74,35 +72,27 @@
      color: darken($link-color, 15%);
      text-decoration: underline;
    }
-   .sidebar a.active,
-   .sidebar a:hover {
-     color: $cool-blue;
-     font-weight: bold;
-   }
    
    /* =====================
-      📄 Page Layout
+      Layout: Sidebar + Main
       ===================== */
    #main {
      display: flex;
-     flex-wrap: nowrap;
-     justify-content: space-between;
      align-items: flex-start;
-     max-width: none;
-     width: 100%;
-     margin: 0 auto;
-     padding: 1rem;
      gap: 2rem;
+     width: 100%;
+     margin: 0;
+     padding: 1rem;
    }
    
-   .page__inner,
-   .page__inner-wrap {
-     flex: 1;
-     min-width: 0;
-     margin: 2rem auto;
-     padding: 2rem 1rem;
-     max-width: 1000px !important;
-     width: 100% !important;
+   .sidebar {
+     flex: 0 0 280px;
+     max-width: 280px;
+     background: transparent;
+     border: none;
+     box-shadow: none;
+     padding: 0;
+     margin: 0;
    }
    
    .page {
@@ -111,82 +101,15 @@
    }
    
    /* =====================
-      🗞 Card Components
-      ===================== */
-   .card,
-   .site-summary > *,
-   .page-card .card,
-   .entry-card,
-   .callout {
-     background-color: $card-background;
-     border-radius: $card-radius;
-     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-     padding: $card-padding;
-     margin: 1rem auto $card-padding;
-     border: 1px solid lighten($teal-accent, 25%);
-     max-width: 850px !important;
-     width: 100% !important;
-   }
-   
-   .entry-card {
-     padding: 1rem 1.5rem;
-     margin-bottom: 1.5rem;
-     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-   }
-   
-   /* =====================
-      🔳 Sidebar
-      ===================== */
-   .sidebar {
-     flex: 0 0 280px;
-     max-width: 280px;
-     margin: 0;
-     font-size: 1rem;
-     font-weight: 500;
-     line-height: 1.5;
-     background: none;
-     border: none;
-     box-shadow: none;
-     padding: 0;
-   }
-   
-   .sidebar a,
-   .sidebar p,
-   .sidebar li {
-     overflow-wrap: break-word;
-   }
-   
-   .author__avatar,
-   .avatar {
-     display: flex;
-     justify-content: center;
-     margin-bottom: 1rem;
-   }
-   
-   .author__avatar img,
-   .sidebar .author__avatar img,
-   .avatar__photo,
-   .avatar__photo img {
-     width: 120px !important;
-     height: 120px !important;
-     object-fit: cover !important;
-     border-radius: 50% !important;
-     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-     border: none !important;
-     padding: 0 !important;
-   }
-   
-   /* =====================
-      🧱 NavBar
+      NavBar (centered)
       ===================== */
    nav {
      background-color: $teal-accent;
      border-radius: $card-radius;
      padding: 0.75rem 1rem;
-     margin: 0 auto 2rem auto;
-     /* allow full-width nav if desired */
-     max-width: 850px !important;
-     width: 100% !important;
+     margin: 0 auto 2rem;
+     max-width: $content-width;
+     width: 100%;
      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
      display: flex;
      justify-content: center;
@@ -195,7 +118,7 @@
    }
    
    nav a {
-     color: $dark-green !important;
+     color: $dark-green;
      font-weight: 600;
      text-decoration: none;
      text-transform: uppercase;
@@ -208,55 +131,80 @@
    nav a:hover,
    nav a.active {
      background-color: lighten($dark-green, 25%);
-     color: $dark-green !important;
+     color: $dark-green;
    }
    
    /* =====================
-      📱 Mobile Responsive
+      Content Wrapper
+      ===================== */
+   .page__inner-wrap {
+     max-width: $content-width;
+     width: 100%;
+     margin: 2rem auto;
+     padding: 2rem 1rem;
+   }
+   
+   /* =====================
+      Cards & Callouts
+      ===================== */
+   .card,
+   .entry-card,
+   .callout {
+     background-color: $card-background;
+     border-radius: $card-radius;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     padding: $card-padding;
+     margin: 1rem 0;
+     border: 1px solid lighten($teal-accent, 25%);
+   }
+   
+   .entry-card {
+     padding: 1rem 1.5rem;
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+   }
+   
+   /* =====================
+      Avatar (round)
+      ===================== */
+   .author__avatar,
+   .avatar {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 1rem;
+   }
+   
+   .author__avatar img,
+   .avatar__photo img {
+     width: 120px;
+     height: 120px;
+     object-fit: cover;
+     border-radius: 50%;
+   }
+   
+   /* =====================
+      Mobile Responsive
       ===================== */
    @media (max-width: 768px) {
      #main {
        flex-direction: column;
-       align-items: center;
-       padding: 0 1rem !important;
+       padding: 0 1rem;
      }
    
      .sidebar {
        width: 100%;
        max-width: 320px;
-       margin: 0 auto 1.5rem auto;
+       margin: 0 auto 1.5rem;
        text-align: center;
      }
    
-     .page,
-     .page__inner,
      .page__inner-wrap {
-       max-width: 100% !important;
-       margin: 0 auto !important;
-       padding: 1rem !important;
-       box-shadow: none;
-       border-radius: 0;
+       padding: 1rem;
+       margin: 1rem auto;
      }
    
      nav {
-       flex-wrap: nowrap;
+       max-width: 100%;
        overflow-x: auto;
-       gap: 0.25rem;
      }
-   
-     nav a {
-       white-space: nowrap;
-       padding: 0.5rem 0.75rem;
-     }
-   }
-   
-   /* =====================
-      Layout Container Helper
-      ===================== */
-   .layout-container {
-     max-width: none !important;
-     width: 100% !important;
-     margin: 0 auto;
-     padding: 0 1rem;
    }
    
