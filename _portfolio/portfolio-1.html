@@ -22,6 +22,52 @@ layout: single
   This internship sharpened my programming and problem-solving skills and gave me hands-on experience with collaborative version control, agile workflows, and working with clients to define project scope.
 </div>
 
+<details class="collapsible-section">
+  <summary class="content-head">Requirements Gathering</summary>
+  <div class="content">
+    <h4>Name & Classification</h4>
+    <p>
+      Pulled each language’s name and its family / sub-family from Glottolog
+      (e.g. “Akan → Niger–Congo → Atlantic–Congo”) to situate it in the genetic tree
+      and enable branch-level filtering.
+    </p>
+    <p><strong>Schema:</strong> language_new.language_name, language_new.language_family_id,<br>
+       language_new.language_subfamily_id, language_new.glottocode
+    </p>
+
+    <h4>Location</h4>
+    <p>
+      Retrieved centroid latitude/longitude from GeoNames and stored it as a
+      POINT—so you can plot dialect coverage or target nearby speakers for ASR collection.
+    </p>
+    <p><strong>Schema:</strong> language_new.geo_center (PostGIS POINT)</p>
+
+    <h4>Global Region</h4>
+    <p>
+      Mapped every lat/long to its continent or sub-continent (e.g. “West Africa”,
+      “Southeast Asia”) for regional roll-ups in your dashboards.
+    </p>
+    <p><strong>Schema:</strong> language_new.region</p>
+
+    <h4>Number of Speakers</h4>
+    <p>
+      Collected L1 and L2 speaker estimates (with year tags) to visualize each
+      language’s scale and automatically highlight ultra-low-resource targets (< 10 K L1).
+    </p>
+    <p><strong>Schema:</strong> language_new.l1_speakers, language_new.l2_speakers,<br>
+       language_new.speaker_year
+    </p>
+
+    <h4>Language Codes</h4>
+    <p>
+      Standardized on ISO 639-1 (2-letter), ISO 639-3 (3-letter) and the Glottocode
+      so every dataset, model, or API call can unambiguously reference the right language.
+    </p>
+    <p><strong>Schema:</strong> language_new.iso_639_1, language_new.iso_639_3,<br>
+       language_new.glottocode
+    </p>
+  </div>
+</details>
 <div class="code-link">
   <strong>Code:</strong> 
   <a href="https://github.com/yourusername/yourproject" target="_blank">View Project on GitHub</a>
