@@ -272,3 +272,28 @@ nav#site-nav a.active {
   display: block !important;
   margin: 0 auto 1rem !important;  // auto-center horizontally + bottom gutter
 }
+
+.collapsible-section {
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 0.25rem;
+  background: #fafafa;
+}
+.collapsible-section summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  outline: none;
+  user-select: none;
+}
+.collapsible-section summary::before {
+  content: "▸ ";
+  transition: transform 0.2s ease;
+}
+.collapsible-section[open] summary::before {
+  content: "▾ ";
+}
+.collapsible-section > div {
+  padding: 1rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
