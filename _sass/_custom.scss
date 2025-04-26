@@ -297,3 +297,20 @@ nav#site-nav a.active {
   padding: 1rem;
   border-top: 1px solid rgba(0,0,0,0.05);
 }
+
+// Collapse the grid to one column and expand the inner wrapper
+body.no-sidebar.page.single-layout .page__inner-wrap {
+  max-width: 1000px;      // or whatever full width you prefer
+  margin: 0 auto;         // center
+  padding: 0 1rem;        // optional side padding
+}
+
+body.no-sidebar .site__wrapper {
+  grid-template-columns: 1fr;  // force a single column
+}
+
+.page.single-layout.collection-portfolio .page__title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
