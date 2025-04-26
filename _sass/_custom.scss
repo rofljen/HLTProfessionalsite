@@ -207,8 +207,7 @@ nav#site-nav a.active {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: $card-pad;
   margin-bottom: $card-pad;
-  max-width: $content-w;
-  width: 100%;
+  width: 100%; /* 🔥 Remove max-width */
 }
 
 .page__inner-wrap .site-summary > p {
