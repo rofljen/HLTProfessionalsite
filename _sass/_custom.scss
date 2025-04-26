@@ -106,11 +106,10 @@ nav#site-nav a.active {
 #main {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start; /* 🔥 FIX HERE */
   gap: $gap;
   margin: 1rem auto 0;
   padding: 0;
-  // leave mixed-unit math to the browser
   max-width: unquote("calc(#{$content-w} + #{$sidebar-w} + #{$gap})");
 }
 
