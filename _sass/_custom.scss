@@ -69,6 +69,12 @@ a:hover {
   padding: 0 1rem;
 }
 
+.initial-content {
+  margin: 0 auto;
+  max-width: calc(#{$content-w} + #{$sidebar-w} + 3rem); /* slightly bigger site container */
+  padding: 0 1rem;
+}
+
 .masthead__inner-wrap {
   max-width: $content-w;
   margin: 0 auto;
@@ -110,7 +116,6 @@ nav#site-nav a.active {
   gap: $gap;
   margin: 1rem auto 0;
   padding: 0;
-  max-width: unquote("calc(#{$content-w} + #{$sidebar-w} + #{$gap})");
 }
 
 .sidebar,
