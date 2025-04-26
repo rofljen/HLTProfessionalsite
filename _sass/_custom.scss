@@ -126,6 +126,13 @@ nav#site-nav a.active {
   margin-left: 0;
 }
 
+.page__content-wrap {
+  flex: 1;
+  max-width: 1000px; /* Or 1200px if you want it bigger */
+  margin: 0 auto;
+  padding: 0 1rem; /* Optional: small side padding inside content */
+}
+
 //───────────────────────────────────────────────────────────────────────────────
 // 6) Author Bio Panel
 //───────────────────────────────────────────────────────────────────────────────
