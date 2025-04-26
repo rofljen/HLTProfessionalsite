@@ -1,42 +1,79 @@
 ---
-layout: default
+layout: null
 ---
 
 {% include base_path %}
 
-<article class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
-  {% if page.title %}
-    <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
-  {% endif %}
-  {% if page.excerpt %}
-    <meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">
-  {% endif %}
-  {% if page.date %}
-    <meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">
-  {% endif %}
-  {% if page.modified %}
-    <meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">
-  {% endif %}
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}">
+<head>
+  {% include head.html %}
+  {% include head/custom.html %}
+</head>
+<body>
+  {% include browser-upgrade.html %}
 
-  {% unless page.header.overlay_color or page.header.overlay_image %}
-    <header class="page__header">
-      <h1 class="page__title" itemprop="headline">{{ page.title }}</h1>
-    </header>
-  {% endunless %}
-
-  <div class="page__inner-wrap">
-    {{ content }}
+  <!-- Masthead -->
+  <div class="layout-container">
+    {% include masthead.html %}
   </div>
 
-  <footer class="page__meta">
-    {% include page__taxonomy.html %}
-  </footer>
+  <!-- Main content area -->
+  <div class="layout-container">
+    <div id="main" role="main">
+      {% unless page.sidebar == false %}
+        <aside class="site__aside sidebar">
+          {% include sidebar.html %}
+        </aside>
+      {% endunless %}
 
-  {% if page.share %}
-    {% include social-share.html %}
-  {% endif %}
+      <article class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
+        {% if page.title %}
+          <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
+        {% endif %}
+        {% if page.excerpt %}
+          <meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">
+        {% endif %}
+        {% if page.date %}
+          <meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">
+        {% endif %}
+        {% if page.modified %}
+          <meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">
+        {% endif %}
 
-  {% if site.comments.provider and page.comments %}
-    {% include comments.html %}
-  {% endif %}
-</article>
+        {% unless page.header.overlay_color or page.header.overlay_image %}
+          <header class="page__header">
+            <h1 class="page__title" itemprop="headline">{{ page.title }}</h1>
+          </header>
+        {% endunless %}
+
+        <div class="page__inner-wrap">
+          {{ content }}
+        </div>
+
+        <footer class="page__meta">
+          {% include page__taxonomy.html %}
+        </footer>
+
+        {% if page.share %}
+          {% include social-share.html %}
+        {% endif %}
+
+        {% if site.comments.provider and page.comments %}
+          {% include comments.html %}
+        {% endif %}
+      </article>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="page__footer">
+    <footer>
+      {% include footer/custom.html %}
+      {% include footer.html %}
+    </footer>
+  </div>
+
+  {% include scripts.html %}
+</body>
+</html>
