@@ -20,7 +20,7 @@ layout: compress
       <div id="main" role="main">
         {% include sidebar.html %}
 
-        <div class="archive">
+        <div class="page__content-wrap">
           <article class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
             {% if page.title %}
               <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
@@ -61,9 +61,9 @@ layout: compress
               {% include comments.html %}
             {% endif %}
           </article>
-        </div> <!-- END .archive -->
-      </div> <!-- END #main -->
+        </div> <!-- .page__content-wrap -->
 
+      </div> <!-- END #main -->
     </div> <!-- END .initial-content -->
 
     {% include footer.html %}
