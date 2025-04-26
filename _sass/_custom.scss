@@ -18,7 +18,7 @@ $card-pad:    1rem;
 $card-radius: 0.5rem;
 
 //───────────────────────────────────────────────────────────────────────────────
-// 2) Base typography & body
+// 2) Base Typography & Body
 //───────────────────────────────────────────────────────────────────────────────
 html { font-size: 15px; }
 
@@ -58,7 +58,7 @@ a:hover {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 3) Layout containers & centering
+// 3) Layout Containers & Centering
 //───────────────────────────────────────────────────────────────────────────────
 .layout-container {
   max-width: calc(#{$content-w} + #{$sidebar-w} + #{$gap});
@@ -72,7 +72,7 @@ a:hover {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 4) Nav styling
+// 4) Navigation Styling
 //───────────────────────────────────────────────────────────────────────────────
 nav#site-nav,
 nav.greedy-nav {
@@ -98,7 +98,7 @@ nav#site-nav a.active {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 5) Main layout: sidebar + content
+// 5) Main Layout: Sidebar + Content
 //───────────────────────────────────────────────────────────────────────────────
 #main {
   display: flex;
@@ -110,7 +110,8 @@ nav#site-nav a.active {
   max-width: calc(#{$content-w} + #{$sidebar-w} + #{$gap});
 }
 
-.sidebar {
+.sidebar,
+.site__aside {
   flex: 0 0 $sidebar-w;
   max-width: $sidebar-w;
   background: transparent !important;
@@ -118,7 +119,7 @@ nav#site-nav a.active {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 6) Author-bio panel
+// 6) Author Bio Panel
 //───────────────────────────────────────────────────────────────────────────────
 .sidebar-bio.card {
   background: transparent !important;
@@ -172,7 +173,7 @@ nav#site-nav a.active {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 7) Content cards
+// 7) Content Cards
 //───────────────────────────────────────────────────────────────────────────────
 .page__inner-wrap {
   flex: 1;
@@ -201,7 +202,7 @@ nav#site-nav a.active {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 8) Collapsible sections
+// 8) Collapsible Sections
 //───────────────────────────────────────────────────────────────────────────────
 .collapsible-section {
   margin-bottom: 1.5rem;
@@ -233,7 +234,7 @@ nav#site-nav a.active {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 9) Responsive tweaks
+// 9) Responsive Tweaks
 //───────────────────────────────────────────────────────────────────────────────
 @media (max-width: 768px) {
   .layout-container {
@@ -246,7 +247,8 @@ nav#site-nav a.active {
     align-items: center;
     max-width: 100%;
   }
-  .sidebar {
+  .sidebar,
+  .site__aside {
     margin: 0 auto 1.5rem;
   }
 
@@ -264,7 +266,6 @@ nav#site-nav a.active {
     padding: 0.5rem 0.75rem;
   }
 
-  /* Greedy nav adjustments */
   nav.greedy-nav .visible-links {
     display: none !important;
   }
@@ -284,23 +285,29 @@ nav#site-nav a.active {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 10) Portfolio Page Overrides
+// 10) Portfolio Single-Layout Overrides
 //───────────────────────────────────────────────────────────────────────────────
 body.layout--single.sidebar--false.collection-portfolio {
-  /* Remove default sidebar if any */
-  .site__aside { display: none !important; }
+  // Hide sidebar
+  .sidebar,
+  .site__aside {
+    display: none !important;
+  }
 
-  /* Collapse grid to single column */
-  #main { grid-template-columns: 1fr !important; display: grid; }
+  // Collapse grid to single column
+  #main {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
 
-  /* Expand content area */
+  // Expand content area
   .page__inner-wrap {
     max-width: 1000px !important;
     margin: 0 auto;
     padding: 0 1rem;
   }
 
-  /* Align title left */
+  // Left-align title
   .page__header .page__title {
     text-align: left !important;
   }
