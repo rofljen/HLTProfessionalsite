@@ -10,12 +10,13 @@ layout: compress
     {% include head.html %}
     {% include head/custom.html %}
   </head>
+
   <body>
     {% include browser-upgrade.html %}
 
     <div class="initial-content">
-      {% include masthead.html %}        {# <--- this is your NAVIGATION bar #}
-      {% include sidebar.html %}          {# <--- this is your SIDEBAR #}
+      {% include masthead.html %}
+      {% include sidebar.html %}
 
       <main id="main" role="main">
         <article class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
