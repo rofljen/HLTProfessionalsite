@@ -287,28 +287,26 @@ nav#site-nav a.active {
 //───────────────────────────────────────────────────────────────────────────────
 // 10) Portfolio Single-Layout Overrides
 //───────────────────────────────────────────────────────────────────────────────
-body.layout--single.sidebar--false.collection-portfolio {
-  // Hide sidebar
-  .sidebar,
-  .site__aside {
-    display: none !important;
-  }
-
-  // Collapse grid to single column
-  #main {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-  }
-
-  // Expand content area
-  .page__inner-wrap {
-    max-width: 1000px !important;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  // Left-align title
-  .page__header .page__title {
-    text-align: left !important;
-  }
+//───────────────────────────────────────────────────────────────────────────────
+// XX) Portfolio Overrides (simplified)
+//───────────────────────────────────────────────────────────────────────────────
+body.collection-portfolio .site__aside,
+body.collection-portfolio .sidebar {
+  display: none !important;
 }
+
+body.collection-portfolio #main {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+}
+
+body.collection-portfolio .page__inner-wrap {
+  max-width: 1000px !important;
+  margin: 0 auto;
+  padding: 0 1rem !important;
+}
+
+body.collection-portfolio .page__header .page__title {
+  text-align: left !important;
+}
+
