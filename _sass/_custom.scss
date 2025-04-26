@@ -1,22 +1,21 @@
 // =============================================================================
-// _sass/_custom.scss
-// Streamlined Overrides for Minimal Mistakes Jekyll
+//  _sass/_custom.scss
+//  Streamlined overrides for Minimal Mistakes Jekyll
 // =============================================================================
 
 //───────────────────────────────────────────────────────────────────────────────
-// 1) Variables: Colors & Dimensions
+// 1) Theme Colors & Dimensions
 //───────────────────────────────────────────────────────────────────────────────
-$mint-bg         : #e8f1e8;
-$teal-accent     : #a7d0bf;
-$cool-blue       : #9bc5d7;
-$dark-green      : #4a8d7c;
+$mint-bg:     #e8f1e8;
+$teal-accent: #a7d0bf;
+$cool-blue:   #9bc5d7;
+$dark-green:  #4a8d7c;
 
-$sidebar-width   : 280px;
-$content-width   : 850px;
-$portfolio-width : 1000px;
-$gap             : 2rem;
-$card-padding    : 1rem;
-$card-radius     : 0.5rem;
+$sidebar-w:   280px;
+$content-w:   850px;
+$gap:         2rem;
+$card-pad:    1rem;
+$card-radius: 0.5rem;
 
 //───────────────────────────────────────────────────────────────────────────────
 // 2) Base Typography & Body
@@ -31,7 +30,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-size: 0.933rem;
   line-height: 1.5;
-  background: $mint-bg;
+  background-color: $mint-bg;
   color: #333;
 }
 
@@ -40,13 +39,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: $teal-accent;
   margin-bottom: 0.75rem;
+  line-height: 1.3;
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// 3) Links
-//───────────────────────────────────────────────────────────────────────────────
-a,
-a:visited {
+.page__title {
+  text-align: center;
+  font-size: 3.5rem;
+  margin: 0.5rem 0 0.25rem;
+  color: $dark-green;
+  font-weight: 1000;
+}
+
+a, a:visited {
   color: $cool-blue;
   text-decoration: none;
 }
@@ -56,101 +60,176 @@ a:hover {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 4) Layout Containers
+// 3) Layout Containers & Centering
 //───────────────────────────────────────────────────────────────────────────────
-.layout-container,
-.masthead__inner-wrap {
+.layout-container {
+  // leave mixed-unit math to the browser
+  max-width: unquote("calc(#{$content-w} + #{$sidebar-w} + #{$gap})");
   margin: 0 auto;
-  max-width: $content-width + $sidebar-width + $gap;
   padding: 0 1rem;
 }
 
-.layout-container {
-  max-width: calc(#{$content-width} + #{$sidebar-width} + #{$gap});
+.masthead__inner-wrap {
+  max-width: $content-w;
+  margin: 0 auto;
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 5) Navigation
+// 4) Navigation Styling
 //───────────────────────────────────────────────────────────────────────────────
 nav#site-nav,
 nav.greedy-nav {
-  max-width: $content-width;
+  max-width: $content-w;
   margin: 0 auto;
   background: #fff;
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   padding: 0.75rem 1rem;
 }
+
 nav#site-nav a {
-  color: $dark-green;
+  color: $dark-green !important;
   font-weight: 600;
   text-transform: uppercase;
   padding: 0.25rem 0.75rem;
   border-radius: 0.25rem;
-  transition: background 0.2s;
+  transition: background-color 0.2s;
 }
 nav#site-nav a:hover,
 nav#site-nav a.active {
-  background: lighten($dark-green, 25%);
+  background-color: lighten($dark-green, 25%);
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 6) Main Layout: Sidebar & Content
+// 5) Main Layout: Sidebar + Content
 //───────────────────────────────────────────────────────────────────────────────
 #main {
   display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: $gap;
   margin: 1rem auto 0;
-  max-width: calc(#{$content-width} + #{$sidebar-width} + #{$gap});
+  padding: 0;
+  // leave mixed-unit math to the browser
+  max-width: unquote("calc(#{$content-w} + #{$sidebar-w} + #{$gap})");
 }
 
-.site__aside,
-.sidebar {
-  flex: 0 0 $sidebar-width;
-  max-width: $sidebar-width;
+.sidebar,
+.site__aside {
+  flex: 0 0 $sidebar-w;
+  max-width: $sidebar-w;
+  background: transparent !important;
+  margin-left: 0;
 }
 
+//───────────────────────────────────────────────────────────────────────────────
+// 6) Author Bio Panel
+//───────────────────────────────────────────────────────────────────────────────
+.sidebar-bio.card {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.sidebar-bio__img,
+.author__avatar img,
+.avatar__photo {
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  display: block !important;
+  margin: 0 auto 1rem !important;
+}
+
+.sidebar-bio__text {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+.sidebar-bio__name {
+  font-size: 1.25rem;
+  color: $dark-green;
+  margin: 0.5rem 0 0.25rem;
+}
+.sidebar-bio__desc {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #555;
+  font-weight: 400;
+}
+.sidebar-bio__links {
+  text-align: center;
+  margin-top: 0.5rem;
+  list-style: none !important;
+  padding: 0;
+  margin: 0;
+}
+.sidebar-bio__links li {
+  display: inline-block;
+  margin: 0 0.25rem;
+}
+.sidebar-bio__links a {
+  color: $cool-blue;
+  text-decoration: underline;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+//───────────────────────────────────────────────────────────────────────────────
+// 7) Content Cards
+//───────────────────────────────────────────────────────────────────────────────
 .page__inner-wrap {
   flex: 1;
-  max-width: $content-width;
+  max-width: $content-w;
   margin: 0 auto;
   padding: 0;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// 7) Content Cards & Callouts
-//───────────────────────────────────────────────────────────────────────────────
 .card,
 .entry-card,
-.callout,
-.page__inner-wrap > p {
-  background: lighten($mint-bg, 15%);
+.callout {
+  background-color: lighten($mint-bg, 15%);
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: $card-padding;
-  margin-bottom: $card-padding;
-  max-width: $content-width;
+  padding: $card-pad;
+  margin-bottom: $card-pad;
+  max-width: $content-w;
   width: 100%;
+}
+
+.page__inner-wrap .site-summary > p {
+  @extend .card;
+  margin: $card-pad 0;
 }
 
 //───────────────────────────────────────────────────────────────────────────────
 // 8) Collapsible Sections
 //───────────────────────────────────────────────────────────────────────────────
 .collapsible-section {
-  max-width: $content-width;
-  margin: 1.5rem auto;
+  margin-bottom: 1.5rem;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 0.25rem;
   background: #fafafa;
+  max-width: $content-w;
+  margin-left: auto;
+  margin-right: auto;
 }
 .collapsible-section summary {
   padding: 0.75rem 1rem;
   cursor: pointer;
   font-weight: 600;
+  outline: none;
+  user-select: none;
+}
+.collapsible-section::marker {
+  content: none;
 }
 .collapsible-section summary::before {
   content: "▸ ";
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 .collapsible-section[open] summary::before {
   content: "▾ ";
@@ -164,18 +243,25 @@ nav#site-nav a.active {
 // 9) Responsive Tweaks
 //───────────────────────────────────────────────────────────────────────────────
 @media (max-width: 768px) {
-  #main {
-    flex-direction: column;
+  .layout-container {
+    padding: 0 1rem;
     max-width: 100%;
   }
-  .site__aside,
-  .sidebar {
+
+  #main {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+  .sidebar,
+  .site__aside {
     margin: 0 auto 1.5rem;
   }
+
   .page__inner-wrap {
     max-width: 100% !important;
-    padding: 0 1rem;
   }
+
   nav#site-nav,
   nav.greedy-nav {
     flex-wrap: nowrap;
@@ -185,6 +271,7 @@ nav#site-nav a.active {
     white-space: nowrap;
     padding: 0.5rem 0.75rem;
   }
+
   nav.greedy-nav .visible-links {
     display: none !important;
   }
@@ -204,22 +291,24 @@ nav#site-nav a.active {
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 10) Portfolio Page Overrides
+// 10) Portfolio Single-Layout Overrides
 //───────────────────────────────────────────────────────────────────────────────
-body.collection-portfolio {
-  .site__aside,
-  .sidebar {
-    display: none;
-  }
-  #main {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  .page__inner-wrap {
-    max-width: $portfolio-width;
-    padding: 0 1rem;
-  }
-  .page__header .page__title {
-    text-align: left;
-  }
+body.collection-portfolio .site__aside,
+body.collection-portfolio .sidebar {
+  display: none !important;
+}
+
+body.collection-portfolio #main {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+}
+
+body.collection-portfolio .page__inner-wrap {
+  max-width: 1000px !important;
+  margin: 0 auto;
+  padding: 0 1rem !important;
+}
+
+body.collection-portfolio .page__header .page__title {
+  text-align: left !important;
 }
