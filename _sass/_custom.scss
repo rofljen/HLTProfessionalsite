@@ -109,6 +109,54 @@ nav.greedy-nav a.active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.sidebar {
+  text-align: center; /* Center the avatar and name */
+  padding: 1rem 0;
+  
+  img {
+    border-radius: 50%; /* Make the image round */
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Bigger name */
+    font-weight: 700; /* Bold name */
+    margin-bottom: 0.5rem; /* Small space before description */
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 auto 1.5rem auto;
+    max-width: 250px; /* ✅ Control text width for even wrapping */
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    text-align: left; /* ✅ Left-align the links */
+    max-width: 250px; /* Match paragraph width */
+  }
+
+  ul li a {
+    font-size: 1rem; /* Same as paragraph text */
+    font-weight: 600; /* Slightly bold links */
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  ul li a:hover {
+    text-decoration: underline; /* Optional hover effect */
+  }
+}
+
+
 //── Content ──────────────────────────────────────────────────────────────────
 .page__content-wrap {
   flex: 0 0 $content-w;
