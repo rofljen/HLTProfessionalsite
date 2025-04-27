@@ -86,6 +86,7 @@ nav.greedy-nav a.active {
 .sidebar {
   flex: 0 0 $sidebar-w;
   max-width: $sidebar-w;
+  margin-left: 1rem;  // 🔥 ADD THIS
   padding: 0;
   background: transparent !important;
 }
@@ -119,6 +120,15 @@ nav.greedy-nav a.active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: block;
   margin: 0 auto 1rem;
+}
+
+.sidebar-bio__img img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
 }
 
 //── 6. Content Cards ─────────────────────────────────────────────────────────
