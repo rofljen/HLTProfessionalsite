@@ -33,7 +33,7 @@ body {
 }
 
 .sidebar {
-  flex: 0 0 280px;
+  flex: 0 0 225px;
   margin-left: 1rem;
 }
 
@@ -88,11 +88,12 @@ body {
 //── Page ─────────────────────────────────────────────────────────────────────
 .page {
   flex: 1 1 auto;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin-left: 0;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .page__inner-wrap,
@@ -100,7 +101,7 @@ body {
   width: 100%;
   max-width: 100%;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
 }
 
 //── Navigation Bar ───────────────────────────────────────────────────────────
@@ -156,8 +157,9 @@ nav.greedy-nav a:hover {
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  max-width: 700px;
-  margin: 2rem auto;
+  width: 100%;
+  max-width: 650px;
+  margin: 1.5rem 0;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
   padding: 2rem;
