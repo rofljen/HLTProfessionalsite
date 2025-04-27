@@ -1,5 +1,5 @@
 // =============================================================================
-// _sass/_custom.scss (Clean Layout Version)
+// _sass/_custom.scss (Final Clean Layout)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
@@ -33,18 +33,33 @@ body {
 }
 
 .sidebar {
-  flex: 0 0 225px;
-  margin-left: 1rem;
+  flex: 0 0 280px;
+  margin-left: 2rem;
 }
 
-//── Sidebar Profile ──────────────────────────────────────────────────────────
-.sidebar-profile {
-  text-align: center;
-  max-width: 280px;
+.page {
+  flex: 1 1 auto;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page__inner-wrap,
+.page__content {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
   margin: 0 auto;
 }
 
-.sidebar-img {
+//── Sidebar Bio ──────────────────────────────────────────────────────────────
+.sidebar-bio {
+  text-align: center;
+}
+
+.sidebar-bio__img {
   width: 160px;
   height: 160px;
   object-fit: cover;
@@ -53,55 +68,36 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.sidebar-name {
+.sidebar-bio__name {
   font-size: 1.5rem;
   font-weight: 700;
+  margin-top: 1rem;
+}
+
+.sidebar-bio__desc {
+  font-size: 1rem;
   margin: 1rem 0;
 }
 
-.sidebar-bio {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.sidebar-links {
+.sidebar-bio__links {
   list-style: none;
   padding: 0;
   margin: 1rem 0 0 0;
 }
 
-.sidebar-links li {
+.sidebar-bio__links li {
   margin: 0.5rem 0;
 }
 
-.sidebar-links a {
+.sidebar-bio__links a {
   color: $dark-green;
   text-decoration: none;
   font-weight: 600;
 }
 
-.sidebar-links a:hover {
+.sidebar-bio__links a:hover {
   color: $teal-accent;
   text-decoration: underline;
-}
-
-//── Page ─────────────────────────────────────────────────────────────────────
-.page {
-  flex: 1 1 auto;
-  max-width: 900px;
-  margin-left: 0;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.page__inner-wrap,
-.page__content {
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
 }
 
 //── Navigation Bar ───────────────────────────────────────────────────────────
@@ -157,11 +153,64 @@ nav.greedy-nav a:hover {
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  width: 100%;
-  max-width: 600px;
-  margin: 1.5rem 0;
+  max-width: 630px; /* 450px × ~1.4 for proportional width */
+  margin: 2rem auto;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+//── Mobile Responsive ────────────────────────────────────────────────────────
+@media (max-width: 850px) {
+  
+  #main {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    flex: 0 0 auto;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Hide bio and links on mobile */
+  .sidebar-bio__desc,
+  .sidebar-bio__links {
+    display: none;
+  }
+
+  .sidebar-bio__img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 0.5rem;
+  }
+
+  .sidebar-bio__name {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  /* Collapse nav into centered row */
+  nav#site-nav,
+  nav.greedy-nav {
+    max-width: 90%;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  nav#site-nav ul,
+  nav.greedy-nav ul {
+    justify-content: center;
+  }
+
+  nav#site-nav li,
+  nav.greedy-nav li {
+    display: block;
+    text-align: center;
+  }
 }
