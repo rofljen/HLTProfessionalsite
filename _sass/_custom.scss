@@ -38,6 +38,15 @@ body {
   text-align: center;
 }
 
+.sidebar img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
 .page {
   flex: 1 1 auto;
   max-width: 1000px;
