@@ -162,18 +162,15 @@ nav.greedy-nav a.active {
 //── Content ──────────────────────────────────────────────────────────────────
 .page {
   flex: 1 1 auto;
-  max-width: 850px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  min-width: 0;
 }
 
 .page__content,
 .archive {
-  max-width: 850px;;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 2rem 0;
+  margin: 0 auto;  
 }
 
 .page__inner-wrap {
@@ -192,7 +189,6 @@ nav.greedy-nav a.active {
   padding: 2rem;
   margin: 1.5rem 0;
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
 }
 
