@@ -1,0 +1,143 @@
+// =============================================================================
+// _sass/_custom.scss (Fresh Clean Version)
+// =============================================================================
+
+//── Variables ────────────────────────────────────────────────────────────────
+$mint-bg:     #e8f1e8;
+$teal-accent: #a7d0bf;
+$cool-blue:   #9bc5d7;
+$dark-green:  #4a8d7c;
+
+$sidebar-w:   280px;
+$content-w:   1100px;
+$gap:         2rem;
+$card-radius: 0.5rem;
+
+//── Base Body and Typography ─────────────────────────────────────────────────
+html {
+  font-size: 15px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: $mint-bg;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: $teal-accent;
+}
+
+.page__title {
+  text-align: center;
+  font-size: 3rem;
+  color: $dark-green;
+  margin-top: 1rem;
+}
+
+//── Main Layout ──────────────────────────────────────────────────────────────
+#main {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: $gap;
+  max-width: 1400px;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+//── Sidebar ──────────────────────────────────────────────────────────────────
+.sidebar {
+  flex: 0 0 $sidebar-w;
+  margin-left: 1rem;
+}
+
+.sidebar-bio {
+  text-align: center;
+  img.sidebar-bio__img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+}
+
+//── Content Area ─────────────────────────────────────────────────────────────
+.page {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.page__inner-wrap,
+.page__content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+//── Cards ────────────────────────────────────────────────────────────────────
+.card {
+  max-width: $content-w;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: lighten($mint-bg, 15%);
+  border-radius: $card-radius;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+//── Navigation Bar ───────────────────────────────────────────────────────────
+nav#site-nav,
+nav.greedy-nav {
+  max-width: 1400px;
+  margin: 1rem auto 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: $card-radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+nav#site-nav a,
+nav.greedy-nav a {
+  color: $dark-green !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav#site-nav a:hover,
+nav.greedy-nav a:hover,
+nav#site-nav a.active,
+nav.greedy-nav a.active {
+  background-color: lighten($dark-green, 30%);
+}
+
+//── Mobile Responsive ────────────────────────────────────────────────────────
+@media (max-width: 1100px) {
+  #main {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .sidebar,
+  .page {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
