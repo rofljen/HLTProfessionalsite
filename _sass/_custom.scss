@@ -34,14 +34,17 @@ body {
 
 .sidebar {
   flex: 0 0 280px;
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 
-.sidebar-bio {
-  text-align: left;
+//── Sidebar Profile ──────────────────────────────────────────────────────────
+.sidebar-profile {
+  text-align: center;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
-.sidebar-bio__img {
+.sidebar-img {
   width: 160px;
   height: 160px;
   object-fit: cover;
@@ -50,41 +53,43 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.sidebar-bio__name {
+.sidebar-name {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-top: 1rem;
-}
-
-.sidebar-bio__desc {
-  font-size: 1rem;
   margin: 1rem 0;
 }
 
-.sidebar-bio__links {
+.sidebar-bio {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-links {
   list-style: none;
   padding: 0;
   margin: 1rem 0 0 0;
 }
 
-.sidebar-bio__links li {
+.sidebar-links li {
   margin: 0.5rem 0;
 }
 
-.sidebar-bio__links a {
+.sidebar-links a {
   color: $dark-green;
   text-decoration: none;
   font-weight: 600;
 }
-.sidebar-bio__links a:hover {
+
+.sidebar-links a:hover {
   color: $teal-accent;
   text-decoration: underline;
 }
 
+//── Page ─────────────────────────────────────────────────────────────────────
 .page {
   flex: 1 1 auto;
   max-width: 1000px;
-  margin: 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,10 +156,10 @@ nav.greedy-nav a:hover {
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  max-width: 900px; /* narrower */
-  margin: 0;
+  max-width: 700px;
+  margin: 2rem auto;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
-  padding: 1.5rem;
+  padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
