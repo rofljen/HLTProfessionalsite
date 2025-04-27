@@ -105,25 +105,23 @@ nav#site-nav a.active {
 #main {
   display: flex;
   align-items: flex-start;
-  justify-content: center; /* ✅ center sidebar+content together */
+  justify-content: center; /* ✅ Center sidebar + content together */
   gap: $gap;
   margin: 2rem auto 0;
-  max-width: unquote("calc(#{$content-w} + #{$sidebar-w} + #{$gap})");
+  max-width: calc(1000px + 280px + 2rem); /* ✅ Sidebar + Content + Gap */
   padding: 0;
 }
 
 .sidebar,
 .site__aside {
-  flex: 0 0 $sidebar-w;
-  max-width: $sidebar-w;
+  flex: 0 0 280px;
+  max-width: 280px;
   padding: 1rem;
-  background: transparent !important;
-  margin-left: 0;
 }
 
 .page__content-wrap {
   flex: 1;
-  max-width: $content-w;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 1rem;
 }
