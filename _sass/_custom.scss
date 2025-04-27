@@ -1,11 +1,8 @@
+```scss
 // =============================================================================
 //  _sass/_custom.scss
-//  Full clean override for HLT Professional Site
 // =============================================================================
 
-//───────────────────────────────────────────────────────────────────────────────
-// 1) Theme Colors & Dimensions
-//───────────────────────────────────────────────────────────────────────────────
 $mint-bg:     #e8f1e8;
 $teal-accent: #a7d0bf;
 $cool-blue:   #9bc5d7;
@@ -17,9 +14,6 @@ $gap:         2rem;
 $card-pad:    1rem;
 $card-radius: 0.5rem;
 
-//───────────────────────────────────────────────────────────────────────────────
-// 2) Base Typography
-//───────────────────────────────────────────────────────────────────────────────
 html {
   font-size: 15px;
 }
@@ -45,12 +39,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// 3) Navigation
-//───────────────────────────────────────────────────────────────────────────────
 nav#site-nav,
 nav.greedy-nav {
-  max-width: calc($content-w + $sidebar-w + $gap);
+  max-width: calc(1150px);
   margin: 0 auto;
   padding: 0.75rem 1rem;
   background: white;
@@ -58,17 +49,14 @@ nav.greedy-nav {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// 4) Main Layout (Sidebar + Content)
-//───────────────────────────────────────────────────────────────────────────────
 #main {
   display: flex;
   align-items: flex-start;
-  justify-content: center; /* center sidebar + content */
-  gap: 2rem;
+  justify-content: center;
+  gap: $gap;
   margin: 2rem auto 0;
-  max-width: 1200px;
-  padding: 0 rem;
+  max-width: 1150px;
+  padding: 0 1rem;
 }
 
 .sidebar,
@@ -76,6 +64,21 @@ nav.greedy-nav {
   flex: 0 0 $sidebar-w;
   max-width: $sidebar-w;
   padding: 1rem;
+  margin-left: 2rem;
+  background: transparent !important;
+}
+
+.sidebar-bio__img,
+.author__avatar img,
+.avatar__photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto 1rem;
+  background: transparent !important;
 }
 
 .page__content-wrap {
@@ -91,9 +94,6 @@ nav.greedy-nav {
   padding: 0;
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// 5) Content Cards
-//───────────────────────────────────────────────────────────────────────────────
 .card,
 .entry-card,
 .callout {
@@ -105,10 +105,7 @@ nav.greedy-nav {
   width: 100%;
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// 6) Responsive Tweaks
-//───────────────────────────────────────────────────────────────────────────────
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   #main {
     flex-direction: column;
     align-items: center;
@@ -118,25 +115,10 @@ nav.greedy-nav {
   .site__aside {
     width: 100%;
     max-width: 100%;
+    margin-left: 0;
   }
 
-.page__content-wrap {
-  max-width: 100%;
+  .page__content-wrap {
+    max-width: 100%;
   }
-}
-//───────────────────────────────────────────────────────────────────────────────
-// 7) Portfolio Pages (layout: single)
-//───────────────────────────────────────────────────────────────────────────────
-body.page--no-sidebar #main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: $content-w;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-body.page--no-sidebar .page__inner-wrap {
-  max-width: 100%;
-  margin: 0 auto;
 }
