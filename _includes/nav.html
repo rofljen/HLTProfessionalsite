@@ -1,8 +1,18 @@
-<nav class="navbar">
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/cv/">CV</a></li>
-    <li><a href="/portfolio/">Portfolio</a></li>
-    <li><a href="/publications/">Publications</a></li>
-  </ul>
+<nav id="site-nav">
+  <div class="nav-wrapper">
+    <div class="nav-brand">
+      <a href="{{ '/' | relative_url }}">{{ page.title | default: site.title }}</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+
+    <ul class="nav-menu">
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/cv/' | relative_url }}">CV</a></li>
+      <li><a href="{{ '/portfolio/' | relative_url }}">Portfolio</a></li>
+      <li><a href="{{ '/publications/' | relative_url }}">Publications</a></li>
+    </ul>
+  </div>
 </nav>
