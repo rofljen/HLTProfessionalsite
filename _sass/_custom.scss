@@ -170,3 +170,19 @@ nav.greedy-nav a.active {
     justify-content: center;
   }
 }
+.sidebar-bio__links {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.sidebar-bio__links li {
+  margin: 0.5rem 0;
+}
+
+.sidebar-bio__links a {
+  color: $cool-blue;
+  text-decoration: underline;
+}
+
