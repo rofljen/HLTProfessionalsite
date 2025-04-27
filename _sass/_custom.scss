@@ -34,7 +34,7 @@ body {
 
 .sidebar {
   flex: 0 0 280px;
-  margin-left: 2;
+  margin-left: 2rem;
 }
 
 .sidebar-bio {
@@ -84,7 +84,7 @@ body {
 .page {
   flex: 1 1 auto;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,7 +151,7 @@ nav.greedy-nav a:hover {
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  max-width: 700px; /* narrower */
+  max-width: 900px; /* narrower */
   margin: 0;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
