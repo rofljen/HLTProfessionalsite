@@ -105,9 +105,10 @@ nav#site-nav a.active {
 #main {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: center; /* ✅ center sidebar+content together */
   gap: $gap;
   margin: 2rem auto 0;
+  max-width: unquote("calc(#{$content-w} + #{$sidebar-w} + #{$gap})");
   padding: 0;
 }
 
