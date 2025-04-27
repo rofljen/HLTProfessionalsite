@@ -40,45 +40,45 @@ author_profile: false
   <div class="card-content">
     <h4>Name & Classification</h4>
     <p>
-      Pulled each language’s name and its family/sub-family from Glottolog
-      (e.g., “Akan → Niger–Congo → Atlantic–Congo”) to situate it in the genetic tree
-      and enable branch-level filtering.
+      Pulled each language’s name, family, and sub-family from Glottolog
+      (e.g., “Akan → Niger–Congo → Atlantic–Congo”) to structure the hierarchy
+      and enable filtering by genetic lineage.
     </p>
-    <p><strong>Schema:</strong> language_new.language_name, language_new.language_family_id,<br>
-       language_new.language_subfamily_id, language_new.glottocode
-    </p>
+    <p><strong>Schema:</strong> language_new.language_name, language_new.language_family_id, language_new.language_subfamily_id, language_new.glottocode</p>
 
     <h4>Location</h4>
     <p>
-      Retrieved centroid latitude/longitude from GeoNames and stored it as a
-      POINT—so you can plot dialect coverage or target nearby speakers for ASR collection.
+      Retrieved each language’s geographic centroid using GeoNames and stored it
+      as a PostGIS POINT, allowing spatial queries like mapping coverage areas.
     </p>
-    <p><strong>Schema:</strong> language_new.geo_center (PostGIS POINT)</p>
+    <p><strong>Schema:</strong> language_new.geo_center (PostGIS geometry)</p>
 
     <h4>Global Region</h4>
     <p>
-      Mapped every lat/long to its continent or sub-continent (e.g., “West Africa”,
-      “Southeast Asia”) for regional roll-ups in your dashboards.
+      Linked each language to a continent or subregion for aggregation and regional dashboards.
     </p>
-    <p><strong>Schema:</strong> language_new.region</p>
+    <p><strong>Schema:</strong> language_new.continent_or_region_id</p>
 
     <h4>Number of Speakers</h4>
     <p>
-      Collected L1 and L2 speaker estimates (with year tags) to visualize each
-      language’s scale and automatically highlight ultra-low-resource targets (&lt;10K L1).
+      Recorded estimated speaker populations to prioritize support for low-resource languages.
+      (Speaker counts pulled from external sources tracked separately.)
     </p>
-    <p><strong>Schema:</strong> language_new.l1_speakers, language_new.l2_speakers,<br>
-       language_new.speaker_year
-    </p>
+    <p><strong>Schema:</strong> language_new.num_speakers, pop_source</p>
 
     <h4>Language Codes</h4>
     <p>
-      Standardized on ISO 639-1 (2-letter), ISO 639-3 (3-letter) and the Glottocode
-      so every dataset, model, or API call can unambiguously reference the right language.
+      Standardized ISO 639-1, ISO 639-3, and Glottocode identifiers across the dataset
+      to ensure consistent references for downstream NLP pipelines.
     </p>
-    <p><strong>Schema:</strong> language_new.iso_639_1, language_new.iso_639_3,<br>
-       language_new.glottocode
+    <p><strong>Schema:</strong> language_new.iso_639_1, language_new.iso_639_3, language_new.glottocode</p>
+
+    <h4>Available Models & Datasets</h4>
+    <p>
+      Cataloged available ASR, TTS, and NMT models and datasets from platforms like Hugging Face and Common Voice.
+      Where models were unavailable, tracked available source datasets.
     </p>
+    <p><strong>Schema:</strong> nmt_datasets, nmt_pairs_source, asr_source, language_new.asr, language_new.tts, language_new.nmt</p>
   </div>
 </details>
 
