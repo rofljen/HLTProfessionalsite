@@ -97,14 +97,14 @@ analytics:
 author:
   name: Jennifer Haliewicz
   avatar: /images/Jen2.jpg
-  bio: |
-    I use language data and
-    open tools to improve access, 
-    equity, and performance 
-    in NLP systems.
-  location: Portland, Oregon
-  github: rofljen
-  linkedin: jennifer-haliewicz
+  bio: "I use language data and open tools to improve access, equity, and performance in NLP systems."
+  links:
+    - name: GitHub
+      url: https://github.com/rofljen
+    - name: LinkedIn
+      url: https://linkedin.com/in/jhaliewicz
+    - name: Email
+      url: mailto:jennifer.haliewicz@gmail.com
 
 # Reading Files
 include:
