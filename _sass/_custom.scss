@@ -1,5 +1,5 @@
 // =============================================================================
-// _sass/_custom.scss (FINAL Clean Version)
+// _sass/_custom.scss (FINAL POLISHED VERSION)
 // =============================================================================
 
 //── Variables ────────────────────────────────────────────────────────────────
@@ -9,9 +9,9 @@ $cool-blue:   #9bc5d7;
 $dark-green:  #4a8d7c;
 
 $sidebar-w:   280px;
-$content-w:   1000px;
+$content-w:   850px;
 $gap:         1.5rem;
-$full-page-w: calc(1000px + 280px + 1.5rem);
+$full-page-w: calc(850px + 280px + 1.5rem);
 $card-pad:    1rem;
 $card-radius: 0.5rem;
 
@@ -78,8 +78,8 @@ nav.greedy-nav a.active {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
-  justify-content: flex-start; /* align to the left */
-  gap: 2rem; /* space between sidebar and content */
+  justify-content: flex-start;
+  gap: 2rem;
   padding-top: 2rem;
   max-width: 1200px;
   margin-left: auto;
@@ -89,82 +89,68 @@ nav.greedy-nav a.active {
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
   flex: 0 0 280px;
-  margin-left: 0; /* no extra margin needed now */
+  margin-left: 0;
   padding: 1rem 0;
-}
+  text-align: center;
 
-.sidebar-bio {
-  text-align: left;
-  padding: 1rem 0;
-}
-
-.sidebar img,
-.sidebar-bio__img img,
-.author__avatar img,
-.avatar__photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar {
-  text-align: center; /* Center the avatar and name */
-  padding: 1rem 0;
-  
   img {
-    border-radius: 50%; /* Make the image round */
+    border-radius: 50%;
     width: 160px;
     height: 160px;
     object-fit: cover;
     margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   h2 {
-    font-size: 1.5rem; /* Bigger name */
-    font-weight: 700; /* Bold name */
-    margin-bottom: 0.5rem; /* Small space before description */
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
   }
 
   p {
     font-size: 1rem;
     line-height: 1.5;
     margin: 0 auto 1.5rem auto;
-    max-width: 250px; /* ✅ Control text width for even wrapping */
+    max-width: 250px;
   }
 
   ul {
     list-style: none;
     padding: 0;
     margin: 0 auto;
-    text-align: left; /* ✅ Left-align the links */
-    max-width: 250px; /* Match paragraph width */
+    text-align: left;
+    max-width: 250px;
   }
 
   ul li a {
-    font-size: 1rem; /* Same as paragraph text */
-    font-weight: 600; /* Slightly bold links */
-    color: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $dark-green;
     text-decoration: none;
     display: block;
     margin-bottom: 0.5rem;
   }
 
   ul li a:hover {
-    text-decoration: underline; /* Optional hover effect */
+    text-decoration: underline;
   }
 }
 
-
 //── Content ──────────────────────────────────────────────────────────────────
-.page__content-wrap {
-  flex: 0 0 $content-w;
+.page {
   max-width: $content-w;
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page__content,
+.archive {
+  max-width: $content-w;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
 }
 
 .page__inner-wrap {
@@ -173,28 +159,13 @@ nav.greedy-nav a.active {
   padding: 0;
 }
 
-.page__content,
-.archive,
-.page {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2rem 1rem;
-}
-.page {
-  max-width: 850px; /* ✅ control content width here */
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 //── Cards ────────────────────────────────────────────────────────────────────
 .card,
 .entry-card,
 .callout {
   background: lighten($mint-bg, 15%);
   border-radius: $card-radius;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: $card-pad;
   margin: 1.5rem 0;
   width: 100%;
@@ -206,6 +177,7 @@ nav.greedy-nav a.active {
   padding: 0;
   margin: 0;
 }
+
 .sidebar ul li {
   margin: 0.5rem 0;
 }
@@ -220,7 +192,7 @@ nav.greedy-nav a.active {
   }
 
   .sidebar,
-  .page__content-wrap {
+  .page {
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
@@ -233,6 +205,7 @@ nav.greedy-nav a.active {
     justify-content: center;
   }
 }
+
 .sidebar-bio__links {
   list-style: none;
   padding: 0;
@@ -248,4 +221,3 @@ nav.greedy-nav a.active {
   color: $cool-blue;
   text-decoration: underline;
 }
-
