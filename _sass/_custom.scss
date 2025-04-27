@@ -13,7 +13,7 @@ $dark-green:  #4a8d7c;
 
 $sidebar-w:   280px;
 $content-w:   1000px;
-$gap:         1rem;
+$gap:         2rem;
 $card-pad:    1rem;
 $card-radius: 0.5rem;
 
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 .page__title {
   text-align: center;
   font-size: 3.5rem;
-  margin: 0.5rem 0 0.25rem;
+  margin: 2rem 0 1rem;
   color: $dark-green;
   font-weight: 1000;
 }
@@ -63,15 +63,8 @@ a:hover {
 // 3) Layout Containers & Centering
 //───────────────────────────────────────────────────────────────────────────────
 .layout-container {
-  // leave mixed-unit math to the browser
   max-width: unquote("calc(#{$content-w} + #{$sidebar-w} + #{$gap})");
   margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.initial-content {
-  margin: 0 auto;
-  max-width: calc(#{$content-w} + #{$sidebar-w} + 3rem); /* slightly bigger site container */
   padding: 0 1rem;
 }
 
@@ -112,9 +105,9 @@ nav#site-nav a.active {
 #main {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start; /* 🔥 FIX HERE */
+  justify-content: flex-start;
   gap: $gap;
-  margin: 1rem auto 0;
+  margin: 2rem auto 0;
   padding: 0;
 }
 
@@ -122,19 +115,29 @@ nav#site-nav a.active {
 .site__aside {
   flex: 0 0 $sidebar-w;
   max-width: $sidebar-w;
+  padding: 1rem;
   background: transparent !important;
   margin-left: 0;
 }
 
 .page__content-wrap {
   flex: 1;
-  max-width: 1000px; /* Or 1200px if you want it bigger */
+  max-width: $content-w;
   margin: 0 auto;
-  padding: 0 1rem; /* Optional: small side padding inside content */
+  padding: 0 1rem;
+}
+
+.page__inner-wrap {
+  flex: 1;
+  max-width: $content-w;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 6) Author Bio Panel
+// 6) Author Bio Panel (Sidebar Bio)
 //───────────────────────────────────────────────────────────────────────────────
 .sidebar-bio.card {
   background: transparent !important;
@@ -190,15 +193,6 @@ nav#site-nav a.active {
 //───────────────────────────────────────────────────────────────────────────────
 // 7) Content Cards
 //───────────────────────────────────────────────────────────────────────────────
-.page__inner-wrap {
-  flex: 1;
-  max-width: $content-w;
-  margin: 0 auto;
-  padding: 0;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
 .card,
 .entry-card,
 .callout {
@@ -206,13 +200,8 @@ nav#site-nav a.active {
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: $card-pad;
-  margin-bottom: $card-pad;
-  width: 100%; /* 🔥 Remove max-width */
-}
-
-.page__inner-wrap .site-summary > p {
-  @extend .card;
-  margin: $card-pad 0;
+  margin: 1rem auto;
+  width: 100%;
 }
 
 //───────────────────────────────────────────────────────────────────────────────
@@ -223,10 +212,12 @@ nav#site-nav a.active {
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 0.25rem;
   background: #fafafa;
+  width: 100%;
   max-width: $content-w;
   margin-left: auto;
   margin-right: auto;
 }
+
 .collapsible-section summary {
   padding: 0.75rem 1rem;
   cursor: pointer;
@@ -263,6 +254,7 @@ nav#site-nav a.active {
     align-items: center;
     max-width: 100%;
   }
+
   .sidebar,
   .site__aside {
     margin: 0 auto 1.5rem;
@@ -277,48 +269,32 @@ nav#site-nav a.active {
     flex-wrap: nowrap;
     overflow-x: auto;
   }
+
   nav#site-nav a {
     white-space: nowrap;
     padding: 0.5rem 0.75rem;
   }
-
-  nav.greedy-nav .visible-links {
-    display: none !important;
-  }
-  nav.greedy-nav button,
-  nav.greedy-nav button.hidden {
-    display: inline-block !important;
-  }
-  nav.greedy-nav .hidden-links.hidden {
-    display: none !important;
-  }
-  nav.greedy-nav .hidden-links:not(.hidden) {
-    display: flex !important;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
 }
 
 //───────────────────────────────────────────────────────────────────────────────
-// 10) Portfolio Single-Layout Overrides
+// 10) Special for `layout: single` pages (Portfolio Pages)
 //───────────────────────────────────────────────────────────────────────────────
-body.collection-portfolio .site__aside,
-body.collection-portfolio .sidebar {
-  display: none !important;
+body.page--no-sidebar #main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  max-width: 1000px;
+  padding: 0 1rem;
 }
 
-body.collection-portfolio #main {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-}
-
-body.collection-portfolio .page__inner-wrap {
-  max-width: 1000px !important;
+body.page--no-sidebar .page__inner-wrap {
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 1rem !important;
+  padding: 0 1rem;
 }
 
-body.collection-portfolio .page__header .page__title {
-  text-align: left !important;
+body.page--no-sidebar .page__header .page__title {
+  text-align: center;
 }
