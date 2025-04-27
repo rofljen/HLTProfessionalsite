@@ -298,3 +298,25 @@ body.page--no-sidebar .page__inner-wrap {
 body.page--no-sidebar .page__header .page__title {
   text-align: center;
 }
+
+//───────────────────────────────────────────────────────────────────────────────
+// 11) Smooth Fade-In Animation for Cards
+//───────────────────────────────────────────────────────────────────────────────
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+.entry-card,
+.callout {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
