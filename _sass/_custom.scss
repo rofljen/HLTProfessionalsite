@@ -34,7 +34,7 @@ body {
 
 .sidebar {
   flex: 0 0 280px;
-  margin-left: 2rem; /* Shift sidebar right */
+  margin-left: 1.5rem; /* Shift sidebar right */
   text-align: center;
 }
 
@@ -67,7 +67,7 @@ body {
 //── Navigation Bar ───────────────────────────────────────────────────────────
 nav#site-nav,
 nav.greedy-nav {
-  max-width: 800px;
+  max-width: 450px;
   margin: 2rem auto 2rem;
   padding: 0.75rem 1.5rem;
   background: #fff;
@@ -117,7 +117,7 @@ nav.greedy-nav a:hover {
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  max-width: 850px; /* narrower */
+  max-width: 700px; /* narrower */
   margin: 2rem auto;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
