@@ -77,18 +77,21 @@ nav.greedy-nav a.active {
 #main {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start; // align sidebar and content normally
-  gap: $gap;
-  max-width: $full-page-w;
+  justify-content: flex-start; /* hug sidebar and content together */
+  gap: 2rem;
+  max-width: 1340px; /* 280px sidebar + 32px gap + 1000px content */
   margin: 0 auto;
-  padding: 0;  // ✨ no extra padding here
+  padding: 0;
+  position: relative;
+  left: 25px; /* 🔥 shifts everything 25px to the right */
 }
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
-  flex: 0 0 $sidebar-w;
-  max-width: $sidebar-w;
-  margin-left: 1.5rem;  // ✨ Push away from left edge
+  flex: 0 0 280px;
+  max-width: 280px;
+  margin: 0;
+  padding: 0;
   background: transparent !important;
 }
 
