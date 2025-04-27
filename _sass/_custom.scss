@@ -1,5 +1,5 @@
 // =============================================================================
-//  _sass/_custom.scss
+//  _sass/_custom.scss (fixed)
 // =============================================================================
 
 $mint-bg:     #e8f1e8;
@@ -13,6 +13,8 @@ $gap:         2rem;
 $card-pad:    1rem;
 $card-radius: 0.5rem;
 
+//───────────────────────────────────────────────────────────────────────────────
+// Base Typography
 html {
   font-size: 15px;
 }
@@ -38,9 +40,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
+//───────────────────────────────────────────────────────────────────────────────
+// Nav
 nav#site-nav,
 nav.greedy-nav {
-  max-width: 1150px;
+  max-width: calc($content-w + $sidebar-w + $gap);
   margin: 0 auto;
   padding: 0.75rem 1rem;
   background: white;
@@ -48,14 +52,16 @@ nav.greedy-nav {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
+//───────────────────────────────────────────────────────────────────────────────
+// Main Layout
 #main {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: $gap;
   margin: 2rem auto 0;
-  max-width: 1150px;
-  padding: 0 1rem;
+  max-width: calc($content-w + $sidebar-w + $gap);
+  padding: 0;
 }
 
 .sidebar,
@@ -65,6 +71,14 @@ nav.greedy-nav {
   padding: 1rem;
   margin-left: 2rem;
   background: transparent !important;
+}
+
+//──────── Sidebar Bio Fix
+.sidebar-bio.card {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 .sidebar-bio__img,
@@ -77,9 +91,10 @@ nav.greedy-nav {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: block;
   margin: 0 auto 1rem;
-  background: transparent !important;
+  background: transparent;
 }
 
+//──────── Main Content Wrap
 .page__content-wrap {
   flex: 1;
   max-width: $content-w;
@@ -88,11 +103,12 @@ nav.greedy-nav {
 }
 
 .page__inner-wrap {
-  max-width: $content-w;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0;
 }
 
+//──────── Cards
 .card,
 .entry-card,
 .callout {
@@ -100,10 +116,12 @@ nav.greedy-nav {
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: $card-pad;
-  margin: 1.5rem auto;
+  margin: 1.5rem 0;
   width: 100%;
 }
 
+//───────────────────────────────────────────────────────────────────────────────
+// Responsive tweaks
 @media (max-width: 1100px) {
   #main {
     flex-direction: column;
@@ -112,8 +130,8 @@ nav.greedy-nav {
 
   .sidebar,
   .site__aside {
-    width: 100%;
     max-width: 100%;
+    width: 100%;
     margin-left: 0;
   }
 
