@@ -37,6 +37,48 @@ body {
   flex: 0 0 280px;
   max-width: 280px;
 }
+.sidebar-profile {
+  text-align: center;
+  padding: 1rem;
+  max-width: 250px;
+}
+
+.sidebar-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-bottom: 1rem;
+}
+
+.sidebar-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.sidebar-bio {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.sidebar-links li {
+  margin: 0.5rem 0;
+}
+
+.sidebar-links a {
+  color: $cool-blue;
+  text-decoration: underline;
+}
+
 
 //── Page Content ──────────────────────────────────────────────────────────────
 .page {
