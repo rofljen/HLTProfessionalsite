@@ -105,44 +105,59 @@ body {
 
 //── Navigation Bar ───────────────────────────────────────────────────────────
 nav#site-nav,
-nav.greedy-nav {
+{
   max-width: 450px;
-  margin: 2rem auto 2rem;
+  margin: 2rem auto;
   padding: 0.75rem 1.5rem;
   background: #fff;
   border-radius: 0.75rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  align-items: center;
+  position: relative;
 }
 
-nav#site-nav ul,
-nav.greedy-nav ul {
+.nav-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: $dark-green;
+}
+
+.nav-menu {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   display: flex;
   gap: 2rem;
 }
 
-nav#site-nav li,
-nav.greedy-nav li {
-  display: inline-block;
-}
-
-nav#site-nav a,
-nav.greedy-nav a {
+.nav-menu li a {
   text-decoration: none;
-  font-weight: 600;
   color: $dark-green;
-  font-size: 1rem;
+  font-weight: 600;
   transition: color 0.3s;
 }
 
-nav#site-nav a:hover,
-nav.greedy-nav a:hover {
+
+.nav-menu li a:hover {
   color: $teal-accent;
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: $dark-green;
+  cursor: pointer;
 }
 
 //── Page Title ───────────────────────────────────────────────────────────────
@@ -210,21 +225,28 @@ nav.greedy-nav a:hover {
   }
 
   nav#site-nav,
-  nav.greedy-nav {
+  {
     max-width: 90%;
-    flex-wrap: wrap;
-    gap: 1rem;
   }
 
-  nav#site-nav ul,
-  nav.greedy-nav ul {
-    justify-content: center;
-    flex-wrap: wrap;
+ .nav-menu {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
   }
 
-  nav#site-nav li,
-  nav.greedy-nav li {
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-toggle {
     display: block;
-    text-align: center;
   }
 }
