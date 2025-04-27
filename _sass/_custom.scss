@@ -39,10 +39,11 @@ body {
 .page {
   flex: 1 1 auto;
   max-width: 1000px;
+  width: 100%; /* allow width first, then limit */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch; /* 📏 stretch to fill */
 }
 
 .page__inner-wrap,
@@ -53,15 +54,15 @@ body {
   margin: 0;
 }
 
-//── Cards ────────────────────────────────────────────────────────────────────
 .card {
+  width: 100%; /* 📏 Full width of .page */
   max-width: 1000px;
-  width: 100%;
   margin: 2rem auto;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* important! */
 }
 
 //── Nav ───────────────────────────────────────────────────────────────────────
