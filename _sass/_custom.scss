@@ -171,9 +171,11 @@ nav.greedy-nav a.active {
   background: lighten($mint-bg, 15%);
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: $card-pad;
+  padding: 2rem;
   margin: 1.5rem 0;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 //── Sidebar links (no bullets) ───────────────────────────────────────────────
