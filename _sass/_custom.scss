@@ -76,22 +76,19 @@ nav.greedy-nav a.active {
 //── Main Layout ──────────────────────────────────────────────────────────────
 #main {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: center; /* <== center everything */
-  gap: 2rem;
-  max-width: 1200px; /* adjust based on your needs */
-  margin: 0 auto;
-  padding: 0 2rem;
+  justify-content: center; // Center whole main section under nav
+  gap: 2rem; // Space between sidebar and content
+  padding-top: 1rem;
 }
-
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
-  flex: 0 0 280px;
-  max-width: 280px;
-  margin-left: 20px; /* <<< 🔥 */
-  padding: 0;
-  background: transparent !important;
+  flex: 0 0 280px; // Sidebar width
+  margin-left: 2rem; // Push sidebar away from the very left
+  padding: 1rem 0;
+  position: relative; // Make sure it flows correctly with content
 }
 .sidebar-bio {
   text-align: center;
@@ -124,6 +121,16 @@ nav.greedy-nav a.active {
   margin: 0;
   padding: 0;
 }
+
+.page__content,
+.archive,
+.page {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+}
+
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card,
