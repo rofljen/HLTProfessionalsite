@@ -67,6 +67,7 @@ nav.greedy-nav {
   background: transparent !important;
 }
 
+/* ✅ These need to stay outside the media query */
 .sidebar-bio {
   text-align: center;
   padding: 1rem 0;
@@ -82,6 +83,11 @@ nav.greedy-nav {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: block;
   margin: 0 auto 1rem;
+}
+
+.sidebar-section {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .page__content-wrap {
@@ -108,6 +114,7 @@ nav.greedy-nav {
   width: 100%;
 }
 
+/* 📱 Responsive tweaks */
 @media (max-width: 1100px) {
   #main {
     flex-direction: column;
