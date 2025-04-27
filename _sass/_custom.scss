@@ -81,7 +81,9 @@ nav.greedy-nav a.active {
   justify-content: flex-start; /* align to the left */
   gap: 2rem; /* space between sidebar and content */
   padding-top: 2rem;
-  margin-left: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
