@@ -1,34 +1,46 @@
 ---
 title: "Bridging the Digital Divide: Where Do We Stand?"
-excerpt: During my internship with XRI Global, I applied skills from both the MSHLT program and my experience as a data analyst to contribute to the development of a custom text classification pipeline using tools like Python, spaCy, and PostgreSQL. This experience deepened my understanding of NLP and prepared me for future work in human language technology.
+excerpt: During my internship with XRI Global, I applied skills from both the MSHLT program and my experience as a data analyst to contribute to the development of a custom text classification pipeline using tools like Python, spaCy, and PostgreSQL.
 layout: default
 author_profile: false
 ---
 
-<div class="summary">Summary:</div>
-<div class="summary-content">
-  As an intern with XRI Global, I collaborated with staff and fellow University of Arizona HLT students on a project aimed at supporting low-resource languages by improving their digital presence.<br><br>
-  Our team inventoried existing datasets and language models from platforms like Hugging Face, GitHub, and Mozilla Common Voice. For some languages where models were not available, our team trained models on these datasets.<br><br>
-  My contributions included designing the underlying database schema, identifying data standards, streamlining data collection workflows, and cleaning and standardizing data.<br><br>
-  The resulting data powers a user-friendly web interface that allows researchers and developers to easily locate and access resources — helping bridge the digital divide for underrepresented languages.
+<div class="card">
+  <h2>Summary</h2>
+  <p>
+    As an intern with XRI Global, I collaborated with staff and fellow University of Arizona HLT students on a project aimed at supporting low-resource languages by improving their digital presence.
+  </p>
+  <p>
+    Our team inventoried existing datasets and language models from platforms like Hugging Face, GitHub, and Mozilla Common Voice. For some languages where models were not available, our team trained models on these datasets.
+  </p>
+  <p>
+    My contributions included designing the underlying database schema, identifying data standards, streamlining data collection workflows, and cleaning and standardizing data.
+  </p>
+  <p>
+    The resulting data powers a user-friendly web interface that allows researchers and developers to easily locate and access resources—helping bridge the digital divide for underrepresented languages.
+  </p>
 </div>
 
-<div class="content-head">Content:</div>
-<div class="content">
-  My role in the project included cleaning and processing large volumes of multilingual text, training models, and building custom evaluation scripts. I utilized tools such as Python, spaCy, scikit-learn, and PostgreSQL.<br><br>
-
-  I applied course knowledge from Human Language Technology classes like NLP, Corpus Linguistics, and Machine Learning. I also deepened my understanding of real-world data challenges, annotation inconsistencies, and pipeline deployment.<br><br>
-
-  This internship sharpened my programming and problem-solving skills and gave me hands-on experience with collaborative version control, agile workflows, and working with clients to define project scope.
+<div class="card">
+  <h2>Content</h2>
+  <p>
+    My role in the project included cleaning and processing large volumes of multilingual text, training models, and building custom evaluation scripts. I utilized tools such as Python, spaCy, scikit-learn, and PostgreSQL.
+  </p>
+  <p>
+    I applied course knowledge from Human Language Technology classes like NLP, Corpus Linguistics, and Machine Learning. I also deepened my understanding of real-world data challenges, annotation inconsistencies, and pipeline deployment.
+  </p>
+  <p>
+    This internship sharpened my programming and problem-solving skills and gave me hands-on experience with collaborative version control, agile workflows, and working with clients to define project scope.
+  </p>
 </div>
 
-<details class="collapsible-section">
-  <summary class="content-head">Requirements Gathering</summary>
-  <div class="content">
+<details class="card collapsible-section">
+  <summary><strong>Requirements Gathering</strong></summary>
+  <div class="card-content">
     <h4>Name & Classification</h4>
     <p>
-      Pulled each language’s name and its family / sub-family from Glottolog
-      (e.g. “Akan → Niger–Congo → Atlantic–Congo”) to situate it in the genetic tree
+      Pulled each language’s name and its family/sub-family from Glottolog
+      (e.g., “Akan → Niger–Congo → Atlantic–Congo”) to situate it in the genetic tree
       and enable branch-level filtering.
     </p>
     <p><strong>Schema:</strong> language_new.language_name, language_new.language_family_id,<br>
@@ -44,7 +56,7 @@ author_profile: false
 
     <h4>Global Region</h4>
     <p>
-      Mapped every lat/long to its continent or sub-continent (e.g. “West Africa”,
+      Mapped every lat/long to its continent or sub-continent (e.g., “West Africa”,
       “Southeast Asia”) for regional roll-ups in your dashboards.
     </p>
     <p><strong>Schema:</strong> language_new.region</p>
@@ -52,7 +64,7 @@ author_profile: false
     <h4>Number of Speakers</h4>
     <p>
       Collected L1 and L2 speaker estimates (with year tags) to visualize each
-      language’s scale and automatically highlight ultra-low-resource targets (< 10 K L1).
+      language’s scale and automatically highlight ultra-low-resource targets (&lt;10K L1).
     </p>
     <p><strong>Schema:</strong> language_new.l1_speakers, language_new.l2_speakers,<br>
        language_new.speaker_year
@@ -68,7 +80,8 @@ author_profile: false
     </p>
   </div>
 </details>
-<div class="code-link">
-  <strong>Code:</strong> 
-  <a href="https://github.com/yourusername/yourproject" target="_blank">View Project on GitHub</a>
+
+<div class="card code-link">
+  <p><strong>Code:</strong> 
+  <a href="https://github.com/yourusername/yourproject" target="_blank">View Project on GitHub</a></p>
 </div>
