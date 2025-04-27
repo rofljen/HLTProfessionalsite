@@ -109,3 +109,33 @@ nav.greedy-nav {
     max-width: 100%;
   }
 }
+/* Nav bar */
+.navbar {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #4a8d7c;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.nav-links li a:hover {
+  color: #a7d0bf;
+}
