@@ -11,7 +11,6 @@ title:             "Jennifer Haliewicz / HLT Portfolio"
 name:              &name "Jennifer Haliewicz"
 description:       &description "Portfolio for the University of Arizona HLT program"
 url:               "https://www.jenniferhaliewicz.com"
-remote_theme:      mmistakes/minimal-mistakes
 baseurl:           
 repository:        "rofljen/HLTProfessionalsite"
 teaser:
