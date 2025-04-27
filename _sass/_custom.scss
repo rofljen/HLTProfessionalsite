@@ -34,13 +34,13 @@ body {
 
 .sidebar {
   flex: 0 0 225px;
-  margin-left: 2rem;
+  margin-left: 0;
 }
 
 .page {
   flex: 1 1 auto;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -51,7 +51,7 @@ body {
   width: 100%;
   max-width: 100%;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
 }
 
 //── Sidebar Bio ──────────────────────────────────────────────────────────────
