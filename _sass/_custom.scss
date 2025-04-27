@@ -166,16 +166,10 @@ nav.greedy-nav a.active {
 }
 
 .page__content {
-  max-width: 100%;
-  padding: 0; /* 🧹 REMOVE internal page content padding */
-}
-
-.page__content,
-.archive {
   width: 100%;
-  max-width: 100%;
-  padding: 2rem 0;
-  margin: 0 auto;  
+  max-width: 1100px; /* not 100%! otherwise your cards don't know what to stretch to */
+  margin: 0 auto;
+  padding: 2rem 0; /* optional: 2rem top and bottom, 0 left and right */
 }
 
 .page__inner-wrap {
@@ -192,8 +186,9 @@ nav.greedy-nav a.active {
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   width: 100%;
+  max-width: 1100px;
   box-sizing: border-box;
 }
   .card {
