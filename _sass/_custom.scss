@@ -79,14 +79,14 @@ nav.greedy-nav a.active {
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: center;
-  gap: 2rem;
+  gap: .5rem;
   padding-top: 3rem; /* 🔥 Add this line! */
 }
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
   flex: 0 0 280px;
-  margin-left: 2rem;
+  margin-left: 1rem;
   padding: 1rem 0;
   position: relative;
   margin-top: 4rem; /* 🔥 This line adds nice breathing room under the navbar */
