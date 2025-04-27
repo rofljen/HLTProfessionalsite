@@ -78,9 +78,9 @@ nav.greedy-nav a.active {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: center; // Center whole main section under nav
-  gap: 2rem; // Space between sidebar and content
-  padding-top: 1rem;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 6rem; /* 🔥 Add this line! */
 }
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
