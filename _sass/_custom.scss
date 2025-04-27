@@ -1,5 +1,5 @@
 // =============================================================================
-// _sass/_custom.scss (Fixed Layout)
+// _sass/_custom.scss (Final Polished Layout)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
@@ -64,17 +64,16 @@ body {
   height: 160px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  display: block; /* <-- ✅ make sure this is here! */
-  margin-left: auto;
-  margin-right: auto;
+  display: block;
 }
 
 .sidebar-bio__name {
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .sidebar-bio__desc {
@@ -104,31 +103,26 @@ body {
 }
 
 //── Navigation Bar ───────────────────────────────────────────────────────────
-nav#site-nav,
-{
-  max-width: 450px;
+#site-nav {
+  max-width: 500px;
   margin: 2rem auto;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem;
   background: #fff;
   border-radius: 0.75rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 
 .nav-wrapper {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.nav-brand {
+.nav-brand a {
   font-weight: 700;
   font-size: 1.2rem;
   color: $dark-green;
+  text-decoration: none;
 }
 
 .nav-menu {
@@ -146,14 +140,13 @@ nav#site-nav,
   transition: color 0.3s;
 }
 
-
 .nav-menu li a:hover {
   color: $teal-accent;
 }
 
 .nav-toggle {
   display: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   background: none;
   border: none;
   color: $dark-green;
@@ -171,12 +164,12 @@ nav#site-nav,
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  max-width: 630px; /* nav width (450px) × 1.4 */
+  max-width: 630px;
   margin: 2rem 0;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   width: 100%;
   box-sizing: border-box;
 }
@@ -209,7 +202,6 @@ nav#site-nav,
     text-align: center;
   }
 
-  /* Hide bio and links */
   .sidebar-bio__desc,
   .sidebar-bio__links {
     display: none;
@@ -224,22 +216,16 @@ nav#site-nav,
     padding: 1.5rem;
   }
 
-  nav#site-nav,
-  {
+  #site-nav {
     max-width: 90%;
   }
 
- .nav-menu {
+  .nav-menu {
     display: none;
     flex-direction: column;
-    background: #fff;
-    border-radius: 0.5rem;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: center;
   }
 
   .nav-menu.show {
