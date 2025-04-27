@@ -1,10 +1,33 @@
-<div class="sidebar-bio">
-  <img class="sidebar-bio__img" src="/assets/images/avatar.jpg" alt="Jennifer Haliewicz">
-  <h3 class="sidebar-bio__name">Jennifer Haliewicz</h3>
-  <p class="sidebar-bio__desc">Human Language Technology | Data | NLP</p>
-  <ul class="sidebar-bio__links">
-    <li><a href="https://github.com/yourgithub">GitHub</a></li>
-    <li><a href="https://linkedin.com/in/yourlinkedin">LinkedIn</a></li>
-    <li><a href="mailto:jennifer.haliewicz@gmail.com">Email</a></li>
-  </ul>
-</div>
+{% if page.author_profile or layout.author_profile or page.sidebar %}
+  <div class="sidebar-bio">
+    {% if page.author_profile or layout.author_profile %}
+      {% if site.author.avatar %}
+        <img class="sidebar-bio__img" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
+      {% endif %}
+      <div class="sidebar-bio__name">{{ site.author.name }}</div>
+      <div class="sidebar-bio__desc">{{ site.author.bio }}</div>
+    {% endif %}
+    
+    {% if page.sidebar %}
+      {% for s in page.sidebar %}
+        {% if s.image %}
+          <img src="{{ s.image | relative_url }}" alt="{{ s.image_alt }}">
+        {% endif %}
+        {% if s.title %}
+          <h3>{{ s.title }}</h3>
+        {% endif %}
+        {% if s.text %}
+          {{ s.text | markdownify }}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {% if site.author.links %}
+      <ul>
+        {% for link in site.author.links %}
+          <li><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endif %}
