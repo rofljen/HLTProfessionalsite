@@ -77,13 +77,13 @@ nav.greedy-nav a.active {
 #main {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start; // important: flex-start
+  justify-content: flex-start;
   gap: 2rem;
-  margin: 2rem auto 0;
-  max-width: calc(1000px + 280px + 2rem);
+  margin: 0 auto;
   padding: 0 1rem;
-  margin-left: 50px; // <<< 🔥 add this
+  max-width: calc(1000px + 280px + 4rem); // Add extra margin to match nav
 }
+
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
