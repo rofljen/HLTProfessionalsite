@@ -1,18 +1,14 @@
-<div class="sidebar-bio card" itemscope itemtype="http://schema.org/Person">
+<div class="sidebar-bio">
   <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="sidebar-bio__img">
   <div class="sidebar-bio__text">
-    <h2 class="sidebar-bio__name" itemprop="name">{{ site.author.name }}</h2>
+    <h2 class="sidebar-bio__name">{{ site.author.name }}</h2>
     {% if site.author.bio %}
-      <p class="sidebar-bio__desc" itemprop="description">{{ site.author.bio | newline_to_br }}</p>
+      <p class="sidebar-bio__desc">{{ site.author.bio }}</p>
     {% endif %}
     <ul class="sidebar-bio__links">
-      {% if site.author.github %}
-        <li><a href="https://github.com/{{ site.author.github }}">GitHub</a></li>
-      {% endif %}
-      {% if site.author.linkedin %}
-        <li><a href="https://linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a></li>
-      {% endif %}
-      <li><a href="mailto:jennifer.haliewicz@gmail.com">Email</a></li>
+      {% for link in site.author.links %}
+        <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+      {% endfor %}
     </ul>
   </div>
 </div>
