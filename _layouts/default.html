@@ -12,16 +12,20 @@ layout: compress
 
 <body>
 <div class="initial-content">
+  
   {% include masthead.html %}
 
   <div id="main" role="main">
+    
     <aside class="sidebar">
       {% include sidebar.html %}
     </aside>
 
-    <div class="page__content-wrap">
+    <div class="page">
       <article class="page{% if page.sidebar == false %} page--no-sidebar{% endif %}" itemscope itemtype="http://schema.org/CreativeWork">
+        
         <div class="page__inner-wrap">
+          
           {% unless page.header.overlay_color or page.header.overlay_image %}
             <header class="page__header">
               {% if page.title %}
@@ -41,15 +45,17 @@ layout: compress
           {% if page.share %}
             {% include social-share.html %}
           {% endif %}
-        </div>
-      </article>
-    </div> <!-- /.page__content-wrap -->
+
+        </div> <!-- /.page__inner-wrap -->
+        
+      </article> <!-- /.page -->
+    </div> <!-- /.page -->
 
   </div> <!-- /#main -->
 
   {% include footer.html %}
   {% include scripts.html %}
-</div> <!-- /.initial-content -->
 
+</div> <!-- /.initial-content -->
 </body>
 </html>
