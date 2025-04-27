@@ -1,5 +1,5 @@
 // =============================================================================
-// _sass/_custom.scss (Final Clean Layout)
+// _sass/_custom.scss (Fixed Layout)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
@@ -153,12 +153,14 @@ nav.greedy-nav a:hover {
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  max-width: 630px; /* 450px × ~1.4 for proportional width */
+  max-width: 630px; /* nav width (450px) × 1.4 */
   margin: 2rem auto;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 //── Mobile Responsive ────────────────────────────────────────────────────────
@@ -167,20 +169,14 @@ nav.greedy-nav a:hover {
   #main {
     flex-direction: column;
     align-items: center;
-    padding: 0 1rem;
     gap: 2rem;
+    padding: 0 1rem;
   }
 
   .sidebar {
     flex: 0 0 auto;
     margin: 0 auto;
     text-align: center;
-  }
-
-  /* Hide bio and links on mobile */
-  .sidebar-bio__desc,
-  .sidebar-bio__links {
-    display: none;
   }
 
   .sidebar-bio__img {
@@ -195,7 +191,21 @@ nav.greedy-nav a:hover {
     text-align: center;
   }
 
-  /* Collapse nav into centered row */
+  /* Hide bio and links */
+  .sidebar-bio__desc,
+  .sidebar-bio__links {
+    display: none;
+  }
+
+  .page {
+    max-width: 90%;
+  }
+
+  .card {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
   nav#site-nav,
   nav.greedy-nav {
     max-width: 90%;
@@ -206,6 +216,7 @@ nav.greedy-nav a:hover {
   nav#site-nav ul,
   nav.greedy-nav ul {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   nav#site-nav li,
