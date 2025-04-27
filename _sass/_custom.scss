@@ -80,15 +80,14 @@ nav.greedy-nav a.active {
   align-items: flex-start;
   justify-content: flex-start;
   gap: 5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 2rem;
   max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0 2rem;
+  margin: 0 auto;
 }
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
+.sidebar {
+  flex: 0 0 280px;
 .sidebar-bio {
   background: none;
   border-radius: $card-radius;
@@ -160,6 +159,7 @@ nav.greedy-nav a.active {
 
 //── Content ──────────────────────────────────────────────────────────────────
 .page {
+  flex: 1 1 auto;
   max-width: 1100px;
   width: 100%;
   margin-left: auto;
