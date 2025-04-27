@@ -1,5 +1,5 @@
 // =============================================================================
-// _sass/_custom.scss (Final Polished Layout)
+// _sass/_custom.scss (Final Polished Version)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
@@ -64,9 +64,11 @@ body {
   height: 160px;
   object-fit: cover;
   border-radius: 50%;
-  margin: 0 auto 1rem auto;
+  margin-bottom: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sidebar-bio__name {
@@ -79,12 +81,14 @@ body {
 .sidebar-bio__desc {
   font-size: 1rem;
   margin: 1rem 0;
+  text-align: center;
 }
 
 .sidebar-bio__links {
   list-style: none;
   padding: 0;
   margin: 1rem 0 0 0;
+  text-align: center;
 }
 
 .sidebar-bio__links li {
@@ -118,9 +122,9 @@ body {
   justify-content: space-between;
 }
 
-.nav-brand a {
+.nav-brand {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: $dark-green;
   text-decoration: none;
 }
@@ -131,6 +135,10 @@ body {
   padding: 0;
   display: flex;
   gap: 2rem;
+}
+
+.nav-menu li {
+  list-style: none;
 }
 
 .nav-menu li a {
@@ -164,12 +172,12 @@ body {
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  max-width: 630px;
+  max-width: 630px; /* nav width (450px) × 1.4 */
   margin: 2rem 0;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   box-sizing: border-box;
 }
@@ -199,9 +207,9 @@ body {
   .sidebar-bio__name {
     font-size: 1.25rem;
     margin-bottom: 1rem;
-    text-align: center;
   }
 
+  /* Hide bio description and links under name */
   .sidebar-bio__desc,
   .sidebar-bio__links {
     display: none;
@@ -209,6 +217,7 @@ body {
 
   .page {
     max-width: 90%;
+    align-items: center;
   }
 
   .card {
@@ -218,6 +227,12 @@ body {
 
   #site-nav {
     max-width: 90%;
+    flex-direction: column;
+  }
+
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: center;
   }
 
   .nav-menu {
@@ -234,5 +249,6 @@ body {
 
   .nav-toggle {
     display: block;
+    margin-top: 0.5rem;
   }
 }
