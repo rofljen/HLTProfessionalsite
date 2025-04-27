@@ -80,9 +80,10 @@ nav.greedy-nav a.active {
   justify-content: flex-start;
   gap: 2rem;
   max-width: $full-page-w;
-  margin: 0 auto;  /* ✅ Center it properly */
-  padding: 0 2rem; /* ✅ (Optional) a little side breathing room */
+  margin: 0 auto;
+  padding: 0;  // ← no padding here
 }
+
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
