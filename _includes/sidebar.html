@@ -1,15 +1,10 @@
-<div class="sidebar-bio">
-  {% if site.author.avatar %}
-    <img class="sidebar-bio__img" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
-  {% endif %}
-  <div class="sidebar-bio__name">{{ site.author.name }}</div>
-  <div class="sidebar-bio__desc">{{ site.author.bio }}</div>
-
-  {% if site.author.links %}
-    <ul class="sidebar-bio__links">
-      {% for link in site.author.links %}
-        <li><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+<div class="sidebar-profile">
+  <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="sidebar-img">
+  <h2 class="sidebar-name">{{ site.author.name }}</h2>
+  <p class="sidebar-bio">{{ site.author.bio }}</p>
+  <ul class="sidebar-links">
+    {% for link in site.author.links %}
+      <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+    {% endfor %}
+  </ul>
 </div>
