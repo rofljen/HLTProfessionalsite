@@ -12,8 +12,8 @@ layout: compress
 
 <body>
 <div class="initial-content">
-  
-  {% include nav.html %} <!-- ✅ USE THE NEW NAV HERE -->
+
+  {% include nav.html %}
 
   <div id="main" role="main">
     
@@ -38,9 +38,9 @@ layout: compress
             {{ content }}
           </section>
 
-          <footer class="page__meta">
-            {% include page__taxonomy.html %}
-          </footer>
+          {% if page.share %}
+            {% include social-share.html %}
+          {% endif %}
 
         </div> <!-- /.page__inner-wrap -->
         
@@ -51,9 +51,22 @@ layout: compress
 
   {% include footer.html %}
   {% include scripts.html %}
-  <script src="{{ '/assets/js/nav.js' | relative_url }}"></script>
-
 
 </div> <!-- /.initial-content -->
+
+<!-- ✅ Add your nav toggle script here -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleButton = document.querySelector('.nav-toggle');
+  const menu = document.querySelector('.nav-menu');
+
+  if (toggleButton && menu) {
+    toggleButton.addEventListener('click', function () {
+      menu.classList.toggle('show');
+    });
+  }
+});
+</script>
+
 </body>
 </html>
