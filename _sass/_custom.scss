@@ -118,14 +118,14 @@ nav.greedy-nav a.active {
   }
 
   .sidebar-bio__name {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     text-align: center; /* Keep your name centered */
   }
 
   .sidebar-bio__desc {
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
   }
@@ -142,7 +142,7 @@ nav.greedy-nav a.active {
   }
 
   .sidebar-bio__links a {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
     color: $dark-green;
     text-decoration: none;
