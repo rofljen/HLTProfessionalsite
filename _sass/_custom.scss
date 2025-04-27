@@ -118,9 +118,9 @@ nav.greedy-nav a:hover {
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
   max-width: 700px; /* narrower */
-  margin: 2rem auto;
+  margin: 0;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
