@@ -165,6 +165,11 @@ nav.greedy-nav a.active {
   min-width: 0;
 }
 
+.page__content {
+  max-width: 100%;
+  padding: 0; /* 🧹 REMOVE internal page content padding */
+}
+
 .page__content,
 .archive {
   width: 100%;
@@ -189,6 +194,16 @@ nav.greedy-nav a.active {
   padding: 2rem;
   margin: 1.5rem 0;
   width: 100%;
+  box-sizing: border-box;
+}
+  .card {
+  max-width: 1100px; /* 🖼️ Each card now fills correctly */
+  width: 100%;
+  margin: 2rem auto; /* ✨ Center cards horizontally */
+  padding: 2rem;
+  background: lighten($mint-bg, 15%);
+  border-radius: $card-radius;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   box-sizing: border-box;
 }
 
