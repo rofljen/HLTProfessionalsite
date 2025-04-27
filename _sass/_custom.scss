@@ -1,5 +1,5 @@
 // =============================================================================
-//  _sass/_custom.scss (Real Fixed Version)
+// _sass/_custom.scss (FINAL Clean Version)
 // =============================================================================
 
 //── Variables ────────────────────────────────────────────────────────────────
@@ -10,8 +10,8 @@ $dark-green:  #4a8d7c;
 
 $sidebar-w:   280px;
 $content-w:   1000px;
-$gap:         2rem;
-$full-page-w: calc(1000px + 280px + 1rem); // ✨ full width = content + sidebar + gap
+$gap:         1.5rem;
+$full-page-w: calc(1000px + 280px + 1.5rem);
 $card-pad:    1rem;
 $card-radius: 0.5rem;
 
@@ -78,17 +78,16 @@ nav.greedy-nav a.active {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: $gap;
   max-width: $full-page-w;
   margin: 0 auto;
-  padding: 0;  // ← no padding here
+  padding: 0;
 }
-
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
-  flex: 0 0 280px;
-  max-width: 280px;
+  flex: 0 0 $sidebar-w;
+  max-width: $sidebar-w;
   margin: 0;
   padding: 0;
   background: transparent !important;
@@ -111,29 +110,18 @@ nav.greedy-nav a.active {
   margin: 0 auto 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.sidebar-bio__img,
-.author__avatar img,
-.avatar__photo {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 auto 1rem;
-}
 
 //── Content ──────────────────────────────────────────────────────────────────
 .page__content-wrap {
   flex: 0 0 $content-w;
   max-width: $content-w;
-  padding: 0 1rem;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
 }
 
 .page__inner-wrap {
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
 }
 
@@ -147,6 +135,16 @@ nav.greedy-nav a.active {
   padding: $card-pad;
   margin: 1.5rem 0;
   width: 100%;
+}
+
+//── Sidebar links (no bullets) ───────────────────────────────────────────────
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar ul li {
+  margin: 0.5rem 0;
 }
 
 //── Mobile Responsive ────────────────────────────────────────────────────────
@@ -171,12 +169,4 @@ nav.greedy-nav a.active {
     flex-wrap: wrap;
     justify-content: center;
   }
-}
-  .sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.sidebar ul li {
-  margin: 0.5rem 0;
 }
