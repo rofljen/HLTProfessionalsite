@@ -1,5 +1,5 @@
 // =============================================================================
-//  _sass/_custom.scss (fixed)
+//  _sass/_custom.scss (final fixed)
 // =============================================================================
 
 $mint-bg:     #e8f1e8;
@@ -13,8 +13,6 @@ $gap:         2rem;
 $card-pad:    1rem;
 $card-radius: 0.5rem;
 
-//───────────────────────────────────────────────────────────────────────────────
-// Base Typography
 html {
   font-size: 15px;
 }
@@ -40,11 +38,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// Nav
 nav#site-nav,
 nav.greedy-nav {
-  max-width: calc($content-w + $sidebar-w + $gap);
+  max-width: calc($sidebar-w + $content-w + $gap);
   margin: 0 auto;
   padding: 0.75rem 1rem;
   background: white;
@@ -52,15 +48,13 @@ nav.greedy-nav {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// Main Layout
 #main {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: $gap;
   margin: 2rem auto 0;
-  max-width: calc($content-w + $sidebar-w + $gap);
+  max-width: calc($sidebar-w + $content-w + $gap);
   padding: 0;
 }
 
@@ -68,17 +62,14 @@ nav.greedy-nav {
 .site__aside {
   flex: 0 0 $sidebar-w;
   max-width: $sidebar-w;
-  padding: 1rem;
   margin-left: 2rem;
+  padding: 0;
   background: transparent !important;
 }
 
-//──────── Sidebar Bio Fix
-.sidebar-bio.card {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  padding: 0 !important;
+.sidebar-bio {
+  text-align: center;
+  padding: 1rem 0;
 }
 
 .sidebar-bio__img,
@@ -88,13 +79,11 @@ nav.greedy-nav {
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: block;
   margin: 0 auto 1rem;
-  background: transparent;
 }
 
-//──────── Main Content Wrap
 .page__content-wrap {
   flex: 1;
   max-width: $content-w;
@@ -108,7 +97,6 @@ nav.greedy-nav {
   padding: 0;
 }
 
-//──────── Cards
 .card,
 .entry-card,
 .callout {
@@ -120,8 +108,6 @@ nav.greedy-nav {
   width: 100%;
 }
 
-//───────────────────────────────────────────────────────────────────────────────
-// Responsive tweaks
 @media (max-width: 1100px) {
   #main {
     flex-direction: column;
@@ -130,8 +116,8 @@ nav.greedy-nav {
 
   .sidebar,
   .site__aside {
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
     margin-left: 0;
   }
 
