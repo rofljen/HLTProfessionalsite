@@ -85,11 +85,13 @@ nav.greedy-nav a.active {
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
-  flex: 0 0 280px; // Sidebar width
-  margin-left: 2rem; // Push sidebar away from the very left
+  flex: 0 0 280px;
+  margin-left: 2rem;
   padding: 1rem 0;
-  position: relative; // Make sure it flows correctly with content
+  position: relative;
+  margin-top: 4rem; /* 🔥 This line adds nice breathing room under the navbar */
 }
+
 .sidebar-bio {
   text-align: center;
   padding: 1rem 0;
