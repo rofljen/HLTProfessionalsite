@@ -1,33 +1,12 @@
-{% include base_path %}
-
-{% if page.author_profile or layout.author_profile or page.sidebar %}
-  <aside class="sidebar">
-    {% if page.author_profile or layout.author_profile %}
-      <div class="sidebar-bio">
-        {% include author-profile.html %}
-      </div>
-    {% endif %}
-
-    {% if page.sidebar %}
-      {% for s in page.sidebar %}
-        <div class="sidebar-section">
-          {% if s.image %}
-            <img class="sidebar-bio__img" src="
-              {% if s.image contains '://' %}
-                {{ s.image }}
-              {% else %}
-                {{ s.image | prepend: '/images/' | prepend: base_path }}
-              {% endif %}
-            " alt="{% if s.image_alt %}{{ s.image_alt }}{% endif %}">
-          {% endif %}
-          {% if s.title %}<h3>{{ s.title }}</h3>{% endif %}
-          {% if s.text %}{{ s.text | markdownify }}{% endif %}
-        </div>
-      {% endfor %}
-    {% endif %}
-
-    {% if page.sidebar.nav %}
-      {% include nav_list nav=page.sidebar.nav %}
-    {% endif %}
-  </aside>
-{% endif %}
+<aside class="sidebar">
+  <div class="sidebar-bio">
+    <img class="avatar__photo" src="/assets/images/avatar.jpg" alt="Jennifer Haliewicz">
+    <h2 class="sidebar-bio__name">Jennifer Haliewicz</h2>
+    <p class="sidebar-bio__desc">Human Language Technology | Data | NLP</p>
+    <ul class="sidebar-bio__links">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Email</a></li>
+    </ul>
+  </div>
+</aside>
