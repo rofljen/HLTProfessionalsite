@@ -1,3 +1,8 @@
+// =============================================================================
+//  _sass/_custom.scss (Final Clean Version)
+// =============================================================================
+
+//── 1. Color and Sizing Variables ───────────────────────────────────────────
 $mint-bg:     #e8f1e8;
 $teal-accent: #a7d0bf;
 $cool-blue:   #9bc5d7;
@@ -9,10 +14,14 @@ $gap:         2rem;
 $card-pad:    1rem;
 $card-radius: 0.5rem;
 
-html { font-size: 15px; }
+//── 2. Base Body and Typography ──────────────────────────────────────────────
+html {
+  font-size: 15px;
+}
 
 body {
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   font-family: 'Lato', sans-serif;
   background-color: $mint-bg;
   color: #333;
@@ -31,24 +40,70 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
+//── 3. Navigation Bar ────────────────────────────────────────────────────────
+nav#site-nav,
+nav.greedy-nav {
+  max-width: calc(#{$content-w} + #{$sidebar-w} + 4rem);
+  margin: 1rem auto 2rem;
+  padding: 0.75rem 1rem;
+  background: white;
+  border-radius: $card-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav#site-nav a,
+nav.greedy-nav a {
+  color: $dark-green !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+nav#site-nav a:hover,
+nav.greedy-nav a:hover,
+nav#site-nav a.active,
+nav.greedy-nav a.active {
+  background-color: lighten($dark-green, 30%);
+}
+
+//── 4. Main Layout Flex ───────────────────────────────────────────────────────
 #main {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: $gap;
-  margin: 2rem auto 0;
-  max-width: calc($sidebar-w + $content-w + $gap);
-  padding: 0;
+  max-width: calc(#{$content-w} + #{$sidebar-w} + 4rem);
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .sidebar {
   flex: 0 0 $sidebar-w;
   max-width: $sidebar-w;
-  margin-left: 2rem;
   padding: 0;
   background: transparent !important;
 }
 
+.page__content-wrap {
+  flex: 0 0 $content-w;
+  max-width: $content-w;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.page__inner-wrap {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+//── 5. Sidebar Styling ───────────────────────────────────────────────────────
 .sidebar-bio {
   text-align: center;
   padding: 1rem 0;
@@ -61,29 +116,15 @@ h1, h2, h3, h4, h5, h6 {
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: block;
   margin: 0 auto 1rem;
 }
 
-.sidebar-section {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.page__content-wrap {
-  flex: 1;
-  max-width: $content-w;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.page__inner-wrap {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-}
-
-.card {
+//── 6. Content Cards ─────────────────────────────────────────────────────────
+.card,
+.entry-card,
+.callout {
   background: lighten($mint-bg, 15%);
   border-radius: $card-radius;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -92,19 +133,25 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 
+//── 7. Mobile Responsive ─────────────────────────────────────────────────────
 @media (max-width: 1100px) {
   #main {
     flex-direction: column;
     align-items: center;
-  }
-
-  .sidebar {
-    width: 100%;
     max-width: 100%;
-    margin-left: 0;
   }
 
+  .sidebar,
   .page__content-wrap {
     max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  nav#site-nav,
+  nav.greedy-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
