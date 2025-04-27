@@ -1,5 +1,5 @@
 // =============================================================================
-// _sass/_custom.scss (MINIMAL BASE VERSION)
+// _sass/_custom.scss (MINIMAL CLEAN VERSION)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
@@ -21,29 +21,31 @@ body {
   color: #333;
 }
 
-//── Layout ────────────────────────────────────────────────────────────────────
+//── Main Layout ───────────────────────────────────────────────────────────────
 #main {
   display: flex;
-  justify-content: flex-start;  /* sidebar stays left */
   align-items: flex-start;
+  justify-content: center; // 🔥 Center sidebar + content
   gap: 3rem;
   max-width: 1400px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 0 2rem;
 }
 
+//── Sidebar ───────────────────────────────────────────────────────────────────
 .sidebar {
-  flex: 0 0 280px; /* typo fixed: was '00' */
+  flex: 0 0 280px;
+  max-width: 280px;
 }
 
+//── Page Content ──────────────────────────────────────────────────────────────
 .page {
   flex: 1 1 auto;
   max-width: 1000px;
-  width: 100%; /* allow width first, then limit */
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* 📏 stretch to fill */
+  align-items: center;
+  margin: 0 auto;
 }
 
 .page__inner-wrap,
@@ -51,36 +53,59 @@ body {
   width: 100%;
   max-width: 100%;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
 }
 
-.card {
-  width: 100%; /* 📏 Full width of .page */
-  max-width: 1000px;
-  margin: 2rem auto;
-  background: lighten($mint-bg, 8%);
-  border-radius: 0.5rem;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box; /* important! */
-}
-
-//── Nav ───────────────────────────────────────────────────────────────────────
-nav#site-nav,
-nav.greedy-nav {
-  max-width: 1400px;
-  margin: 1rem auto 2rem;
-  padding: 0.5rem 1rem; /* typo fixed: was missing rem unit */
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-//── Page Title ────────────────────────────────────────────────────────────────
 .page__title {
   margin-top: 1rem;
   margin-bottom: 2rem;
   text-align: center;
   font-size: 2.5rem;
   color: $dark-green;
+}
+
+//── Cards ─────────────────────────────────────────────────────────────────────
+.card {
+  width: 100%;
+  max-width: 850px; // 🎯 Wide beautiful cards
+  margin: 2rem auto;
+  background: lighten($mint-bg, 8%);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+//── Navigation ────────────────────────────────────────────────────────────────
+nav#site-nav,
+nav.greedy-nav {
+  max-width: 1400px;
+  margin: 1rem auto 2rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+//── Mobile Responsiveness ─────────────────────────────────────────────────────
+@media (max-width: 1100px) {
+  #main {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .sidebar {
+    max-width: 100%;
+  }
+
+  .page {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .card {
+    max-width: 100%;
+  }
 }
