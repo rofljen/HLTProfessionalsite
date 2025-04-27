@@ -65,10 +65,10 @@ nav.greedy-nav {
   display: flex;
   align-items: flex-start;
   justify-content: center; /* center sidebar + content */
-  gap: $gap;
+  gap: 2rem;
   margin: 2rem auto 0;
-  max-width: calc($content-w + $sidebar-w + $gap);
-  padding: 0;
+  max-width: 1200px;
+  padding: 0 rem;
 }
 
 .sidebar,
@@ -121,6 +121,10 @@ nav.greedy-nav {
   }
 }
 
+.page__content-wrap {
+  max-width: 100%;
+  }
+}
 //───────────────────────────────────────────────────────────────────────────────
 // 7) Portfolio Pages (layout: single)
 //───────────────────────────────────────────────────────────────────────────────
