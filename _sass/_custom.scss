@@ -34,17 +34,51 @@ body {
 
 .sidebar {
   flex: 0 0 280px;
-  margin-left: 1.5rem; /* Shift sidebar right */
-  text-align: center;
+  margin-left: 2;
 }
 
-.sidebar img {
+.sidebar-bio {
+  text-align: left;
+}
+
+.sidebar-bio__img {
   width: 160px;
   height: 160px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.sidebar-bio__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.sidebar-bio__desc {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+.sidebar-bio__links {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+.sidebar-bio__links li {
+  margin: 0.5rem 0;
+}
+
+.sidebar-bio__links a {
+  color: $dark-green;
+  text-decoration: none;
+  font-weight: 600;
+}
+.sidebar-bio__links a:hover {
+  color: $teal-accent;
+  text-decoration: underline;
 }
 
 .page {
@@ -121,6 +155,6 @@ nav.greedy-nav a:hover {
   margin: 0;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
-  padding: 0;
+  padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
