@@ -43,7 +43,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .page__inner-wrap,
@@ -157,7 +157,7 @@ nav.greedy-nav a:hover {
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
   max-width: 630px; /* nav width (450px) × 1.4 */
-  margin: 2rem auto;
+  margin: 2rem 0;
   background: lighten($mint-bg, 8%);
   border-radius: 0.5rem;
   padding: 2rem;
