@@ -81,19 +81,14 @@ nav.greedy-nav a.active {
   justify-content: flex-start; /* align to the left */
   gap: 2rem; /* space between sidebar and content */
   padding-top: 4rem;
-  max-width: 1200px; /* limit total width */
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 2rem;
 }
-
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
   flex: 0 0 280px;
-  margin-left: 1rem;
+  margin-left: 0; /* no extra margin needed now */
   padding: 1rem 0;
-  position: relative;
-  margin-top: 4rem; /* 🔥 This line adds nice breathing room under the navbar */
 }
 
 .sidebar-bio {
@@ -136,7 +131,12 @@ nav.greedy-nav a.active {
   margin-right: auto;
   padding: 2rem 1rem;
 }
-
+.page {
+  max-width: 1000px; /* ✅ control content width here */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card,
