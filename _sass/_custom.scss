@@ -222,13 +222,18 @@ body {
   #site-nav {
     max-width: 90%;
   }
-
+  
+  .nav-wrapper {
+    flex-wrap: wrap;
+  }
+  
   .nav-menu {
     display: none;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     margin-top: 1rem;
+    width = 100%;
   }
 
   .nav-menu.show {
