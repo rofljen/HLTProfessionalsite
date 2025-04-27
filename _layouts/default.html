@@ -13,7 +13,7 @@ layout: compress
 <body>
 <div class="initial-content">
   
-  {% include masthead.html %}
+  {% include nav.html %} <!-- ✅ USE THE NEW NAV HERE -->
 
   <div id="main" role="main">
     
@@ -42,10 +42,6 @@ layout: compress
             {% include page__taxonomy.html %}
           </footer>
 
-          {% if page.share %}
-            {% include social-share.html %}
-          {% endif %}
-
         </div> <!-- /.page__inner-wrap -->
         
       </article> <!-- /.page -->
@@ -57,15 +53,5 @@ layout: compress
   {% include scripts.html %}
 
 </div> <!-- /.initial-content -->
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const navToggle = document.querySelector('.nav-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
-});
-</script>
 </body>
 </html>
