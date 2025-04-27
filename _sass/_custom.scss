@@ -87,57 +87,71 @@ nav.greedy-nav a.active {
 }
 
 //── Sidebar ──────────────────────────────────────────────────────────────────
-.sidebar {
-  flex: 0 0 280px;
-  margin-left: 0;
-  padding: 1rem 0;
+.sidebar-bio {
+  background: lighten($mint-bg, 15%);
+  border-radius: $card-radius;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin: 1rem auto;
   text-align: left;
+  max-width: 280px;
+  box-sizing: border-box; /* Critical to prevent padding shrink */
 
-  img {
-    border-radius: 50%;
+  img.sidebar-bio__img {
     width: 160px;
     height: 160px;
     object-fit: cover;
+    border-radius: 50%;
     margin-bottom: 1rem;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 🔥 More pronounced shadow */
-    transition: transform 0.3s ease; /* 🔥 Smooth zoom on hover */
-  }
-  
-  img:hover {
-    transform: scale(1.05); /* 🔥 Soft pop-out on hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  img.sidebar-bio__img:hover {
+    transform: scale(1.05);
+  }
+
+  .sidebar-bio__text {
+    text-align: left;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .sidebar-bio__name {
+    font-size: 2rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center; /* Keep your name centered */
+  }
+
+  .sidebar-bio__desc {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-bio__links {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    text-align: left;
+  }
+
+  .sidebar-bio__links li {
     margin-bottom: 0.5rem;
   }
 
-  p {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 0 auto 1.5rem auto;
-    max-width: 250px;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    text-align: left;
-    max-width: 250px;
-  }
-
-  ul li a {
-    font-size: 1rem;
+  .sidebar-bio__links a {
+    font-size: 1.5rem;
     font-weight: 600;
     color: $dark-green;
     text-decoration: none;
     display: block;
-    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
   }
 
-  ul li a:hover {
+  .sidebar-bio__links a:hover {
+    color: $teal-accent;
     text-decoration: underline;
   }
 }
