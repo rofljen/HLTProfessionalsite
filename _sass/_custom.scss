@@ -66,6 +66,9 @@ body {
   border-radius: 50%;
   margin-bottom: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  display: block; /* <-- ✅ make sure this is here! */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sidebar-bio__name {
