@@ -83,56 +83,9 @@ author_profile: false
 </details>
 
 <div class="mermaid">
-flowchart TD
-  subgraph RG["Requirements Gathering"]
-    A1["Pull names and families\nfrom Glottolog"]
-    A2["Retrieve centroids\nvia GeoNames"]
-    A3["Collect speaker counts\nand sources"]
-    A4["Standardize ISO-639 and\nGlottocode IDs"]
-  end
+flowchart LR
+  A --> B
 
-  subgraph DS["Database Schema Design"]
-    B1["language_new\nname, family_id,\nsubfamily_id, glottocode"]
-    B2["language_new\ngeo_center: POINT"]
-    B3["language_new\ncontinent_or_region_id"]
-    B4["language_new\nnum_speakers,\npop_source"]
-    B5["language_new\niso_639_1,\niso_639_3, glottocode"]
-    B6["model flags:\nASR, TTS, NMT"]
-    B7["nmt_datasets,\nnmt_pairs_source,\nasr_source"]
-  end
-
-  subgraph DC["Data Collection and Cleaning"]
-    C1["Ingest datasets\nfrom HF and Common Voice"]
-    C2["Normalize table formats\nand handle nulls"]
-    C3["Validate location and\nspeaker fields"]
-  end
-
-  subgraph MT["Model Training and Evaluation"]
-    D1["Train ASR models\n(Kaldi, Whisper)"]
-    D2["Train TTS models\n(Tacotron2, FastSpeech)"]
-    D3["Train NMT models\n(MarianNMT)"]
-    D4["Run evaluation scripts\n(WER, MOS, BLEU)"]
-  end
-
-  subgraph UI["Web Interface"]
-    E1["Build interactive map\nand filters"]
-    E2["Implement search by\nfamily or region"]
-    E3["Link to HF/GitHub assets"]
-  end
-
-  RG --> DS --> DC --> MT --> UI
-  A1 --> B1
-  A2 --> B2
-  A3 --> B4
-  A4 --> B5
-  B6 --> C1
-  B7 --> C1
-  C1 --> D1
-  C1 --> D2
-  C1 --> D3
-  D4 --> E1
-  D4 --> E2
-  D4 --> E3
 
 
 </div>
