@@ -84,39 +84,39 @@ author_profile: false
 
 <div class="mermaid">
 flowchart TD
-  subgraph RG [Requirements Gathering]
-    A1["Pull names & families\nfrom Glottolog"]
+  subgraph RG["Requirements Gathering"]
+    A1["Pull names and families\nfrom Glottolog"]
     A2["Retrieve centroids\nvia GeoNames"]
-    A3["Collect speaker counts\n& sources"]
-    A4["Standardize ISO-639 &\nGlottocode IDs"]
+    A3["Collect speaker counts\nand sources"]
+    A4["Standardize ISO-639 and\nGlottocode IDs"]
   end
 
-  subgraph DS [Database Schema Design]
-    B1[(language_new\nname, family_id,\nsubfamily_id, glottocode)]
-    B2[(language_new\ngeo_center: POINT)]
-    B3[(language_new\ncontinent_or_region_id)]
-    B4[(language_new\nnum_speakers,\npop_source)]
-    B5[(language_new\niso_639_1,\niso_639_3, glottocode)]
-    B6[(model flags:\nASR, TTS, NMT)]
-    B7[(nmt_datasets,\nnmt_pairs_source,\nasr_source)]
+  subgraph DS["Database Schema Design"]
+    B1["language_new\nname, family_id,\nsubfamily_id, glottocode"]
+    B2["language_new\ngeo_center: POINT"]
+    B3["language_new\ncontinent_or_region_id"]
+    B4["language_new\nnum_speakers,\npop_source"]
+    B5["language_new\niso_639_1,\niso_639_3, glottocode"]
+    B6["model flags:\nASR, TTS, NMT"]
+    B7["nmt_datasets,\nnmt_pairs_source,\nasr_source"]
   end
 
-  subgraph DC [Data Collection & Cleaning]
-    C1["Ingest datasets\nfrom HF & Common Voice"]
-    C2["Normalize table formats\n& handle nulls"]
-    C3["Validate location &\nspeaker fields"]
+  subgraph DC["Data Collection and Cleaning"]
+    C1["Ingest datasets\nfrom HF and Common Voice"]
+    C2["Normalize table formats\nand handle nulls"]
+    C3["Validate location and\nspeaker fields"]
   end
 
-  subgraph MT [Model Training & Evaluation]
-    D1["Train ASR models\n(Kaldi, Whisper…)"]
-    D2["Train TTS models\n(Tacotron2, FastSpeech…)"]
-    D3["Train NMT models\n(MarianNMT…)"]
-    D4["Run evaluation scripts\n(WER, MOS, BLEU…)"]
+  subgraph MT["Model Training and Evaluation"]
+    D1["Train ASR models\n(Kaldi, Whisper)"]
+    D2["Train TTS models\n(Tacotron2, FastSpeech)"]
+    D3["Train NMT models\n(MarianNMT)"]
+    D4["Run evaluation scripts\n(WER, MOS, BLEU)"]
   end
 
-  subgraph UI [Web Interface]
-    E1["Build interactive map\n& filters"]
-    E2["Implement search by\nfamily/region"]
+  subgraph UI["Web Interface"]
+    E1["Build interactive map\nand filters"]
+    E2["Implement search by\nfamily or region"]
     E3["Link to HF/GitHub assets"]
   end
 
@@ -133,6 +133,7 @@ flowchart TD
   D4 --> E1
   D4 --> E2
   D4 --> E3
+
 
 </div>
 
