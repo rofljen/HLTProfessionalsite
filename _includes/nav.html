@@ -3,11 +3,9 @@
     <div class="nav-brand">
       <a href="{{ '/' | relative_url }}">{{ page.title | default: site.title }}</a>
     </div>
-
     <button class="nav-toggle" aria-label="Toggle navigation">
       ☰
     </button>
-
     <ul class="nav-menu">
       <li><a href="{{ '/' | relative_url }}">Home</a></li>
       <li><a href="{{ '/cv/' | relative_url }}">CV</a></li>
@@ -16,13 +14,3 @@
     </ul>
   </div>
 </nav>
-
-<script>
-  const toggle = document.querySelector(".nav-toggle");
-  const menu = document.querySelector(".nav-menu");
-  if (toggle && menu) {
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
-    });
-  }
-</script>
