@@ -1,5 +1,5 @@
 // =============================================================================
-// _sass/_custom.scss (Fixed & Mobile-Polished Layout)
+// _sass/_custom.scss (Enhanced with Improved Spacing & Polish)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
@@ -7,10 +7,12 @@ $mint-bg:     #e8f1e8;
 $teal-accent: #a7d0bf;
 $cool-blue:   #9bc5d7;
 $dark-green:  #4a8d7c;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$transition-speed: 0.25s;
 
 //── Base ──────────────────────────────────────────────────────────────────────
 html {
-  font-size: 15px;
+  font-size: 16px; // Slightly increased from 15px for better readability
 }
 
 body {
@@ -19,6 +21,9 @@ body {
   font-family: 'Lato', sans-serif;
   background-color: $mint-bg;
   color: #333;
+  line-height: 1.65; // Improved line height for better readability
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 //── Main Layout ──────────────────────────────────────────────────────────────
@@ -26,15 +31,17 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 4rem;
+  gap: 5rem; // Increased from 4rem for better spacing
   max-width: 1400px;
-  margin: 2rem auto;
-  padding: 0 2rem;
+  margin: 3rem auto; // Increased from 2rem for better vertical spacing
+  padding: 0 2.5rem; // Increased from 2rem for better horizontal margins
 }
 
 .sidebar {
-  flex: 0 0 225px;
+  flex: 0 0 250px; // Increased from 225px for better proportions
   margin-left: 0;
+  position: sticky; // Make sidebar sticky for better UX
+  top: 2rem;
 }
 
 .page {
@@ -60,71 +67,97 @@ body {
 }
 
 .sidebar-bio__img {
-  width: 160px;
-  height: 160px;
+  width: 170px; // Increased from 160px
+  height: 170px; // Increased from 160px
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  margin-bottom: 1.5rem; // Increased from 1rem
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); // Enhanced shadow
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border: 3px solid white; // Added white border for polish
+  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+}
+
+.sidebar-bio__img:hover {
+  transform: scale(1.03); // Subtle zoom on hover
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
 .sidebar-bio__name {
-  font-size: 1.5rem;
+  font-size: 1.6rem; // Increased from 1.5rem
   font-weight: 700;
-  margin-top: 1rem;
+  margin-top: 1.25rem; // Increased from 1rem
+  margin-bottom: 1rem;
   text-align: center;
+  color: $dark-green;
 }
 
 .sidebar-bio__desc {
   font-size: 1rem;
-  margin: 1rem 0;
+  margin: 1.5rem 0; // Increased from 1rem
+  line-height: 1.7; // Improved line height
+  background: white; // Card-style background
+  padding: 1.25rem;
+  border-radius: 8px;
+  box-shadow: $card-shadow;
+  border-left: 3px solid $teal-accent;
 }
 
 .sidebar-bio__links {
   list-style: none;
   padding: 0;
-  margin: 1rem 0 0 0;
+  margin: 1.5rem 0 0 0; // Increased from 1rem
 }
 
 .sidebar-bio__links li {
-  margin: 0.5rem 0;
+  margin: 0.75rem 0; // Increased from 0.5rem
 }
 
 .sidebar-bio__links a {
   color: $dark-green;
   text-decoration: none;
   font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  display: block;
+  border-radius: 4px;
+  transition: all $transition-speed ease;
 }
 
 .sidebar-bio__links a:hover {
-  color: $teal-accent;
-  text-decoration: underline;
+  color: $dark-green;
+  background-color: rgba($teal-accent, 0.15);
+  transform: translateX(3px);
+  text-decoration: none;
 }
 
 //── Navigation Bar ───────────────────────────────────────────────────────────
 #site-nav {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 1rem;
+  max-width: 550px; // Increased from 500px
+  margin: 2.5rem auto; // Increased from 2rem
+  padding: 0.75rem 1.25rem; // Adjusted padding
   background: #fff;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  border-radius: 2rem; // Increased from 0.75rem for pill style
+  box-shadow: $card-shadow;
 }
 
 .nav-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; // Changed to center
 }
 
 .nav-brand a {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.3rem; // Increased from 1.2rem
   color: $dark-green;
   text-decoration: none;
+  transition: color $transition-speed ease;
+}
+
+.nav-brand a:hover {
+  color: $teal-accent;
 }
 
 .nav-menu {
@@ -132,18 +165,22 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem; // Decreased from 2rem for better spacing
 }
 
 .nav-menu li a {
   text-decoration: none;
   color: $dark-green;
   font-weight: 600;
-  transition: color 0.3s;
+  transition: all $transition-speed ease;
+  padding: 0.6rem 1.25rem; // Added padding
+  border-radius: 1.5rem; // Rounded corners for menu items
+  display: block;
 }
 
 .nav-menu li a:hover {
-  color: $teal-accent;
+  color: darken($dark-green, 10%);
+  background-color: rgba($teal-accent, 0.15);
 }
 
 .nav-toggle {
@@ -157,23 +194,126 @@ body {
 
 //── Page Title ───────────────────────────────────────────────────────────────
 .page__title {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem; // Increased from 1rem
+  margin-bottom: 2.5rem; // Increased from 2rem
   text-align: center;
   font-size: 2.5rem;
   color: $dark-green;
+  position: relative;
+  font-weight: 700;
+}
+
+.page__title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: $teal-accent;
+  border-radius: 2px;
 }
 
 //── Cards ────────────────────────────────────────────────────────────────────
 .card {
-  max-width: 630px; /* nav width (450px) × 1.4 */
-  margin: 2rem 0;
-  background: lighten($mint-bg, 8%);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 700px; // Increased from 630px
+  margin: 2.25rem 0; // Increased from 2rem
+  background: white; // Changed from lighten($mint-bg, 8%) to white
+  border-radius: 0.75rem; // Increased from 0.5rem
+  padding: 2rem; // Increased from 1.5rem
+  box-shadow: $card-shadow; // Enhanced shadow
   width: 100%;
   box-sizing: border-box;
+  border-left: 3px solid $teal-accent; // Added accent border
+  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+//── Section Headings ───────────────────────────────────────────────────────
+h2, .section-title {
+  color: $dark-green;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+h2::after, .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: $teal-accent;
+}
+
+//── Content Formatting ───────────────────────────────────────────────────────
+.page__content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+//── CV/Profile Specific Styles ───────────────────────────────────────────────
+.profile-info {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 0.75rem;
+  box-shadow: $card-shadow;
+  margin-bottom: 2rem;
+  border-left: 3px solid $teal-accent;
+}
+
+.profile-location {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.education-item {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 0.75rem;
+  box-shadow: $card-shadow;
+  margin-bottom: 1.75rem;
+  border-left: 3px solid $teal-accent;
+  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+}
+
+.education-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.education-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  color: $dark-green;
+}
+
+.education-institution {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+//── Links Styling ──────────────────────────────────────────────────────────
+a {
+  color: $dark-green;
+  text-decoration: none;
+  transition: color $transition-speed ease;
+}
+
+a:hover {
+  color: $teal-accent;
 }
 
 //── Mobile Responsive ────────────────────────────────────────────────────────
@@ -183,55 +323,86 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    padding: 0 1rem;
+    padding: 0 1.5rem; // Increased from 1rem
+    margin: 2rem auto;
   }
 
   .sidebar {
     flex: 0 0 auto;
     margin: 0 auto;
     text-align: center;
+    position: static; // Remove sticky positioning on mobile
   }
 
   .sidebar-bio__img {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 0.5rem;
+    width: 120px; // Increased from 100px
+    height: 120px; // Increased from 100px
+    margin: 0 auto 1rem; // Increased bottom margin
   }
 
   .sidebar-bio__name {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem; // Increased from 1.25rem
+    margin-bottom: 1.25rem; // Increased from 1rem
     text-align: center;
   }
 
-  /* Hide bio description and links on mobile */
-  .sidebar-bio__desc,
+  /* Show compact bio description on mobile */
+  .sidebar-bio__desc {
+    display: block;
+    font-size: 0.95rem;
+    margin: 1rem 0;
+    max-height: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 1rem;
+  }
+
   .sidebar-bio__links {
-    display: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .sidebar-bio__links li {
+    margin: 0;
+  }
+
+  .sidebar-bio__links a {
+    padding: 0.5rem;
+    min-width: 40px;
+    text-align: center;
   }
 
   .page {
-    max-width: 90%;
+    max-width: 100%;
   }
 
   .card {
-    max-width: 90%;
+    max-width: 100%;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .education-item {
     padding: 1.5rem;
   }
 
   #site-nav {
-    max-width: 90%;
+    max-width: 100%;
+    margin: 1.5rem auto;
   }
   
   .nav-wrapper {
     flex-wrap: wrap;
+    justify-content: space-between; // Revert to space-between on mobile
   }
   
   .nav-menu {
     display: none;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem; // Decreased from 1rem
     margin-top: 1rem;
     width: 100%;
   }
@@ -242,5 +413,38 @@ body {
 
   .nav-toggle {
     display: block;
+  }
+
+  .page__title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  h2, .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-bio__img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .sidebar-bio__name {
+    font-size: 1.3rem;
+  }
+
+  .card, .education-item, .profile-info {
+    padding: 1.25rem;
+  }
+
+  .page__title {
+    font-size: 1.8rem;
+  }
+
+  #main {
+    padding: 0 1rem;
+    margin: 1.5rem auto;
   }
 }
