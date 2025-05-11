@@ -5,7 +5,18 @@ layout: default
 author_profile: false
 ---
 
-  <h2>Summary</h2>
+<div class="card">
+  <p>
+    <strong>Jennifer Haliewicz</strong><br>
+    M.S. Human Language Technology (expected 2025)<br>
+    University of Arizona
+  </p>
+  <p>
+    I am a data scientist and linguist passionate about using language technology to support digital inclusion, especially for underrepresented languages. My internship with XRI Global allowed me to apply and expand my skills in NLP, database design, and multilingual data processing.
+  </p>
+</div>
+
+<h2>Summary</h2>
 <div class="card">
   <p>
     As an intern with XRI Global, I collaborated with staff and fellow University of Arizona HLT students on a project aimed at supporting low-resource languages by improving their digital presence.
@@ -21,7 +32,7 @@ author_profile: false
   </p>
 </div>
 
-  <h2>Content</h2>
+<h2>Content</h2>
 <div class="card">
   <p>
     My role in the project included cleaning and processing large volumes of multilingual text, training models, and building custom evaluation scripts. I utilized tools such as Python, spaCy, scikit-learn, and PostgreSQL.
@@ -40,16 +51,13 @@ author_profile: false
   <div class="card-content">
     <h4>Name & Classification</h4>
     <p>
-      Pulled each language’s name, family, and sub-family from Glottolog
-      (e.g., “Akan → Niger–Congo → Atlantic–Congo”) to structure the hierarchy
-      and enable filtering by genetic lineage.
+      Pulled each language’s name, family, and sub-family from Glottolog (e.g., “Akan → Niger–Congo → Atlantic–Congo”) to structure the hierarchy and enable filtering by genetic lineage.
     </p>
     <p><strong>Schema:</strong> language_new.language_name, language_new.language_family_id, language_new.language_subfamily_id, language_new.glottocode</p>
 
     <h4>Location</h4>
     <p>
-      Retrieved each language’s geographic centroid using GeoNames and stored it
-      as a PostGIS POINT, allowing spatial queries like mapping coverage areas.
+      Retrieved each language’s geographic centroid using GeoNames and stored it as a PostGIS POINT, allowing spatial queries like mapping coverage areas.
     </p>
     <p><strong>Schema:</strong> language_new.geo_center (PostGIS geometry)</p>
 
@@ -61,35 +69,32 @@ author_profile: false
 
     <h4>Number of Speakers</h4>
     <p>
-      Recorded estimated speaker populations to prioritize support for low-resource languages.
-      (Speaker counts pulled from external sources tracked separately.)
+      Recorded estimated speaker populations to prioritize support for low-resource languages. (Speaker counts pulled from external sources tracked separately.)
     </p>
     <p><strong>Schema:</strong> language_new.num_speakers, pop_source</p>
 
     <h4>Language Codes</h4>
     <p>
-      Standardized ISO 639-1, ISO 639-3, and Glottocode identifiers across the dataset
-      to ensure consistent references for downstream NLP pipelines.
+      Standardized ISO 639-1, ISO 639-3, and Glottocode identifiers across the dataset to ensure consistent references for downstream NLP pipelines.
     </p>
     <p><strong>Schema:</strong> language_new.iso_639_1, language_new.iso_639_3, language_new.glottocode</p>
 
     <h4>Available Models & Datasets</h4>
     <p>
-      Cataloged available ASR, TTS, and NMT models and datasets from platforms like Hugging Face and Common Voice.
-      Where models were unavailable, tracked available source datasets.
+      Cataloged available ASR, TTS, and NMT models and datasets from platforms like Hugging Face and Common Voice. Where models were unavailable, tracked available source datasets.
     </p>
     <p><strong>Schema:</strong> nmt_datasets, nmt_pairs_source, asr_source, language_new.asr, language_new.tts, language_new.nmt</p>
   </div>
 </details>
 
-<div class="mermaid">
-flowchart LR
-  A --> B
-
-
-
+<h2>Tools & Technologies</h2>
+<div class="card">
+  <ul>
+    <li><strong>Languages:</strong> Python, SQL</li>
+    <li><strong>Libraries:</strong> spaCy, scikit-learn, pandas</li>
+    <li><strong>Tools:</strong> PostgreSQL/PostGIS, Replit, GitHub</li>
+  </ul>
 </div>
-
 
 <div class="card code-link">
   <p><strong>Code:</strong> 
