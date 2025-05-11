@@ -5,98 +5,145 @@ layout: default
 author_profile: false
 ---
 
-<div class="card">
+<section class="card">
   <p>
     <strong>Jennifer Haliewicz</strong><br>
     M.S. Human Language Technology (expected 2025)<br>
     University of Arizona
   </p>
   <p>
-    I am a data scientist and linguist passionate about using language technology to support digital inclusion, especially for underrepresented languages. My internship with XRI Global allowed me to apply and expand my skills in NLP, database design, and multilingual data processing.
+    I’m a data scientist and linguist passionate about using language technology to support digital inclusion—particularly for underrepresented languages. My internship with XRI Global allowed me to apply and expand my skills in NLP, database design, and multilingual data processing.
   </p>
-</div>
+</section>
 
-<h2>Summary</h2>
-<div class="card">
-  <p>
-    As an intern with XRI Global, I collaborated with staff and fellow University of Arizona HLT students on a project aimed at supporting low-resource languages by improving their digital presence.
-  </p>
-  <p>
-    Our team inventoried existing datasets and language models from platforms like Hugging Face, GitHub, and Mozilla Common Voice. For some languages where models were not available, our team trained models on these datasets.
-  </p>
-  <p>
-    My contributions included designing the underlying database schema, identifying data standards, streamlining data collection workflows, and cleaning and standardizing data.
-  </p>
-  <p>
-    The resulting data powers a user-friendly web interface that allows researchers and developers to easily locate and access resources—helping bridge the digital divide for underrepresented languages.
-  </p>
-</div>
-
-<h2>Content</h2>
-<div class="card">
-  <p>
-    My role in the project included cleaning and processing large volumes of multilingual text, training models, and building custom evaluation scripts. I utilized tools such as Python, spaCy, scikit-learn, and PostgreSQL.
-  </p>
-  <p>
-    I applied course knowledge from Human Language Technology classes like NLP, Corpus Linguistics, and Machine Learning. I also deepened my understanding of real-world data challenges, annotation inconsistencies, and pipeline deployment.
-  </p>
-  <p>
-    This internship sharpened my programming and problem-solving skills and gave me hands-on experience with collaborative version control, agile workflows, and working with clients to define project scope.
-  </p>
-</div>
-
-<h2>Process</h2>
-<details class="card collapsible-section">
-  <summary><strong>Requirements Gathering</strong></summary>
-  <div class="card-content">
-    <h4>Name & Classification</h4>
+<section>
+  <h2>Summary</h2>
+  <div class="card">
     <p>
-      Pulled each language’s name, family, and sub-family from Glottolog (e.g., “Akan → Niger–Congo → Atlantic–Congo”) to structure the hierarchy and enable filtering by genetic lineage.
+      As an intern with XRI Global, I collaborated with staff and fellow University of Arizona HLT students on a project aimed at supporting low-resource languages by improving their digital presence.
     </p>
-    <p><strong>Schema:</strong> language_new.language_name, language_new.language_family_id, language_new.language_subfamily_id, language_new.glottocode</p>
-
-    <h4>Location</h4>
     <p>
-      Retrieved each language’s geographic centroid using GeoNames and stored it as a PostGIS POINT, allowing spatial queries like mapping coverage areas.
+      Our team inventoried existing datasets and language models from platforms like Hugging Face, GitHub, and Mozilla Common Voice. For some languages where models were not available, we trained new ones using open datasets.
     </p>
-    <p><strong>Schema:</strong> language_new.geo_center (PostGIS geometry)</p>
-
-    <h4>Global Region</h4>
     <p>
-      Linked each language to a continent or subregion for aggregation and regional dashboards.
+      My contributions included designing the underlying database schema, identifying data standards, streamlining data collection workflows, and cleaning and standardizing data.
     </p>
-    <p><strong>Schema:</strong> language_new.continent_or_region_id</p>
-
-    <h4>Number of Speakers</h4>
     <p>
-      Recorded estimated speaker populations to prioritize support for low-resource languages. (Speaker counts pulled from external sources tracked separately.)
+      The resulting data powers a user-friendly web interface that allows researchers and developers to easily locate and access resources—helping bridge the digital divide for underrepresented languages.
     </p>
-    <p><strong>Schema:</strong> language_new.num_speakers, pop_source</p>
-
-    <h4>Language Codes</h4>
-    <p>
-      Standardized ISO 639-1, ISO 639-3, and Glottocode identifiers across the dataset to ensure consistent references for downstream NLP pipelines.
-    </p>
-    <p><strong>Schema:</strong> language_new.iso_639_1, language_new.iso_639_3, language_new.glottocode</p>
-
-    <h4>Available Models & Datasets</h4>
-    <p>
-      Cataloged available ASR, TTS, and NMT models and datasets from platforms like Hugging Face and Common Voice. Where models were unavailable, tracked available source datasets.
-    </p>
-    <p><strong>Schema:</strong> nmt_datasets, nmt_pairs_source, asr_source, language_new.asr, language_new.tts, language_new.nmt</p>
   </div>
-</details>
+</section>
 
-<h2>Tools & Technologies</h2>
-<div class="card">
-  <ul>
-    <li><strong>Languages:</strong> Python, SQL</li>
-    <li><strong>Libraries:</strong> spaCy, scikit-learn, pandas</li>
-    <li><strong>Tools:</strong> PostgreSQL/PostGIS, Replit, GitHub</li>
-  </ul>
-</div>
+<section>
+  <h2>Content</h2>
+  <div class="card">
+    <p>
+      I cleaned and processed large volumes of multilingual text, trained models, and built custom evaluation scripts using tools like Python, spaCy, scikit-learn, and PostgreSQL.
+    </p>
+    <p>
+      I applied knowledge from courses including NLP, Corpus Linguistics, and Machine Learning, and developed a deeper understanding of real-world data challenges, annotation inconsistencies, and pipeline deployment.
+    </p>
+    <p>
+      This internship also sharpened my programming and problem-solving skills, and gave me practical experience with collaborative version control, agile workflows, and defining scope with stakeholders.
+    </p>
+  </div>
+</section>
 
-<div class="card code-link">
-  <p><strong>Code:</strong> 
-  <a href="https://github.com/yourusername/yourproject" target="_blank">View Project on GitHub</a></p>
-</div>
+<section>
+  <h2>Process</h2>
+
+  <details class="card collapsible-section">
+    <summary><strong>Requirements Gathering</strong></summary>
+    <div class="card-content">
+      <h4>Name & Classification</h4>
+      <p>
+        Pulled each language’s name, family, and sub-family from Glottolog to structure the hierarchy and enable filtering by genetic lineage.
+      </p>
+      <p><strong>Schema:</strong> language_name, language_family_id, language_subfamily_id, glottocode</p>
+
+      <h4>Location</h4>
+      <p>
+        Retrieved each language’s geographic centroid using GeoNames and stored it as a PostGIS POINT.
+      </p>
+      <p><strong>Schema:</strong> geo_center (PostGIS geometry)</p>
+
+      <h4>Global Region</h4>
+      <p>Linked each language to a continent or subregion for aggregation and dashboarding.</p>
+      <p><strong>Schema:</strong> continent_or_region_id</p>
+
+      <h4>Number of Speakers</h4>
+      <p>Estimated speaker populations were collected to help prioritize support efforts.</p>
+      <p><strong>Schema:</strong> num_speakers, pop_source</p>
+
+      <h4>Language Codes</h4>
+      <p>
+        Standardized ISO 639-1, ISO 639-3, and Glottocode identifiers across the dataset.
+      </p>
+      <p><strong>Schema:</strong> iso_639_1, iso_639_3, glottocode</p>
+
+      <h4>Models & Datasets</h4>
+      <p>
+        Cataloged available ASR, TTS, and NMT models from Hugging Face, Common Voice, and other sources.
+      </p>
+      <p><strong>Schema:</strong> nmt_datasets, nmt_pairs_source, asr_source, asr, tts, nmt</p>
+    </div>
+  </details>
+
+  <details class="card collapsible-section">
+    <summary><strong>Week-by-Week Summary</strong></summary>
+    <div class="card-content">
+      <h4>Weeks 1–4: Planning & Requirements</h4>
+      <ul>
+        <li>Defined project goals, data scope, and low-resource criteria</li>
+        <li>Designed database schema and metadata structure</li>
+      </ul>
+
+      <h4>Weeks 5–8: Database Implementation</h4>
+      <ul>
+        <li>Built and populated foundational schema with ISO codes, Glottocodes, and region data</li>
+      </ul>
+
+      <h4>Weeks 9–12: Tool Development & Tag Standardization</h4>
+      <ul>
+        <li>Developed Replit-based prototype of mapping tool</li>
+        <li>Standardized language-pair tags and added NMT metrics</li>
+      </ul>
+
+      <h4>Weeks 13–16: Conference Prep</h4>
+      <ul>
+        <li>Created visualizations and presentation for external audiences</li>
+        <li>Refined the tool and expanded dataset coverage post-event</li>
+      </ul>
+
+      <h4>Weeks 17–20: Feedback & Metadata Expansion</h4>
+      <ul>
+        <li>Integrated speaker population estimates</li>
+        <li>Refined UI based on feedback from users and partners</li>
+      </ul>
+
+      <h4>Weeks 21–Present: Ongoing Maintenance</h4>
+      <ul>
+        <li>Continued model and dataset entry</li>
+        <li>Resolved duplicate tags and standardized metadata</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2>Tools & Technologies</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Languages:</strong> Python, SQL</li>
+      <li><strong>Libraries:</strong> spaCy, scikit-learn, pandas</li>
+      <li><strong>Tools:</strong> PostgreSQL/PostGIS, Replit, GitHub</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="card code-link">
+    <p><strong>Code:</strong> 
+    <a href="https://github.com/yourusername/yourproject" target="_blank">View Project on GitHub</a></p>
+  </div>
+</section>
