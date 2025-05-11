@@ -7,8 +7,16 @@ author_profile: true
 
 {% include base_path %}
 
+<h1 class="page__title">Portfolio</h1>
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
-
+<div class="portfolio-grid">
+  {% for post in site.portfolio %}
+    <div class="portfolio-card">
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      {% if post.excerpt %}
+        <p>{{ post.excerpt | markdownify }}</p>
+      {% endif %}
+      <a href="{{ post.url | relative_url }}" class="btn">Read more</a>
+    </div>
+  {% endfor %}
+</div>
