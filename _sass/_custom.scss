@@ -435,3 +435,56 @@ a:hover {
     margin: 1.5rem auto;
   }
 }
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.portfolio-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: $card-shadow;
+  border-left: 3px solid $teal-accent;
+  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: $dark-green;
+}
+
+.portfolio-card p {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.portfolio-card .btn {
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  background-color: $dark-green;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color $transition-speed ease;
+}
+
+.portfolio-card .btn:hover {
+  background-color: darken($dark-green, 10%);
+}
+
