@@ -487,4 +487,39 @@ a:hover {
 .portfolio-card .btn:hover {
   background-color: darken($dark-green, 10%);
 }
+.consulting-layout {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.consulting-layout .card,
+.consulting-layout .feature__item {
+  background: #f9f9f9;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+.consulting-layout h1, 
+.consulting-layout h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.consulting-layout table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.consulting-layout table th,
+.consulting-layout table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
 
