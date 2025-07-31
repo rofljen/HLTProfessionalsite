@@ -1,0 +1,142 @@
+---
+layout: single
+title: "Authorship Identification Using Lexical Measures and Other Features"
+permalink: /authorship/
+author_profile: false
+---
+
+<h1>Authorship Identification Using Lexical Measures and Other Features</h1>
+<p><strong>Jennifer Haliewicz</strong><br>
+Ling 581, Advanced Computational Linguistics<br>
+Prof. Jackson<br>
+May 6, 2025</p>
+
+<h2>Project Overview</h2>
+<p>
+For this project, I explored authorship identification using essays by four stylistically similar writers:
+<strong>David Foster Wallace</strong>, <strong>Joan Didion</strong>, <strong>Zadie Smith</strong>, and <strong>John Jeremiah Sullivan</strong>.
+While these authors share thematic and stylistic traits, my goal was to investigate whether features such as
+unique word count, part-of-speech (POS) distribution, word length, and lexical diversity could help
+differentiate their writing styles.
+</p>
+
+<h2>Data Collection and Preparation</h2>
+<p>
+I selected essays based on availability and used a custom scraping script. Since some sources blocked scraping,
+the dataset varied slightly in size. Each essay was split into chunks of three paragraphs. Chunks between
+100–200 words were retained.
+To ensure balanced sampling, I selected six chunks per author, based on the author with the fewest qualifying samples.
+</p>
+
+<h2>Measures Used</h2>
+<ul>
+  <li>POS tag counts using NLTK's <code>pos_tag</code> with the universal tagset.</li>
+  <li>Average unique word count per chunk.</li>
+  <li>Lexical diversity calculated as:<br>
+  <code>Lexical Diversity = (Number of unique tokens / Total tokens) * 100</code></li>
+  <li>POS-specific frequency patterns to highlight stylistic variation.</li>
+</ul>
+
+<h3>Sample Code</h3>
+<pre><code class="language-python">
+from nltk import word_tokenize, pos_tag
+from collections import Counter
+
+def compute_metrics(text):
+    tokens = word_tokenize(text)
+    tagged = pos_tag(tokens, tagset='universal')
+    pos_counts = Counter(tag for word, tag in tagged)
+    return {
+        "total_tokens": len(tokens),
+        "unique_tokens": len(set(tokens)),
+        "lexical_diversity": (len(set(tokens)) / len(tokens)) * 100,
+        "pos_counts": dict(pos_counts)
+    }
+
+results = [compute_metrics(text) for text in texts]
+</code></pre>
+
+<h2>POS Analysis</h2>
+<p>The average counts for each POS tag per author are shown below:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>POS</th>
+      <th>David Foster Wallace</th>
+      <th>Joan Didion</th>
+      <th>John Jeremiah Sullivan</th>
+      <th>Zadie Smith</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>ADJ</td><td>10.8</td><td>8.0</td><td>10.0</td><td>15.0</td></tr>
+    <tr><td>ADP</td><td>17.5</td><td>19.2</td><td>20.5</td><td>17.3</td></tr>
+    <tr><td>ADV</td><td>11.3</td><td>8.8</td><td>10.3</td><td>12.3</td></tr>
+    <tr><td>CONJ</td><td>5.3</td><td>6.6</td><td>4.6</td><td>4.7</td></tr>
+    <tr><td>DET</td><td>14.5</td><td>17.8</td><td>15.5</td><td>18.7</td></tr>
+    <tr><td>NOUN</td><td>41.0</td><td>39.3</td><td>36.5</td><td>34.3</td></tr>
+    <tr><td>NUM</td><td>3.2</td><td>3.2</td><td>1.7</td><td>1.0</td></tr>
+    <tr><td>PRON</td><td>11.3</td><td>11.0</td><td>20.0</td><td>16.3</td></tr>
+    <tr><td>PRT</td><td>4.2</td><td>5.0</td><td>3.2</td><td>6.2</td></tr>
+    <tr><td>VERB</td><td>29.3</td><td>29.0</td><td>32.0</td><td>29.0</td></tr>
+  </tbody>
+</table>
+
+<h3>Notable Observations</h3>
+<ul>
+  <li>Zadie Smith used the most adjectives overall (15 per chunk).</li>
+  <li>Joan Didion had the lowest adverb count (8.0).</li>
+  <li>Wallace and Didion leaned noun-heavy, while Sullivan and Smith used more pronouns.</li>
+</ul>
+
+<h2>Lexical Measures</h2>
+<h4>Average Unique Word Count</h4>
+<ul>
+  <li>David Foster Wallace: 71.5</li>
+  <li>John Jeremiah Sullivan: 71.3</li>
+  <li>Joan Didion: 65.7</li>
+  <li>Zadie Smith: 63.8</li>
+</ul>
+
+<h4>Lexical Diversity (% unique)</h4>
+<ul>
+  <li>David Foster Wallace: 85.79%</li>
+  <li>John Jeremiah Sullivan: 84.57%</li>
+  <li>Zadie Smith: 83.22%</li>
+  <li>Joan Didion: 81.87%</li>
+</ul>
+
+<h2>Code Implementation</h2>
+<p>
+I used Python, NLTK, pandas, and matplotlib to preprocess data, tokenize, tag parts of speech, and compute summary statistics.
+Full code is available in the repository. Here is a sample of the chunking and sampling logic:
+</p>
+
+<pre><code class="language-python">
+def get_valid_chunks(base_dir, word_range):
+    author_chunks = defaultdict(list)
+    for root, _, files in os.walk(base_dir):
+        for file in files:
+            if file.endswith(".txt"):
+                path = os.path.join(root, file)
+                with open(path, encoding="utf-8") as f:
+                    content = f.read()
+                wc = len(content.split())
+                if word_range[0] <= wc <= word_range[1]:
+                    author = os.path.relpath(path, base_dir).split(os.sep)[0]
+                    author_chunks[author].append((path, wc))
+    return author_chunks
+</code></pre>
+
+<h2>Conclusion</h2>
+<p>
+Even with a limited sample, stylistic measures like POS frequency, lexical diversity, and unique word count showed promise for identifying authorship. Future work could include:
+</p>
+<ul>
+  <li>Using POS n-grams or syntactic parse trees</li>
+  <li>Applying machine learning classification</li>
+  <li>Expanding dataset and controlling for genre/topic</li>
+</ul>
+
+<p><strong>View full source code and plots in the repository.</strong></p>
