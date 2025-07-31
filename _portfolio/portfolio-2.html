@@ -1,141 +1,116 @@
 ---
-layout: single
-title: "Authorship Identification Using Lexical Measures and Other Features"
+title: "Authorship Identification Using Lexical and Structural Features"
+excerpt: A comparative analysis of stylistic features used to identify authorship among four essayists using part-of-speech tagging, lexical diversity, and token metrics.
+layout: default
 author_profile: false
 ---
 
-<h1>Authorship Identification Using Lexical Measures and Other Features</h1>
-<p><strong>Jennifer Haliewicz</strong><br>
-Ling 581, Advanced Computational Linguistics<br>
-Prof. Jackson<br>
-May 6, 2025</p>
+<section>
+  <h2>Summary</h2>
+  <div class="card">
+    <p>
+      This project explores authorship identification using essays by four contemporary essayists: David Foster Wallace, Joan Didion, Zadie Smith, and John Jeremiah Sullivan. Despite stylistic similarities, the goal was to determine whether computational metrics—such as part-of-speech distributions, lexical diversity, and unique word counts—can be used to distinguish authorship.
+    </p>
+  </div>
+</section>
 
-<h2>Project Overview</h2>
-<p>
-For this project, I explored authorship identification using essays by four stylistically similar writers:
-<strong>David Foster Wallace</strong>, <strong>Joan Didion</strong>, <strong>Zadie Smith</strong>, and <strong>John Jeremiah Sullivan</strong>.
-While these authors share thematic and stylistic traits, my goal was to investigate whether features such as
-unique word count, part-of-speech (POS) distribution, word length, and lexical diversity could help
-differentiate their writing styles.
-</p>
+<section>
+  <h2>Methodology</h2>
+  <div class="card">
+    <p>
+      I collected essays by each author, extracting and cleaning the text. Each essay was split into chunks of three paragraphs and filtered to retain segments with 100–200 words. To ensure a balanced comparison, six chunks were randomly selected per author.
+    </p>
+    <p>
+      Part-of-speech tagging was done using the <code>nltk</code> library with the universal tagset. For each chunk, I calculated:
+    </p>
+    <ul>
+      <li>POS tag distributions</li>
+      <li>Unique word count</li>
+      <li>Lexical diversity: <code>(unique tokens / total tokens) * 100</code></li>
+    </ul>
+  </div>
+</section>
 
-<h2>Data Collection and Preparation</h2>
-<p>
-I selected essays based on availability and used a custom scraping script. Since some sources blocked scraping,
-the dataset varied slightly in size. Each essay was split into chunks of three paragraphs. Chunks between
-100–200 words were retained.
-To ensure balanced sampling, I selected six chunks per author, based on the author with the fewest qualifying samples.
-</p>
+<section>
+  <h2>Results</h2>
 
-<h2>Measures Used</h2>
-<ul>
-  <li>POS tag counts using NLTK's <code>pos_tag</code> with the universal tagset.</li>
-  <li>Average unique word count per chunk.</li>
-  <li>Lexical diversity calculated as:<br>
-  <code>Lexical Diversity = (Number of unique tokens / Total tokens) * 100</code></li>
-  <li>POS-specific frequency patterns to highlight stylistic variation.</li>
-</ul>
+  <details class="card collapsible-section">
+    <summary><strong>POS Tag Trends</strong></summary>
+    <div class="card-content">
+      <p><strong>Notable patterns:</strong></p>
+      <ul>
+        <li>Zadie Smith used the most adjectives (15 on average).</li>
+        <li>Joan Didion had the lowest adverb use (8.8).</li>
+        <li>Sullivan and Smith used more pronouns—potentially indicating a more personal narrative style.</li>
+        <li>Didion and Wallace had higher noun counts per chunk.</li>
+      </ul>
+    </div>
+  </details>
 
-<h3>Sample Code</h3>
-<pre><code class="language-python">
-from nltk import word_tokenize, pos_tag
-from collections import Counter
+  <details class="card collapsible-section">
+    <summary><strong>Lexical Measures</strong></summary>
+    <div class="card-content">
+      <h4>Average Unique Word Count per Chunk</h4>
+      <ul>
+        <li>David Foster Wallace: 71.5</li>
+        <li>John Jeremiah Sullivan: 71.3</li>
+        <li>Joan Didion: 65.7</li>
+        <li>Zadie Smith: 63.8</li>
+      </ul>
 
-def compute_metrics(text):
-    tokens = word_tokenize(text)
-    tagged = pos_tag(tokens, tagset='universal')
-    pos_counts = Counter(tag for word, tag in tagged)
-    return {
-        "total_tokens": len(tokens),
-        "unique_tokens": len(set(tokens)),
-        "lexical_diversity": (len(set(tokens)) / len(tokens)) * 100,
-        "pos_counts": dict(pos_counts)
-    }
+      <h4>Average Lexical Diversity</h4>
+      <ul>
+        <li>David Foster Wallace: 85.79%</li>
+        <li>John Jeremiah Sullivan: 84.57%</li>
+        <li>Zadie Smith: 83.22%</li>
+        <li>Joan Didion: 81.87%</li>
+      </ul>
+      <p>
+        Wallace and Sullivan exhibited slightly higher lexical diversity, with Didion and Smith clustering slightly lower. These subtle distinctions suggest that lexical features may offer some predictive power, though the dataset is small.
+      </p>
+    </div>
+  </details>
+</section>
 
-results = [compute_metrics(text) for text in texts]
-</code></pre>
+<section>
+  <h2>Process</h2>
 
-<h2>POS Analysis</h2>
-<p>The average counts for each POS tag per author are shown below:</p>
+  <details class="card collapsible-section">
+    <summary><strong>Data Collection & Sampling</strong></summary>
+    <div class="card-content">
+      <ul>
+        <li>Custom Python scripts were used to extract and clean text.</li>
+        <li>Each text was tokenized, POS-tagged, and filtered based on word count.</li>
+        <li>Random chunk sampling ensured balanced representation per author.</li>
+      </ul>
+    </div>
+  </details>
 
-<table>
-  <thead>
-    <tr>
-      <th>POS</th>
-      <th>David Foster Wallace</th>
-      <th>Joan Didion</th>
-      <th>John Jeremiah Sullivan</th>
-      <th>Zadie Smith</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>ADJ</td><td>10.8</td><td>8.0</td><td>10.0</td><td>15.0</td></tr>
-    <tr><td>ADP</td><td>17.5</td><td>19.2</td><td>20.5</td><td>17.3</td></tr>
-    <tr><td>ADV</td><td>11.3</td><td>8.8</td><td>10.3</td><td>12.3</td></tr>
-    <tr><td>CONJ</td><td>5.3</td><td>6.6</td><td>4.6</td><td>4.7</td></tr>
-    <tr><td>DET</td><td>14.5</td><td>17.8</td><td>15.5</td><td>18.7</td></tr>
-    <tr><td>NOUN</td><td>41.0</td><td>39.3</td><td>36.5</td><td>34.3</td></tr>
-    <tr><td>NUM</td><td>3.2</td><td>3.2</td><td>1.7</td><td>1.0</td></tr>
-    <tr><td>PRON</td><td>11.3</td><td>11.0</td><td>20.0</td><td>16.3</td></tr>
-    <tr><td>PRT</td><td>4.2</td><td>5.0</td><td>3.2</td><td>6.2</td></tr>
-    <tr><td>VERB</td><td>29.3</td><td>29.0</td><td>32.0</td><td>29.0</td></tr>
-  </tbody>
-</table>
+  <details class="card collapsible-section">
+    <summary><strong>Analysis Pipeline</strong></summary>
+    <div class="card-content">
+      <ul>
+        <li><code>nltk</code> for tokenization, POS tagging, and stopword filtering</li>
+        <li><code>pandas</code> and <code>matplotlib</code> for data aggregation and visualization</li>
+        <li>Calculated and visualized metrics: POS frequencies, unique word counts, lexical diversity</li>
+      </ul>
+    </div>
+  </details>
+</section>
 
-<h3>Notable Observations</h3>
-<ul>
-  <li>Zadie Smith used the most adjectives overall (15 per chunk).</li>
-  <li>Joan Didion had the lowest adverb count (8.0).</li>
-  <li>Wallace and Didion leaned noun-heavy, while Sullivan and Smith used more pronouns.</li>
-</ul>
+<section>
+  <h2>Tools & Technologies</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Languages:</strong> Python</li>
+      <li><strong>Libraries:</strong> NLTK, pandas, matplotlib, scikit-learn</li>
+      <li><strong>Data Format:</strong> Plain text, organized by author</li>
+    </ul>
+  </div>
+</section>
 
-<h2>Lexical Measures</h2>
-<h4>Average Unique Word Count</h4>
-<ul>
-  <li>David Foster Wallace: 71.5</li>
-  <li>John Jeremiah Sullivan: 71.3</li>
-  <li>Joan Didion: 65.7</li>
-  <li>Zadie Smith: 63.8</li>
-</ul>
-
-<h4>Lexical Diversity (% unique)</h4>
-<ul>
-  <li>David Foster Wallace: 85.79%</li>
-  <li>John Jeremiah Sullivan: 84.57%</li>
-  <li>Zadie Smith: 83.22%</li>
-  <li>Joan Didion: 81.87%</li>
-</ul>
-
-<h2>Code Implementation</h2>
-<p>
-I used Python, NLTK, pandas, and matplotlib to preprocess data, tokenize, tag parts of speech, and compute summary statistics.
-Full code is available in the repository. Here is a sample of the chunking and sampling logic:
-</p>
-
-<pre><code class="language-python">
-def get_valid_chunks(base_dir, word_range):
-    author_chunks = defaultdict(list)
-    for root, _, files in os.walk(base_dir):
-        for file in files:
-            if file.endswith(".txt"):
-                path = os.path.join(root, file)
-                with open(path, encoding="utf-8") as f:
-                    content = f.read()
-                wc = len(content.split())
-                if word_range[0] <= wc <= word_range[1]:
-                    author = os.path.relpath(path, base_dir).split(os.sep)[0]
-                    author_chunks[author].append((path, wc))
-    return author_chunks
-</code></pre>
-
-<h2>Conclusion</h2>
-<p>
-Even with a limited sample, stylistic measures like POS frequency, lexical diversity, and unique word count showed promise for identifying authorship. Future work could include:
-</p>
-<ul>
-  <li>Using POS n-grams or syntactic parse trees</li>
-  <li>Applying machine learning classification</li>
-  <li>Expanding dataset and controlling for genre/topic</li>
-</ul>
-
-<p><strong>View full source code and plots in the repository.</strong></p>
+<section>
+  <div class="card code-link">
+    <p><strong>Code:</strong> <a href="https://github.com/yourusername/your-repo-name" target="_blank">View on GitHub</a></p>
+  </div>
+</section>
