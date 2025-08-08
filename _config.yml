@@ -19,11 +19,7 @@ words_per_minute:  160
 future:            true
 read_more:         "disabled"
 talkmap_link:      false
-
-sidebar:
-  nav: "main"
-  author_profile: true
-  
+ 
 comments:
   provider:
   disqus:
@@ -214,7 +210,7 @@ defaults:
       type:   portfolio
     values:
       layout:         single
-      author_profile: true
+      author_profile: false
       share:          true
       comment:        true
   - scope:
