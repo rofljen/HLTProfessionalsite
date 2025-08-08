@@ -8,7 +8,10 @@ author_profile: false
   <h2>Summary</h2>
   <div class="card">
     <p>
-      This project explores authorship identification using essays by four contemporary essayists: David Foster Wallace, Joan Didion, Zadie Smith, and John Jeremiah Sullivan. Despite stylistic similarities, the goal was to determine whether computational metrics—such as part-of-speech distributions, lexical diversity, and unique word counts—can be used to distinguish authorship.
+      For this project, I explored authorship identification using essays by four stylistically similar writers: David
+Foster Wallace, Joan Didion, Zadie Smith, and John Jeremiah Sullivan. While these authors have some
+similarities in their writing, my goal was to determine whether measures such as unique word count,
+part-of-speech (POS) distribution, word length, lexical diversity, sentence length and Hapax Legomana can be used to identify an author.
     </p>
   </div>
 </section>
@@ -16,9 +19,14 @@ author_profile: false
 <section>
   <h2>Methodology</h2>
   <div class="card">
+    <h3>Data Collection and Preparation</h3>
     <p>
-      I collected essays by each author, extracting and cleaning the text. Each essay was split into chunks of three paragraphs and filtered to retain segments with 100–200 words. To ensure a balanced comparison, six chunks were randomly selected per author.
-    </p>
+I selected a set of essays for each author based on availability, scraping text using a simple custom script.
+Some sources did not permit scraping, resulting in fewer essays for certain authors. To expand the dataset,
+I split each essay into chunks of three paragraphs. Chunks with word counts between 100 and 200 words
+were kept.
+To ensure balanced comparison, I randomly selected six chunks per author, based on the author with the
+fewest qualifying chunks (meaning that it matched my requirement of 100-200 words).    </p>
     <p>
       Part-of-speech tagging was done using the <code>nltk</code> library with the universal tagset. For each chunk, I calculated:
     </p>
@@ -26,6 +34,7 @@ author_profile: false
       <li>POS tag distributions</li>
       <li>Unique word count</li>
       <li>Lexical diversity: <code>(unique tokens / total tokens) * 100</code></li>
+      <
     </ul>
   </div>
 </section>
