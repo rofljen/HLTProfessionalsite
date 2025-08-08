@@ -18,12 +18,6 @@ layout: default
     <meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">
   {% endif %}
 
-  {% unless page.header.overlay_color or page.header.overlay_image %}
-    <header class="page__header">
-      <h1 class="page__title" itemprop="headline">{{ page.title }}</h1>
-    </header>
-  {% endunless %}
-
   <div class="page__inner-wrap">
     {{ content }}
   </div>
