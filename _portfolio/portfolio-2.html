@@ -27,14 +27,15 @@ I split each essay into chunks of three paragraphs. Chunks with word counts betw
 were kept.
 To ensure balanced comparison, I randomly selected six chunks per author, based on the author with the
 fewest qualifying chunks (meaning that it matched my requirement of 100-200 words).    </p>
-    <p>
-      Part-of-speech tagging was done using the <code>nltk</code> library with the universal tagset. For each chunk, I calculated:
-    </p>
-    <ul>
-      <li>POS tag distributions</li>
-      <li>Unique word count</li>
-      <li>Lexical diversity: <code>(unique tokens / total tokens) * 100</code></li>
-      <
+<h3>Measures Used</h3>    
+<p>
+To investigate stylistic variation across authors, I calculated several measures for each chunk:
+<ul><li>Part-of-speech (POS) tag counts using NLTK's pos_tag and the universal tagset.</li>
+<li>Average unique word count per chunk.</li>
+<li>Lexical diversity, calculated as:
+<ul>
+  <li>Lexical Diversity = (Number of unique tokens / Total tokens) * 100</li></ul>
+<li>POS-specific trends, identifying outliers and stylistic patterns.</li>
     </ul>
   </div>
 </section>
