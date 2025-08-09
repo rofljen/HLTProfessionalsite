@@ -30,15 +30,17 @@ fewest qualifying chunks (meaning that it matched my requirement of 100-200 word
 <h3>Measures Used</h3>    
 <p>
 To investigate stylistic variation across authors, I calculated several measures for each chunk:
-<ul><li>Part-of-speech (POS) tag counts using NLTK's pos_tag and the universal tagset.</li>
-<li>Average unique word count per chunk.</li>
+<ul><li><b><u>Average Part-of-speech usage</u></b>: The average number of each part of speech used per chunk, per author.</li>
+<li>Average Unique Word Count: the average of unique words per chunk, per author.</li>
 <li>Lexical diversity, calculated as:
 <ul>
-  <li>Lexical Diversity = (Number of unique tokens / Total tokens) * 100</li></ul>
-<li>POS-specific trends, identifying outliers and stylistic patterns.</li>
+  <li>Lexical Diversity: (Number of unique tokens / Total tokens) * 100</li></ul>
+<li>Average sentence length per author</li>
+<li>Hapax Legomana: the number of words that are used only once per author</li>
     </ul>
   </div>
 </section>
+
 
 <section>
   <h2>Results</h2>
@@ -46,17 +48,24 @@ To investigate stylistic variation across authors, I calculated several measures
   <details class="card collapsible-section">
     <summary><strong>POS Tag Trends</strong></summary>
     <div class="card-content">
-      <img src=""
+      <a href="{{ '/images/charts/pos_average_heatmap.png' | relative_url }}" target="_blank" rel="noopener">
+        <img
+          src="{{ '/images/charts/pos_average_heatmap.png' | relative_url }}"
+          alt="POS Tag Distribution Heatmap"
+          style="max: width 450%;x;height:auto;display:block;margin:0 auto;" />
+      </a>
+
       <p><strong>Notable patterns:</strong></p>
       <ul>
-        <li>David Foster Wallace had a significantly higher average count of nouns per essay, at 105.</li>
-        <li>Joan Didion, John Jeremiah Sullivan, and Zadie Smith had lower noun counts and were all within 10 of one another:
-        <ul>
-          <li>Joan Didion: 35.7</li>
-          <li>Zadie Smith: 35.3</li>
-          <li>John Jeremiah Sullivan: 42.5</li>
-        </ul>
-        <li>Joan Didion had the lowest adverb use (8.8).</li>
+        <li>David Foster Wallace had a significantly higher average count of nouns per essay, at 111.</li>
+        <li>Joan Didion, John Jeremiah Sullivan, and Zadie Smith had lower noun counts and were all within a very close range of one another:
+          <ul>
+            <li>Joan Didion: 37.2</li>
+            <li>Zadie Smith: 35.8</li>
+            <li>John Jeremiah Sullivan: 42.5</li>
+          </ul>
+        </li>
+        <li>John Jeremiah Sullivan the lowest adverb use (7.8), however, you will note that all of the authors aside from David Foster Wallace have relatively close counts of adverb use.</li>
         <li>Sullivan and Smith used more pronouns—potentially indicating a more personal narrative style.</li>
         <li>Didion and Wallace had higher noun counts per chunk.</li>
       </ul>
@@ -81,49 +90,12 @@ To investigate stylistic variation across authors, I calculated several measures
         <li>Zadie Smith: 60%</li>
         <li>Joan Didion: 60.5%</li>
       </ul>
-      <p>
-        Wallace and Sullivan exhibited slightly higher lexical diversity, with Didion and Smith clustering slightly lower. These subtle distinctions suggest that lexical features may offer some predictive power, though the dataset is small.
-      </p>
+      <p>Wallace and Sullivan exhibited slightly higher lexical diversity, with Didion and Smith clustering slightly lower. These subtle distinctions suggest that lexical features may offer some predictive power, though the dataset is small.</p>
     </div>
   </details>
 </section>
 
-<section>
-  <h2>Process</h2>
 
-  <details class="card collapsible-section">
-    <summary><strong>Data Collection & Sampling</strong></summary>
-    <div class="card-content">
-      <ul>
-        <li>Custom Python scripts were used to extract and clean text.</li>
-        <li>Each text was tokenized, POS-tagged, and filtered based on word count.</li>
-        <li>Random chunk sampling ensured balanced representation per author.</li>
-      </ul>
-    </div>
-  </details>
-
-  <details class="card collapsible-section">
-    <summary><strong>Analysis Pipeline</strong></summary>
-    <div class="card-content">
-      <ul>
-        <li><code>nltk</code> for tokenization, POS tagging, and stopword filtering</li>
-        <li><code>pandas</code> and <code>matplotlib</code> for data aggregation and visualization</li>
-        <li>Calculated and visualized metrics: POS frequencies, unique word counts, lexical diversity</li>
-      </ul>
-    </div>
-  </details>
-</section>
-
-<section>
-  <h2>Tools & Technologies</h2>
-  <div class="card">
-    <ul>
-      <li><strong>Languages:</strong> Python</li>
-      <li><strong>Libraries:</strong> NLTK, pandas, matplotlib, scikit-learn</li>
-      <li><strong>Data Format:</strong> Plain text, organized by author</li>
-    </ul>
-  </div>
-</section>
 
 <section>
   <div class="card code-link">
