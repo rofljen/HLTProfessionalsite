@@ -556,4 +556,60 @@ a:hover {
   padding: 0.15rem 0.35rem;
   border-radius: 3px;
 }
+/* ===== Data dictionary / portfolio table overrides ===== */
+/* Add .data-dict to cards that contain data-dictionary tables */
+
+.card.data-dict {
+  max-width: none;           /* allow full width inside the page column */
+  overflow-x: auto;         /* prevent overflow on very small screens */
+  padding: 1.25rem;
+}
+
+/* Highly-specific selectors to override theme table rules */
+.card.data-dict table,
+.card.collapsible-section.data-dict table,
+.card-content table.data-dict {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  table-layout: fixed !important;   /* respect column widths from <colgroup> */
+  margin: 1rem 0;
+  font-size: 0.96rem;
+}
+
+/* grid lines and spacing */
+.card.data-dict th,
+.card.data-dict td {
+  border: 1px solid #d6dbd8 !important;   /* subtle, visible lines */
+  padding: 0.6rem 0.9rem !important;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* header styling */
+.card.data-dict th {
+  background-color: $teal-accent;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* monospace for field names */
+.card.data-dict td code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+  background: #f8f8f7;
+  padding: 0.12rem 0.3rem;
+  border-radius: 3px;
+}
+
+/* explicit column width helpers (adjust percentages as desired) */
+.card.data-dict col.col-field  { width: 22%; }
+.card.data-dict col.col-type   { width: 14%; }
+.card.data-dict col.col-desc   { width: 44%; }
+.card.data-dict col.col-ex     { width: 20%; }
+
+/* mobile adjustments */
+@media (max-width: 700px) {
+  .card.data-dict table { table-layout: auto !important; } /* let it flow on small screens */
+}
 
