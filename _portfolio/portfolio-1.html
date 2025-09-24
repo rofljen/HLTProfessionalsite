@@ -40,51 +40,151 @@ author_profile: false
 <section>
   <h2>Process</h2>
 
+ <section>
+  <h2>Requirements Gathering & Data Dictionary</h2>
+
+  <div class="card">
+    <p>
+      To document the existing database supporting <em>Bridging the Digital Divide</em>, I created a data dictionary that describes each table, its fields, types, and purpose. This helps ensure clarity and consistency for future users and developers.
+    </p>
+
+    <!-- Schema Overview -->
+    <h3>Schema Overview</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Table</th>
+          <th>Primary Key</th>
+          <th>Related Tables</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Languages</td>
+          <td><code>language_id</code></td>
+          <td>Datasets</td>
+          <td>Stores metadata for each language</td>
+        </tr>
+        <tr>
+          <td>Datasets</td>
+          <td><code>dataset_id</code></td>
+          <td>Models</td>
+          <td>Contains dataset information per language</td>
+        </tr>
+        <tr>
+          <td>Models</td>
+          <td><code>model_id</code></td>
+          <td>Datasets</td>
+          <td>Tracks trained ML models</td>
+        </tr>
+        <tr>
+          <td>Contributors</td>
+          <td><code>contributor_id</code></td>
+          <td>Datasets / Models</td>
+          <td>Tracks contributors and their roles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Languages Table -->
   <details class="card collapsible-section">
-    <summary><strong>Requirements Gathering</strong></summary>
-    <p>The first step in creating a database for Bridging the Digital, it was necessaary that I went through the 
-      requirements gathering process with project managers and my internship colleagues. The requirements gathering process
-      serves to determine what metadata will  be most valuable for language researchers, developers, and other potential users
-      of the tool.</p>
-      <p>This process involved identifying essential fields (e.g., language name, location, number of speakers, tag/label, data or model source, number of speakers, etc) 
-      and ensuring the schema could support ASR, TTS, and NMT datasets and existing models.</p>
-      
-      <p>The results of this process was a balanced schema that provided more technical information with the practical information about the languages included.</p>
-    <div class="card-content">
-      <h4>Name & Classification</h4>
-      <p>
-        Pulled each language’s name, family, and sub-family from Glottolog to structure the hierarchy and enable filtering by genetic lineage.
-      </p>
-      <p><strong>Schema:</strong> language_name, language_family_id, language_subfamily_id, glottocode</p>
-
-      <h4>Location</h4>
-      <p>
-        Retrieved each language’s geographic centroid using GeoNames and stored it as a PostGIS POINT.
-      </p>
-      <p><strong>Schema:</strong> geo_center (PostGIS geometry)</p>
-
-      <h4>Global Region</h4>
-      <p>Linked each language to a continent or subregion for aggregation and dashboarding.</p>
-      <p><strong>Schema:</strong> continent_or_region_id</p>
-
-      <h4>Number of Speakers</h4>
-      <p>Estimated speaker populations were collected to help prioritize support efforts.</p>
-      <p><strong>Schema:</strong> num_speakers, pop_source</p>
-
-      <h4>Language Codes</h4>
-      <p>
-        Standardized ISO 639-1, ISO 639-3, and Glottocode identifiers across the dataset.
-      </p>
-      <p><strong>Schema:</strong> iso_639_1, iso_639_3, glottocode</p>
-
-      <h4>Models & Datasets</h4>
-      <p>
-        Cataloged available ASR, TTS, and NMT models from Hugging Face, Common Voice, and other sources.
-      </p>
-      <p><strong>Schema:</strong> nmt_datasets, nmt_pairs_source, asr_source, asr, tts, nmt</p>
-    </div>
+    <summary><strong>Languages Table</strong></summary>
+    <table>
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Data Type</th>
+          <th>Description</th>
+          <th>Example / Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>language_id</code></td><td>INT</td><td>Unique identifier for each language</td><td>1, 2</td></tr>
+        <tr><td><code>language_name</code></td><td>VARCHAR</td><td>Official name of the language</td><td>"Hausa", "Navajo"</td></tr>
+        <tr><td><code>iso_code</code></td><td>VARCHAR</td><td>ISO 639-3 language code</td><td>"hau", "nav"</td></tr>
+        <tr><td><code>geo_center</code></td><td>VARCHAR</td><td>Geographic region or center</td><td>"West Africa"</td></tr>
+        <tr><td><code>num_speakers</code></td><td>INT</td><td>Estimated number of speakers</td><td>52_000_000</td></tr>
+        <tr><td><code>status</code></td><td>VARCHAR</td><td>Vitality status</td><td>"Vigorous", "Endangered"</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Related Tables:</strong> <code>datasets.language_id</code> → <code>languages.language_id</code></p>
   </details>
 
+  <!-- Datasets Table -->
+  <details class="card collapsible-section">
+    <summary><strong>Datasets Table</strong></summary>
+    <table>
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Data Type</th>
+          <th>Description</th>
+          <th>Example / Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>dataset_id</code></td><td>INT</td><td>Unique identifier for each dataset</td><td>101, 102</td></tr>
+        <tr><td><code>language_id</code></td><td>INT</td><td>Reference to associated language</td><td>1</td></tr>
+        <tr><td><code>dataset_name</code></td><td>VARCHAR</td><td>Name of the dataset</td><td>"Hausa Speech Corpus"</td></tr>
+        <tr><td><code>data_type</code></td><td>VARCHAR</td><td>Type of data</td><td>"ASR", "TTS", "NMT"</td></tr>
+        <tr><td><code>num_samples</code></td><td>INT</td><td>Number of data items</td><td>10_000</td></tr>
+        <tr><td><code>license</code></td><td>VARCHAR</td><td>Licensing info</td><td>"CC-BY"</td></tr>
+        <tr><td><code>source_url</code></td><td>VARCHAR</td><td>URL or reference to dataset</td><td>"https://..."</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Related Tables:</strong> <code>datasets.language_id</code> → <code>languages.language_id</code>, <code>models.dataset_id</code> → <code>datasets.dataset_id</code></p>
+  </details>
+
+  <!-- Models Table -->
+  <details class="card collapsible-section">
+    <summary><strong>Models Table</strong></summary>
+    <table>
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Data Type</th>
+          <th>Description</th>
+          <th>Example / Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>model_id</code></td><td>INT</td><td>Unique identifier for each model</td><td>201, 202</td></tr>
+        <tr><td><code>dataset_id</code></td><td>INT</td><td>Reference to dataset</td><td>101</td></tr>
+        <tr><td><code>model_type</code></td><td>VARCHAR</td><td>Type of model</td><td>"ASR", "TTS", "MT"</td></tr>
+        <tr><td><code>framework</code></td><td>VARCHAR</td><td>ML framework used</td><td>"Kaldi", "ESPnet"</td></tr>
+        <tr><td><code>accuracy_metric</code></td><td>FLOAT</td><td>Performance metric</td><td>0.87</td></tr>
+        <tr><td><code>last_trained</code></td><td>DATE</td><td>Date model was last trained</td><td>2025-07-15</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Related Tables:</strong> <code>models.dataset_id</code> → <code>datasets.dataset_id</code></p>
+  </details>
+
+  <!-- Contributors Table -->
+  <details class="card collapsible-section">
+    <summary><strong>Contributors Table</strong></summary>
+    <table>
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Data Type</th>
+          <th>Description</th>
+          <th>Example / Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>contributor_id</code></td><td>INT</td><td>Unique identifier for each contributor</td><td>1, 2</td></tr>
+        <tr><td><code>name</code></td><td>VARCHAR</td><td>Full name of contributor</td><td>"Jennifer Haliewicz"</td></tr>
+        <tr><td><code>affiliation</code></td><td>VARCHAR</td><td>Organization or institution</td><td>"University of Arizona"</td></tr>
+        <tr><td><code>role</code></td><td>VARCHAR</td><td>Role in project</td><td>"Data Curation", "Model Training"</td></tr>
+        <tr><td><code>email</code></td><td>VARCHAR</td><td>Contact email</td><td>"jennifer@example.com"</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Related Tables:</strong> Link to datasets/models via project mapping table if needed.</p>
+  </details>
+
+  <!-- Week-by-Week Summary -->
   <details class="card collapsible-section">
     <summary><strong>Week-by-Week Summary</strong></summary>
     <div class="card-content">
@@ -125,7 +225,6 @@ author_profile: false
     </div>
   </details>
 </section>
-
 <section>
   <h2>Tools & Technologies</h2>
   <div class="card">
