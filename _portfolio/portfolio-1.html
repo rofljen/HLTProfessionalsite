@@ -88,101 +88,232 @@ author_profile: false
     </table>
   </div>
 
-  <!-- Languages Table -->
-  <details class="card collapsible-section">
-    <summary><strong>Languages Table</strong></summary>
-    <table>
-      <thead>
-        <tr>
-          <th>Field Name</th>
-          <th>Data Type</th>
-          <th>Description</th>
-          <th>Example / Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><code>language_id</code></td><td>INT</td><td>Unique identifier for each language</td><td>1, 2</td></tr>
-        <tr><td><code>language_name</code></td><td>VARCHAR</td><td>Official name of the language</td><td>"Hausa", "Navajo"</td></tr>
-        <tr><td><code>iso_code</code></td><td>VARCHAR</td><td>ISO 639-3 language code</td><td>"hau", "nav"</td></tr>
-        <tr><td><code>geo_center</code></td><td>VARCHAR</td><td>Geographic region or center</td><td>"West Africa"</td></tr>
-        <tr><td><code>num_speakers</code></td><td>INT</td><td>Estimated number of speakers</td><td>52_000_000</td></tr>
-        <tr><td><code>status</code></td><td>VARCHAR</td><td>Vitality status</td><td>"Vigorous", "Endangered"</td></tr>
-      </tbody>
-    </table>
-    <p><strong>Related Tables:</strong> <code>datasets.language_id</code> → <code>languages.language_id</code></p>
-  </details>
+ <details>
+  <summary><strong>Languages Table</strong></summary>
 
-  <!-- Datasets Table -->
-  <details class="card collapsible-section">
-    <summary><strong>Datasets Table</strong></summary>
-    <table>
-      <thead>
-        <tr>
-          <th>Field Name</th>
-          <th>Data Type</th>
-          <th>Description</th>
-          <th>Example / Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><code>dataset_id</code></td><td>INT</td><td>Unique identifier for each dataset</td><td>101, 102</td></tr>
-        <tr><td><code>language_id</code></td><td>INT</td><td>Reference to associated language</td><td>1</td></tr>
-        <tr><td><code>dataset_name</code></td><td>VARCHAR</td><td>Name of the dataset</td><td>"Hausa Speech Corpus"</td></tr>
-        <tr><td><code>data_type</code></td><td>VARCHAR</td><td>Type of data</td><td>"ASR", "TTS", "NMT"</td></tr>
-        <tr><td><code>num_samples</code></td><td>INT</td><td>Number of data items</td><td>10_000</td></tr>
-        <tr><td><code>license</code></td><td>VARCHAR</td><td>Licensing info</td><td>"CC-BY"</td></tr>
-        <tr><td><code>source_url</code></td><td>VARCHAR</td><td>URL or reference to dataset</td><td>"https://..."</td></tr>
-      </tbody>
-    </table>
-    <p><strong>Related Tables:</strong> <code>datasets.language_id</code> → <code>languages.language_id</code>, <code>models.dataset_id</code> → <code>datasets.dataset_id</code></p>
-  </details>
+  <table class="data-dict">
+    <thead>
+      <tr>
+        <th>Field Name</th>
+        <th>Data Type</th>
+        <th>Description</th>
+        <th>Example / Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>language_id</code></td>
+        <td>INT</td>
+        <td>Unique identifier for each language</td>
+        <td>1, 2</td>
+      </tr>
+      <tr>
+        <td><code>language_name</code></td>
+        <td>VARCHAR</td>
+        <td>Official name of the language</td>
+        <td>"Hausa", "Navajo"</td>
+      </tr>
+      <tr>
+        <td><code>iso_code</code></td>
+        <td>VARCHAR</td>
+        <td>ISO 639-3 language code</td>
+        <td>"hau", "nav"</td>
+      </tr>
+      <tr>
+        <td><code>geo_center</code></td>
+        <td>VARCHAR</td>
+        <td>Geographic region or center</td>
+        <td>"West Africa"</td>
+      </tr>
+      <tr>
+        <td><code>num_speakers</code></td>
+        <td>INT</td>
+        <td>Estimated number of speakers</td>
+        <td>52,000,000</td>
+      </tr>
+      <tr>
+        <td><code>status</code></td>
+        <td>VARCHAR</td>
+        <td>Vitality status</td>
+        <td>"Vigorous", "Endangered"</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <!-- Models Table -->
-  <details class="card collapsible-section">
-    <summary><strong>Models Table</strong></summary>
-    <table>
-      <thead>
-        <tr>
-          <th>Field Name</th>
-          <th>Data Type</th>
-          <th>Description</th>
-          <th>Example / Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><code>model_id</code></td><td>INT</td><td>Unique identifier for each model</td><td>201, 202</td></tr>
-        <tr><td><code>dataset_id</code></td><td>INT</td><td>Reference to dataset</td><td>101</td></tr>
-        <tr><td><code>model_type</code></td><td>VARCHAR</td><td>Type of model</td><td>"ASR", "TTS", "MT"</td></tr>
-        <tr><td><code>framework</code></td><td>VARCHAR</td><td>ML framework used</td><td>"Kaldi", "ESPnet"</td></tr>
-        <tr><td><code>accuracy_metric</code></td><td>FLOAT</td><td>Performance metric</td><td>0.87</td></tr>
-        <tr><td><code>last_trained</code></td><td>DATE</td><td>Date model was last trained</td><td>2025-07-15</td></tr>
-      </tbody>
-    </table>
-    <p><strong>Related Tables:</strong> <code>models.dataset_id</code> → <code>datasets.dataset_id</code></p>
-  </details>
+  <p><strong>Related Tables:</strong> <code>datasets.language_id</code> → <code>languages.language_id</code></p>
+</details>
 
-  <!-- Contributors Table -->
-  <details class="card collapsible-section">
-    <summary><strong>Contributors Table</strong></summary>
-    <table>
-      <thead>
-        <tr>
-          <th>Field Name</th>
-          <th>Data Type</th>
-          <th>Description</th>
-          <th>Example / Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><code>contributor_id</code></td><td>INT</td><td>Unique identifier for each contributor</td><td>1, 2</td></tr>
-        <tr><td><code>name</code></td><td>VARCHAR</td><td>Full name of contributor</td><td>"Jennifer Haliewicz"</td></tr>
-        <tr><td><code>affiliation</code></td><td>VARCHAR</td><td>Organization or institution</td><td>"University of Arizona"</td></tr>
-        <tr><td><code>role</code></td><td>VARCHAR</td><td>Role in project</td><td>"Data Curation", "Model Training"</td></tr>
-        <tr><td><code>email</code></td><td>VARCHAR</td><td>Contact email</td><td>"jennifer@example.com"</td></tr>
-      </tbody>
-    </table>
-    <p><strong>Related Tables:</strong> Link to datasets/models via project mapping table if needed.</p>
-  </details>
+
+<details>
+  <summary><strong>Datasets Table</strong></summary>
+
+  <table class="data-dict">
+    <thead>
+      <tr>
+        <th>Field Name</th>
+        <th>Data Type</th>
+        <th>Description</th>
+        <th>Example / Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>dataset_id</code></td>
+        <td>INT</td>
+        <td>Unique identifier for each dataset</td>
+        <td>101, 102</td>
+      </tr>
+      <tr>
+        <td><code>language_id</code></td>
+        <td>INT</td>
+        <td>Reference to associated language</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><code>dataset_name</code></td>
+        <td>VARCHAR</td>
+        <td>Name of the dataset</td>
+        <td>"Hausa Speech Corpus"</td>
+      </tr>
+      <tr>
+        <td><code>data_type</code></td>
+        <td>VARCHAR</td>
+        <td>Type of data</td>
+        <td>"ASR", "TTS", "NMT"</td>
+      </tr>
+      <tr>
+        <td><code>num_samples</code></td>
+        <td>INT</td>
+        <td>Number of data items</td>
+        <td>10,000</td>
+      </tr>
+      <tr>
+        <td><code>license</code></td>
+        <td>VARCHAR</td>
+        <td>Licensing info</td>
+        <td>"CC-BY"</td>
+      </tr>
+      <tr>
+        <td><code>source_url</code></td>
+        <td>VARCHAR</td>
+        <td>URL or reference to dataset</td>
+        <td>"https://..."</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Related Tables:</strong>  
+  <code>datasets.language_id</code> → <code>languages.language_id</code>  
+  <code>models.dataset_id</code> → <code>datasets.dataset_id</code></p>
+</details>
+
+
+<details>
+  <summary><strong>Models Table</strong></summary>
+
+  <table class="data-dict">
+    <thead>
+      <tr>
+        <th>Field Name</th>
+        <th>Data Type</th>
+        <th>Description</th>
+        <th>Example / Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>model_id</code></td>
+        <td>INT</td>
+        <td>Unique identifier for each model</td>
+        <td>201, 202</td>
+      </tr>
+      <tr>
+        <td><code>dataset_id</code></td>
+        <td>INT</td>
+        <td>Reference to dataset</td>
+        <td>101</td>
+      </tr>
+      <tr>
+        <td><code>model_type</code></td>
+        <td>VARCHAR</td>
+        <td>Type of model</td>
+        <td>"ASR", "TTS", "MT"</td>
+      </tr>
+      <tr>
+        <td><code>framework</code></td>
+        <td>VARCHAR</td>
+        <td>ML framework used</td>
+        <td>"Kaldi", "ESPnet"</td>
+      </tr>
+      <tr>
+        <td><code>accuracy_metric</code></td>
+        <td>FLOAT</td>
+        <td>Performance metric</td>
+        <td>0.87</td>
+      </tr>
+      <tr>
+        <td><code>last_trained</code></td>
+        <td>DATE</td>
+        <td>Date model was last trained</td>
+        <td>2025-07-15</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Related Tables:</strong>  
+  <code>models.dataset_id</code> → <code>datasets.dataset_id</code></p>
+</details>
+
+
+<details>
+  <summary><strong>Contributors Table</strong></summary>
+
+  <table class="data-dict">
+    <thead>
+      <tr>
+        <th>Field Name</th>
+        <th>Data Type</th>
+        <th>Description</th>
+        <th>Example / Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>contributor_id</code></td>
+        <td>INT</td>
+        <td>Unique identifier for each contributor</td>
+        <td>1, 2</td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td>VARCHAR</td>
+        <td>Full name of contributor</td>
+        <td>"Jennifer Haliewicz"</td>
+      </tr>
+      <tr>
+        <td><code>affiliation</code></td>
+        <td>VARCHAR</td>
+        <td>Organization or institution</td>
+        <td>"University of Arizona"</td>
+      </tr>
+      <tr>
+        <td><code>role</code></td>
+        <td>VARCHAR</td>
+        <td>Role in project</td>
+        <td>"Data Curation", "Model Training"</td>
+      </tr>
+      <tr>
+        <td><code>email</code></td>
+        <td>VARCHAR</td>
+        <td>Contact email</td>
+        <td>"jennifer@example.com"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Related Tables:</strong>  
+  Link to datasets/models via project mapping table if needed.</p>
+</details>
 
   <!-- Week-by-Week Summary -->
   <details class="card collapsible-section">
