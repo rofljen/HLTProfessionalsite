@@ -1,49 +1,26 @@
-// =============================================================================
-// _sass/_custom.scss (Professional + Flat Design Overhaul)
-// =============================================================================
-
 //── Colors ───────────────────────────────────────────────────────────────────
-$dark-green: #004225;
-$mint-green: #98FF98;
+$primary:    #2E2E2E;  // dark gray (was dark green)
+$accent:     #98FF98;  // mint
 $charcoal:   #333333;
 $light-gray: #f5f5f5;
 $white:      #ffffff;
 
-//── Base ─────────────────────────────────────────────────────────────────────
-html {
-  font-size: 16px;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', 'Lato', sans-serif;
-  background-color: $white;
-  color: $charcoal;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-//── Layout ───────────────────────────────────────────────────────────────────
-#main {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.page__content {
-  max-width: 800px;
-}
-
 //── Sidebar ──────────────────────────────────────────────────────────────────
 .sidebar {
-  background: $dark-green;
+  background: $primary;
   color: $white;
   padding: 2rem 1.5rem;
+
+  img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 1rem;
+  }
+
   a {
-    color: $mint-green;
+    color: $accent;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -53,48 +30,14 @@ body {
 
 //── Headings ─────────────────────────────────────────────────────────────────
 h1, h2, h3, h4 {
-  color: $dark-green;
+  color: $primary;
   font-weight: 700;
   margin-top: 1.2em;
 }
-
-//── Links ────────────────────────────────────────────────────────────────────
-a {
-  color: $dark-green;
-  &:hover {
-    color: $mint-green;
-  }
-}
-
-//── Buttons ──────────────────────────────────────────────────────────────────
-button, .btn {
-  background-color: $dark-green;
-  color: $white;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 0; // square edges
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
-button:hover, .btn:hover {
-  background-color: $mint-green;
-  color: $dark-green;
-}
-
-//── Cards / Project Blocks ───────────────────────────────────────────────────
-.card, .project {
-  background: $white;
-  border: 1px solid $light-gray;
-  padding: 1.2rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0; // no rounding
-  box-shadow: none; // flat design
-}
-
-.card-title, .project-title {
-  color: $dark-green;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+.sidebar img {
+  max-width: 150px;   // keeps it small
+  height: auto;
+  border-radius: 50%; // optional: circle crop (remove if you prefer square)
+  display: block;
+  margin: 0 auto 1rem; // center with space below
 }
