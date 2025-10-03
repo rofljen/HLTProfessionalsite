@@ -1,615 +1,100 @@
 // =============================================================================
-// _sass/_custom.scss (Enhanced with Improved Spacing & Polish)
+// _sass/_custom.scss (Professional + Flat Design Overhaul)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
-$mint-bg:     #e8f1e8;
-$teal-accent: #a7d0bf;
-$cool-blue:   #9bc5d7;
-$dark-green:  #4a8d7c;
-$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-$transition-speed: 0.25s;
+$dark-green: #004225;
+$mint-green: #98FF98;
+$charcoal:   #333333;
+$light-gray: #f5f5f5;
+$white:      #ffffff;
 
-//── Base ──────────────────────────────────────────────────────────────────────
+//── Base ─────────────────────────────────────────────────────────────────────
 html {
-  font-size: 16px; // Slightly increased from 15px for better readability
+  font-size: 16px;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
-  background-color: $mint-bg;
-  color: #333;
-  line-height: 1.65; // Improved line height for better readability
+  font-family: 'Inter', 'Lato', sans-serif;
+  background-color: $white;
+  color: $charcoal;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-//── Main Layout ──────────────────────────────────────────────────────────────
+//── Layout ───────────────────────────────────────────────────────────────────
 #main {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 5rem; // Increased from 4rem for better spacing
-  max-width: 1400px;
-  margin: 3rem auto; // Increased from 2rem for better vertical spacing
-  padding: 0 2.5rem; // Increased from 2rem for better horizontal margins
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem;
 }
 
-.sidebar {
-  flex: 0 0 250px; // Increased from 225px for better proportions
-  margin-left: 0;
-  position: sticky; // Make sidebar sticky for better UX
-  top: 2rem;
-}
-
-.page {
-  flex: 1 1 auto;
-  max-width: 900px;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.page__inner-wrap,
 .page__content {
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
+  max-width: 800px;
 }
 
-//── Sidebar Bio ──────────────────────────────────────────────────────────────
-.sidebar-bio {
-  text-align: left;
+//── Sidebar ──────────────────────────────────────────────────────────────────
+.sidebar {
+  background: $dark-green;
+  color: $white;
+  padding: 2rem 1.5rem;
+  a {
+    color: $mint-green;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
-.sidebar-bio__img {
-  width: 170px; // Increased from 160px
-  height: 170px; // Increased from 160px
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 1.5rem; // Increased from 1rem
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15); // Enhanced shadow
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border: 3px solid white; // Added white border for polish
-  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
-}
-
-.sidebar-bio__img:hover {
-  transform: scale(1.03); // Subtle zoom on hover
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-.sidebar-bio__name {
-  font-size: 1.6rem; // Increased from 1.5rem
-  font-weight: 700;
-  margin-top: 1.25rem; // Increased from 1rem
-  margin-bottom: 1rem;
-  text-align: center;
-  color: $dark-green;
-}
-
-.sidebar-bio__desc {
-  font-size: 1rem;
-  margin: 1.5rem 0; // Increased from 1rem
-  line-height: 1.7; // Improved line height
-  background: white; // Card-style background
-  padding: 1.25rem;
-  border-radius: 8px;
-  box-shadow: $card-shadow;
-  border-left: 3px solid $teal-accent;
-}
-
-.sidebar-bio__links {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0 0 0; // Increased from 1rem
-}
-
-.sidebar-bio__links li {
-  margin: 0.75rem 0; // Increased from 0.5rem
-}
-
-.sidebar-bio__links a {
-  color: $dark-green;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.5rem 0.75rem;
-  display: block;
-  border-radius: 4px;
-  transition: all $transition-speed ease;
-}
-
-.sidebar-bio__links a:hover {
-  color: $dark-green;
-  background-color: rgba($teal-accent, 0.15);
-  transform: translateX(3px);
-  text-decoration: none;
-}
-
-//── Navigation Bar ───────────────────────────────────────────────────────────
-#site-nav {
-  max-width: 550px; // Increased from 500px
-  margin: 2.5rem auto; // Increased from 2rem
-  padding: 0.75rem 1.25rem; // Adjusted padding
-  background: #fff;
-  border-radius: 2rem; // Increased from 0.75rem for pill style
-  box-shadow: $card-shadow;
-}
-
-.nav-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center; // Changed to center
-}
-
-.nav-brand a {
-  font-weight: 700;
-  font-size: 1.3rem; // Increased from 1.2rem
-  color: $dark-green;
-  text-decoration: none;
-  transition: color $transition-speed ease;
-}
-
-.nav-brand a:hover {
-  color: $teal-accent;
-}
-
-.nav-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 0.5rem; // Decreased from 2rem for better spacing
-}
-
-.nav-menu li a {
-  text-decoration: none;
-  color: $dark-green;
-  font-weight: 600;
-  transition: all $transition-speed ease;
-  padding: 0.6rem 1.25rem; // Added padding
-  border-radius: 1.5rem; // Rounded corners for menu items
-  display: block;
-}
-
-.nav-menu li a:hover {
-  color: darken($dark-green, 10%);
-  background-color: rgba($teal-accent, 0.15);
-}
-
-.nav-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: $dark-green;
-  cursor: pointer;
-}
-
-//── Page Title ───────────────────────────────────────────────────────────────
-.page__title {
-  margin-top: 1.5rem; // Increased from 1rem
-  margin-bottom: 2.5rem; // Increased from 2rem
-  text-align: center;
-  font-size: 2.5rem;
+//── Headings ─────────────────────────────────────────────────────────────────
+h1, h2, h3, h4 {
   color: $dark-green;
   font-weight: 700;
+  margin-top: 1.2em;
 }
 
-//── Cards ────────────────────────────────────────────────────────────────────
-.card {
-  max-width: 700px; // Increased from 630px
-  margin: 2.25rem 0; // Increased from 2rem
-  background: white; // Changed from lighten($mint-bg, 8%) to white
-  border-radius: 0.75rem; // Increased from 0.5rem
-  padding: 2rem; // Increased from 1.5rem
-  box-shadow: $card-shadow; // Enhanced shadow
-  width: 100%;
-  box-sizing: border-box;
-  border-left: 3px solid $teal-accent; // Added accent border
-  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-//── Section Headings ───────────────────────────────────────────────────────
-h2, .section-title {
-  color: $dark-green;
-  font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.75rem;
-  position: relative;
-  padding-bottom: 0.75rem;
-}
-
-h2::after, .section-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background-color: $teal-accent;
-}
-
-//── Content Formatting ───────────────────────────────────────────────────────
-.page__content p {
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
-
-//── CV/Profile Specific Styles ───────────────────────────────────────────────
-.profile-info {
-  background: white;
-  padding: 1.75rem;
-  border-radius: 0.75rem;
-  box-shadow: $card-shadow;
-  margin-bottom: 2rem;
-  border-left: 3px solid $teal-accent;
-}
-
-.profile-location {
-  color: #666;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-
-.education-item {
-  background: white;
-  padding: 1.75rem;
-  border-radius: 0.75rem;
-  box-shadow: $card-shadow;
-  margin-bottom: 1.75rem;
-  border-left: 3px solid $teal-accent;
-  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
-}
-
-.education-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-.education-title {
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
-  color: $dark-green;
-}
-
-.education-institution {
-  color: #666;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-//── Links Styling ──────────────────────────────────────────────────────────
+//── Links ────────────────────────────────────────────────────────────────────
 a {
   color: $dark-green;
-  text-decoration: none;
-  transition: color $transition-speed ease;
-}
-
-a:hover {
-  color: $teal-accent;
-}
-
-//── Mobile Responsive ────────────────────────────────────────────────────────
-@media (max-width: 850px) {
-  
-  #main {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 0 1.5rem; // Increased from 1rem
-    margin: 2rem auto;
-  }
-
-  .sidebar {
-    flex: 0 0 auto;
-    margin: 0 auto;
-    text-align: center;
-    position: static; // Remove sticky positioning on mobile
-  }
-
-  .sidebar-bio__img {
-    width: 120px; // Increased from 100px
-    height: 120px; // Increased from 100px
-    margin: 0 auto 1rem; // Increased bottom margin
-  }
-
-  .sidebar-bio__name {
-    font-size: 1.4rem; // Increased from 1.25rem
-    margin-bottom: 1.25rem; // Increased from 1rem
-    text-align: center;
-  }
-
-  /* Show compact bio description on mobile */
-  .sidebar-bio__desc {
-    display: block;
-    font-size: 0.95rem;
-    margin: 1rem 0;
-    max-height: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 1rem;
-  }
-
-  .sidebar-bio__links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .sidebar-bio__links li {
-    margin: 0;
-  }
-
-  .sidebar-bio__links a {
-    padding: 0.5rem;
-    min-width: 40px;
-    text-align: center;
-  }
-
-  .page {
-    max-width: 100%;
-  }
-
-  .card {
-    max-width: 100%;
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-  }
-
-  .education-item {
-    padding: 1.5rem;
-  }
-
-  #site-nav {
-    max-width: 100%;
-    margin: 1.5rem auto;
-  }
-  
-  .nav-wrapper {
-    flex-wrap: wrap;
-    justify-content: space-between; // Revert to space-between on mobile
-  }
-  
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem; // Decreased from 1rem
-    margin-top: 1rem;
-    width: 100%;
-  }
-
-  .nav-menu.show {
-    display: flex;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-
-  .page__title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  h2, .section-title {
-    font-size: 1.5rem;
+  &:hover {
+    color: $mint-green;
   }
 }
 
-@media (max-width: 480px) {
-  .sidebar-bio__img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .sidebar-bio__name {
-    font-size: 1.3rem;
-  }
-
-  .card, .education-item, .profile-info {
-    padding: 1.25rem;
-  }
-
-  .page__title {
-    font-size: 1.8rem;
-  }
-
-  #main {
-    padding: 0 1rem;
-    margin: 1.5rem auto;
-  }
-}
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  margin-top: 2rem;
+//── Buttons ──────────────────────────────────────────────────────────────────
+button, .btn {
+  background-color: $dark-green;
+  color: $white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0; // square edges
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-.portfolio-card {
-  background: white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: $card-shadow;
-  border-left: 3px solid $teal-accent;
-  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.portfolio-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-.portfolio-card h2 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
+button:hover, .btn:hover {
+  background-color: $mint-green;
   color: $dark-green;
 }
 
-.portfolio-card p {
-  flex-grow: 1;
-  margin-bottom: 1rem;
-  color: #555;
+//── Cards / Project Blocks ───────────────────────────────────────────────────
+.card, .project {
+  background: $white;
+  border: 1px solid $light-gray;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0; // no rounding
+  box-shadow: none; // flat design
 }
 
-.portfolio-card .btn {
-  align-self: flex-start;
-  padding: 0.5rem 1rem;
-  background-color: $dark-green;
-  color: white;
-  border-radius: 4px;
-  text-decoration: none;
+.card-title, .project-title {
+  color: $dark-green;
   font-weight: 600;
-  transition: background-color $transition-speed ease;
+  margin-bottom: 0.5rem;
 }
-
-.portfolio-card .btn:hover {
-  background-color: darken($dark-green, 10%);
-}
-.consulting-layout {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.75;
-}
-
-.consulting-layout .card,
-.consulting-layout .feature__item {
-  background: #f9f9f9;
-  padding: 1.5rem 2rem;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  margin-bottom: 2rem;
-}
-
-.consulting-layout h1, 
-.consulting-layout h2 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.consulting-layout table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-
-.consulting-layout table th,
-.consulting-layout table td {
-  border: 1px solid #ccc;
-  padding: 0.75rem;
-  text-align: left;
-}
-/* ── Portfolio Data Dictionary Tables ─────────────────────────── */
-.card-content table,
-.card table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.25rem 0;
-  font-size: 0.95rem;
-  table-layout: auto; // let columns size naturally
-}
-
-.card-content th,
-.card-content td,
-.card th,
-.card td {
-  border: 1px solid #ccc;   // vertical + horizontal lines
-  padding: 0.6rem 0.9rem;
-  text-align: left;
-  vertical-align: top;
-}
-
-.card-content th,
-.card th {
-  background-color: $teal-accent;
-  color: #fff;
-  font-weight: 600;
-}
-
-.card-content td code,
-.card td code {
-  font-family: monospace;
-  background: #f8f8f8;
-  padding: 0.15rem 0.35rem;
-  border-radius: 3px;
-}
-/* ===== Data dictionary / portfolio table overrides ===== */
-/* Add .data-dict to cards that contain data-dictionary tables */
-
-.card.data-dict {
-  max-width: none;           /* allow full width inside the page column */
-  overflow-x: auto;         /* prevent overflow on very small screens */
-  padding: 1.25rem;
-}
-
-/* Highly-specific selectors to override theme table rules */
-.card.data-dict table,
-.card.collapsible-section.data-dict table,
-.card-content table.data-dict {
-  width: 100% !important;
-  border-collapse: collapse !important;
-  table-layout: fixed !important;   /* respect column widths from <colgroup> */
-  margin: 1rem 0;
-  font-size: 0.96rem;
-}
-
-/* grid lines and spacing */
-.card.data-dict th,
-.card.data-dict td {
-  border: 1px solid #d6dbd8 !important;   /* subtle, visible lines */
-  padding: 0.6rem 0.9rem !important;
-  text-align: left;
-  vertical-align: top;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-
-/* header styling */
-.card.data-dict th {
-  background-color: $teal-accent;
-  color: #fff;
-  font-weight: 700;
-}
-
-/* monospace for field names */
-.card.data-dict td code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
-  background: #f8f8f7;
-  padding: 0.12rem 0.3rem;
-  border-radius: 3px;
-}
-
-/* explicit column width helpers (adjust percentages as desired) */
-.card.data-dict col.col-field  { width: 22%; }
-.card.data-dict col.col-type   { width: 14%; }
-.card.data-dict col.col-desc   { width: 44%; }
-.card.data-dict col.col-ex     { width: 20%; }
-
-/* mobile adjustments */
-@media (max-width: 700px) {
-  .card.data-dict table { table-layout: auto !important; } /* let it flow on small screens */
-}
-
