@@ -1,5 +1,6 @@
 /* ===============================
-   Custom Jekyll Minimal Mistakes Overrides
+   JenniferHaliewicz.com custom theme
+   Based on Minimal Mistakes overrides
    =============================== */
 
 /* Layout wrapper */
@@ -7,66 +8,103 @@
   display: flex;
   flex-direction: row; /* sidebar left, content right */
   align-items: flex-start;
-  gap: 2rem; /* spacing between sidebar and content */
+  gap: 2rem;
 }
 
 /* Sidebar/Profile column */
 .sidebar {
-  order: -1;             /* ensures sidebar stays left */
-  flex: 0 0 280px;       /* fixed width */
-  max-width: 280px;
-  margin: 0;             /* remove extra spacing */
+  order: -1;                 /* force sidebar left */
+  flex: 0 0 260px;           /* fixed width */
+  max-width: 260px;
+  margin: 0;
   padding: 0;
+  background: #f9f9f9;       /* muted light gray */
+  border: 1px solid #e2e2e2; /* subtle border */
+  border-radius: 0;          /* square corners */
 }
 
-/* Profile box inside sidebar */
-.sidebar .author__avatar {
-  text-align: center;
-  margin-bottom: 1rem;
+/* Profile content inside sidebar */
+.sidebar .author__avatar img {
+  border-radius: 0;          /* square image crop */
+  max-width: 160px;
+  margin: 1rem auto;
+  display: block;
 }
 .sidebar .author__content {
   text-align: center;
+  padding: 0 1rem;
 }
 .sidebar .author__urls-wrapper {
   text-align: center;
+  padding: 0.5rem 1rem 1rem;
 }
 
 /* Main content area */
 .main {
   flex: 1;
-  max-width: 800px;      /* keeps content narrower */
+  max-width: 800px;
   margin: 0 auto;
 }
 
 /* Navigation bar (masthead) */
 .masthead {
+  background: #ffffff;
   border-bottom: 1px solid #e5e5e5;
   padding: 0.5rem 1rem;
   margin-bottom: 2rem;
 }
+.masthead a {
+  color: #2dbd8e; /* muted mint green */
+  text-decoration: none;
+  margin-right: 1rem;
+}
+.masthead a:hover {
+  text-decoration: underline;
+}
 
-/* Clean headings + links */
+/* Typography */
+body {
+  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
+  background: #ffffff;
+  color: #333333;
+}
 h1, h2, h3, h4 {
   font-weight: 600;
+  color: #222;
 }
 a {
-  color: var(--mint-green, #2dbd8e);
+  color: #2dbd8e; /* mint green */
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
 }
 
+/* Buttons and blocks */
+.btn,
+button,
+input[type="submit"] {
+  background: #2dbd8e;
+  color: #fff;
+  border-radius: 0; /* square corners */
+  border: none;
+}
+.btn:hover,
+button:hover,
+input[type="submit"]:hover {
+  background: #27a37c; /* darker mint */
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .page {
-    flex-direction: column; /* stack vertically */
+    flex-direction: column;
   }
   .sidebar {
     order: 0;
     flex: none;
     max-width: 100%;
-    margin: 0 auto 1rem auto; /* center profile */
+    margin: 0 auto 1rem auto;
   }
   .main {
     max-width: 100%;
