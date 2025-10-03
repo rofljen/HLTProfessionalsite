@@ -1,43 +1,75 @@
-//── Colors ───────────────────────────────────────────────────────────────────
-$primary:    #2E2E2E;  // dark gray (was dark green)
-$accent:     #98FF98;  // mint
-$charcoal:   #333333;
-$light-gray: #f5f5f5;
-$white:      #ffffff;
+/* ===============================
+   Custom Jekyll Minimal Mistakes Overrides
+   =============================== */
 
-//── Sidebar ──────────────────────────────────────────────────────────────────
+/* Layout wrapper */
+.page {
+  display: flex;
+  flex-direction: row; /* sidebar left, content right */
+  align-items: flex-start;
+  gap: 2rem; /* spacing between sidebar and content */
+}
+
+/* Sidebar/Profile column */
 .sidebar {
-  background: $primary;
-  color: $white;
-  padding: 2rem 1.5rem;
-
-  img {
-    max-width: 150px;
-    height: auto;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 1rem;
-  }
-
-  a {
-    color: $accent;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+  order: -1;             /* ensures sidebar stays left */
+  flex: 0 0 280px;       /* fixed width */
+  max-width: 280px;
+  margin: 0;             /* remove extra spacing */
+  padding: 0;
 }
 
-//── Headings ─────────────────────────────────────────────────────────────────
+/* Profile box inside sidebar */
+.sidebar .author__avatar {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.sidebar .author__content {
+  text-align: center;
+}
+.sidebar .author__urls-wrapper {
+  text-align: center;
+}
+
+/* Main content area */
+.main {
+  flex: 1;
+  max-width: 800px;      /* keeps content narrower */
+  margin: 0 auto;
+}
+
+/* Navigation bar (masthead) */
+.masthead {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Clean headings + links */
 h1, h2, h3, h4 {
-  color: $primary;
-  font-weight: 700;
-  margin-top: 1.2em;
+  font-weight: 600;
 }
-.sidebar img {
-  max-width: 150px;   // keeps it small
-  height: auto;
-  border-radius: 50%; // optional: circle crop (remove if you prefer square)
-  display: block;
-  margin: 0 auto 1rem; // center with space below
+a {
+  color: var(--mint-green, #2dbd8e);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .page {
+    flex-direction: column; /* stack vertically */
+  }
+  .sidebar {
+    order: 0;
+    flex: none;
+    max-width: 100%;
+    margin: 0 auto 1rem auto; /* center profile */
+  }
+  .main {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
 }
