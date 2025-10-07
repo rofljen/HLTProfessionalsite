@@ -1,28 +1,25 @@
 /* ==========================================================================
-   Custom Styles – Professional Muted Teal Theme
+   Custom Styles – Muted Teal Refresh (Square Blocks, No Layout Changes)
    ========================================================================== */
 
+/* === Color Palette === */
 :root {
   --muted-teal: #3E6E68;
   --muted-teal-dark: #2F5D57;
-  --text-dark: #2F3E46;
+  --neutral-bg: #F8F9F9;       /* slightly lighter than default */
+  --neutral-card: #FFFFFF;
+  --neutral-border: #DDDDDD;
+  --text-dark: #2E2E2E;
   --text-light: #FAFAFA;
-  --bg-light: #F7F7F7;
-  --bg-card: #FAFAFA;
-  --border-gray: #DADADA;
-
-  --font-family-base: "Inter", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* Global Layout & Typography */
+/* === Global Styles === */
 body {
-  background-color: var(--bg-light);
+  background-color: var(--neutral-bg);
   color: var(--text-dark);
-  font-family: var(--font-family-base);
-  line-height: 1.6;
 }
 
-/* Links */
+/* === Links === */
 a {
   color: var(--muted-teal);
   text-decoration: none;
@@ -35,33 +32,12 @@ a:focus {
   text-decoration: underline;
 }
 
-/* Headings */
+/* === Headings === */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-dark);
-  font-weight: 600;
 }
 
-/* Cards / Blocks / Sections */
-.page__content,
-.page__inner-wrap,
-.archive__item,
-.grid__item,
-.card,
-.feature__item {
-  background: var(--bg-card);
-  border: 1px solid var(--border-gray);
-  border-radius: 0; /* Square edges */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover,
-.archive__item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
-}
-
-/* Buttons */
+/* === Buttons === */
 .btn,
 .button,
 input[type="submit"],
@@ -69,11 +45,7 @@ button {
   background-color: var(--muted-teal);
   color: var(--text-light);
   border: none;
-  border-radius: 0;
-  padding: 0.6rem 1.2rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  border-radius: 0; /* Square edges */
   transition: background-color 0.2s ease-in-out;
 }
 
@@ -82,23 +54,32 @@ button {
 input[type="submit"]:hover,
 button:hover {
   background-color: var(--muted-teal-dark);
-}
-
-/* Sidebar and Footer */
-.sidebar {
-  background: var(--bg-card);
-  border-right: 1px solid var(--border-gray);
-}
-
-.footer {
-  background-color: var(--muted-teal);
   color: var(--text-light);
-  border-top: 1px solid var(--border-gray);
 }
 
-/* Navigation */
+/* === Cards, Blocks, and Sections === */
+.card,
+.page__content,
+.page__inner-wrap,
+.archive__item,
+.grid__item,
+.feature__item {
+  background: var(--neutral-card);
+  border: 1px solid var(--neutral-border);
+  border-radius: 0; /* Square edges */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+/* === Sidebar === */
+.sidebar {
+  background: var(--neutral-card);
+  border-right: 1px solid var(--neutral-border);
+}
+
+/* === Navigation (Greedy Nav / Top Bar) === */
 .greedy-nav {
   background-color: var(--muted-teal);
+  border-bottom: 1px solid var(--muted-teal-dark);
 }
 
 .greedy-nav a {
@@ -106,13 +87,27 @@ button:hover {
 }
 
 .greedy-nav a:hover {
-  color: var(--bg-light);
+  color: var(--neutral-bg);
 }
 
-/* Responsive Adjustments */
+/* === Footer === */
+.footer {
+  background-color: var(--muted-teal);
+  color: var(--text-light);
+  border-top: 1px solid var(--muted-teal-dark);
+}
+
+/* === Images and Media === */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0; /* Square images */
+}
+
+/* === Responsive (No Layout Changes) === */
 @media (max-width: 768px) {
   .sidebar {
     border-right: none;
-    border-bottom: 1px solid var(--border-gray);
+    border-bottom: 1px solid var(--neutral-border);
   }
 }
