@@ -1,153 +1,118 @@
-/* ===============================
-   JenniferHaliewicz.com custom theme
-   Based on Minimal Mistakes overrides
-   =============================== */
+/* ==========================================================================
+   Custom Styles – Professional Muted Teal Theme
+   ========================================================================== */
 
-/* Layout wrapper */
-.page {
-  display: flex;
-  flex-direction: row; /* sidebar left, content right */
-  align-items: flex-start;
-  gap: 2rem;
-}
+:root {
+  --muted-teal: #3E6E68;
+  --muted-teal-dark: #2F5D57;
+  --text-dark: #2F3E46;
+  --text-light: #FAFAFA;
+  --bg-light: #F7F7F7;
+  --bg-card: #FAFAFA;
+  --border-gray: #DADADA;
 
-/* Sidebar/Profile column */
-.sidebar {
-  order: -1;                 /* force sidebar left */
-  flex: 0 0 260px;           /* fixed width */
-  max-width: 260px;
-  margin: 0;
-  padding: 0;
-  background: #f9f9f9;       /* muted light gray */
-  border: 1px solid #e2e2e2;
-  border-radius: 0;          /* square corners */
+  --font-family-base: "Inter", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* Profile content inside sidebar */
-.sidebar .author__avatar img {
-  border-radius: 0;          /* square profile pic */
-  max-width: 160px;
-  margin: 1rem auto;
-  display: block;
-}
-.sidebar .author__content {
-  text-align: center;
-  padding: 0 1rem;
-}
-.sidebar .author__urls-wrapper {
-  text-align: center;
-  padding: 0.5rem 1rem 1rem;
-}
-
-/* Main content area */
-.main {
-  flex: 1;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Navigation bar (masthead) */
-.masthead {
-  background: #ffffff;
-  border-bottom: 1px solid #e5e5e5;
-  padding: 0.5rem 1rem;
-  margin-bottom: 2rem;
-}
-.masthead a {
-  color: #2dbd8e; /* mint green */
-  text-decoration: none;
-  margin-right: 1rem;
-}
-.masthead a:hover {
-  text-decoration: underline;
-}
-
-/* Typography */
+/* Global Layout & Typography */
 body {
-  font-family: "Inter", "Roboto", "Helvetica Neue", sans-serif;
-  background: #ffffff;
-  color: #333333;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-family: var(--font-family-base);
+  line-height: 1.6;
 }
-h1, h2, h3, h4 {
-  font-weight: 600;
-  color: #222;
-}
+
+/* Links */
 a {
-  color: #2dbd8e;
+  color: var(--muted-teal);
   text-decoration: none;
+  transition: color 0.2s ease-in-out;
 }
-a:hover {
+
+a:hover,
+a:focus {
+  color: var(--muted-teal-dark);
   text-decoration: underline;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Cards / Blocks / Sections */
+.page__content,
+.page__inner-wrap,
+.archive__item,
+.grid__item,
+.card,
+.feature__item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-gray);
+  border-radius: 0; /* Square edges */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover,
+.archive__item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
 }
 
 /* Buttons */
 .btn,
-button,
-input[type="submit"] {
-  background: #2dbd8e;
-  color: #fff;
-  border-radius: 0;
+.button,
+input[type="submit"],
+button {
+  background-color: var(--muted-teal);
+  color: var(--text-light);
   border: none;
+  border-radius: 0;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease-in-out;
 }
+
 .btn:hover,
-button:hover,
-input[type="submit"]:hover {
-  background: #27a37c;
+.button:hover,
+input[type="submit"]:hover,
+button:hover {
+  background-color: var(--muted-teal-dark);
 }
 
-/* ====== Portfolio & Publications styling ====== */
-
-/* Project/portfolio cards */
-.project,
-.archive__item,
-.card {
-  background: #f9f9f9;
-  border: 1px solid #e2e2e2;
-  border-radius: 0;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  transition: box-shadow 0.2s ease;
-}
-.project:hover,
-.archive__item:hover,
-.card:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+/* Sidebar and Footer */
+.sidebar {
+  background: var(--bg-card);
+  border-right: 1px solid var(--border-gray);
 }
 
-/* Portfolio grid */
-.archive {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+.footer {
+  background-color: var(--muted-teal);
+  color: var(--text-light);
+  border-top: 1px solid var(--border-gray);
 }
 
-/* Publication list */
-.pub-list li {
-  background: #f9f9f9;
-  border: 1px solid #e2e2e2;
-  border-radius: 0;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  list-style: none;
-}
-.pub-list li a {
-  color: #2dbd8e;
-  font-weight: 500;
+/* Navigation */
+.greedy-nav {
+  background-color: var(--muted-teal);
 }
 
-/* Mobile adjustments */
+.greedy-nav a {
+  color: var(--text-light);
+}
+
+.greedy-nav a:hover {
+  color: var(--bg-light);
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .page {
-    flex-direction: column;
-  }
   .sidebar {
-    order: 0;
-    flex: none;
-    max-width: 100%;
-    margin: 0 auto 1rem auto;
-  }
-  .main {
-    max-width: 100%;
-    padding: 0 1rem;
+    border-right: none;
+    border-bottom: 1px solid var(--border-gray);
   }
 }
