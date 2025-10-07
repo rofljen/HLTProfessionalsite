@@ -1,113 +1,259 @@
-/* ==========================================================================
-   Custom Styles – Muted Teal Refresh (Square Blocks, No Layout Changes)
-   ========================================================================== */
+// =============================================================================
+// _sass/_custom.scss (Muted Teal Theme – Same Layout, Square Corners)
+// =============================================================================
 
-/* === Color Palette === */
-:root {
-  --muted-teal: #3E6E68;
-  --muted-teal-dark: #2F5D57;
-  --neutral-bg: #F8F9F9;       /* slightly lighter than default */
-  --neutral-card: #FFFFFF;
-  --neutral-border: #DDDDDD;
-  --text-dark: #2E2E2E;
-  --text-light: #FAFAFA;
+//── Colors ───────────────────────────────────────────────────────────────────
+$bg-light:       #f7f8f7;  // slightly neutral light background
+$teal-accent:    #3E6E68;  // muted teal
+$teal-hover:     #2F5D57;  // darker hover teal
+$gray-border:    #d6dbd8;  // subtle gray border
+$card-shadow:    0 4px 12px rgba(0, 0, 0, 0.08);
+$transition-speed: 0.25s;
+
+//── Base ──────────────────────────────────────────────────────────────────────
+html {
+  font-size: 16px;
 }
 
-/* === Global Styles === */
 body {
-  background-color: var(--neutral-bg);
-  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: $bg-light;
+  color: #2e2e2e;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* === Links === */
-a {
-  color: var(--muted-teal);
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
+//── Main Layout ──────────────────────────────────────────────────────────────
+#main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5rem;
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 0 2.5rem;
 }
 
-a:hover,
-a:focus {
-  color: var(--muted-teal-dark);
-  text-decoration: underline;
-}
-
-/* === Headings === */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-dark);
-}
-
-/* === Buttons === */
-.btn,
-.button,
-input[type="submit"],
-button {
-  background-color: var(--muted-teal);
-  color: var(--text-light);
-  border: none;
-  border-radius: 0; /* Square edges */
-  transition: background-color 0.2s ease-in-out;
-}
-
-.btn:hover,
-.button:hover,
-input[type="submit"]:hover,
-button:hover {
-  background-color: var(--muted-teal-dark);
-  color: var(--text-light);
-}
-
-/* === Cards, Blocks, and Sections === */
-.card,
-.page__content,
-.page__inner-wrap,
-.archive__item,
-.grid__item,
-.feature__item {
-  background: var(--neutral-card);
-  border: 1px solid var(--neutral-border);
-  border-radius: 0; /* Square edges */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-}
-
-/* === Sidebar === */
 .sidebar {
-  background: var(--neutral-card);
-  border-right: 1px solid var(--neutral-border);
+  flex: 0 0 250px;
+  margin-left: 0;
+  position: sticky;
+  top: 2rem;
 }
 
-/* === Navigation (Greedy Nav / Top Bar) === */
-.greedy-nav {
-  background-color: var(--muted-teal);
-  border-bottom: 1px solid var(--muted-teal-dark);
+.page {
+  flex: 1 1 auto;
+  max-width: 900px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.greedy-nav a {
-  color: var(--text-light);
-}
-
-.greedy-nav a:hover {
-  color: var(--neutral-bg);
-}
-
-/* === Footer === */
-.footer {
-  background-color: var(--muted-teal);
-  color: var(--text-light);
-  border-top: 1px solid var(--muted-teal-dark);
-}
-
-/* === Images and Media === */
-img {
+.page__inner-wrap,
+.page__content {
+  width: 100%;
   max-width: 100%;
-  height: auto;
-  border-radius: 0; /* Square images */
+  padding: 0;
+  margin: 0;
 }
 
-/* === Responsive (No Layout Changes) === */
-@media (max-width: 768px) {
-  .sidebar {
-    border-right: none;
-    border-bottom: 1px solid var(--neutral-border);
-  }
+//── Sidebar Bio ──────────────────────────────────────────────────────────────
+.sidebar-bio {
+  text-align: left;
+}
+
+.sidebar-bio__img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 0; // square
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid white;
+  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+}
+
+.sidebar-bio__img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.sidebar-bio__name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: $teal-accent;
+}
+
+.sidebar-bio__desc {
+  font-size: 1rem;
+  margin: 1.5rem 0;
+  line-height: 1.7;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 0;
+  box-shadow: $card-shadow;
+  border-left: 3px solid $teal-accent;
+}
+
+.sidebar-bio__links {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+}
+
+.sidebar-bio__links li {
+  margin: 0.75rem 0;
+}
+
+.sidebar-bio__links a {
+  color: $teal-accent;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  display: block;
+  border-radius: 0;
+  transition: all $transition-speed ease;
+}
+
+.sidebar-bio__links a:hover {
+  color: $teal-hover;
+  background-color: rgba($teal-accent, 0.1);
+  transform: translateX(3px);
+  text-decoration: none;
+}
+
+//── Navigation Bar ───────────────────────────────────────────────────────────
+#site-nav {
+  max-width: 550px;
+  margin: 2.5rem auto;
+  padding: 0.75rem 1.25rem;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: $card-shadow;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-brand a {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: $teal-accent;
+  text-decoration: none;
+  transition: color $transition-speed ease;
+}
+
+.nav-brand a:hover {
+  color: $teal-hover;
+}
+
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: $teal-accent;
+  font-weight: 600;
+  transition: all $transition-speed ease;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0;
+  display: block;
+}
+
+.nav-menu li a:hover {
+  color: $teal-hover;
+  background-color: rgba($teal-accent, 0.1);
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: $teal-accent;
+  cursor: pointer;
+}
+
+//── Page Title ───────────────────────────────────────────────────────────────
+.page__title {
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-size: 2.5rem;
+  color: $teal-accent;
+  font-weight: 700;
+}
+
+//── Cards ────────────────────────────────────────────────────────────────────
+.card {
+  max-width: 700px;
+  margin: 2.25rem 0;
+  background: white;
+  border-radius: 0;
+  padding: 2rem;
+  box-shadow: $card-shadow;
+  width: 100%;
+  box-sizing: border-box;
+  border-left: 3px solid $teal-accent;
+  transition: transform $transition-speed ease, box-shadow $transition-speed ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+//── Section Headings ─────────────────────────────────────────────────────────
+h2, .section-title {
+  color: $teal-accent;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+h2::after, .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: $teal-accent;
+}
+
+//── Links ────────────────────────────────────────────────────────────────────
+a {
+  color: $teal-accent;
+  text-decoration: none;
+  transition: color $transition-speed ease;
+}
+
+a:hover {
+  color: $teal-hover;
+}
+
+//── Utility: force square edges globally ─────────────────────────────────────
+* {
+  border-radius: 0 !important;
 }
