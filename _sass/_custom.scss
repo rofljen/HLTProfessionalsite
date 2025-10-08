@@ -135,7 +135,9 @@ body {
 //── Navigation Bar ───────────────────────────────────────────────────────────
 #site-nav {
   max-width: 700px;
-  margin: 2.25rem 0 2.25rem auto;
+  margin: 2.5rem auto;
+  position: relative;
+  left: 10px;  
   padding: 0.75rem 1.25rem;
   background: #fff;
   border-radius: 0;
