@@ -134,18 +134,18 @@ body {
 
 //── Navigation Bar ───────────────────────────────────────────────────────────
 #site-nav {
-  max-width: 550px;
-  margin: 2.5rem auto;
-  padding: 0.75rem 1.25rem;
+  max-width: 100%;       // full width
+  margin: 0;             // remove centering
+  padding: 0.75rem 2rem; // optional: adjust horizontal padding
   background: #fff;
   border-radius: 0;
   box-shadow: $card-shadow;
 }
-
 .nav-wrapper {
   display: flex;
+  justify-content: space-between; // brand on left, links on right
   align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;               // optional for smaller screens
 }
 
 .nav-brand a {
@@ -165,7 +165,8 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: row; // ensures horizontal layout
+  gap: 1rem;           // optional: slightly larger spacing
 }
 
 .nav-menu li a {
