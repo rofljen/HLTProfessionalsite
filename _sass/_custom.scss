@@ -1,18 +1,19 @@
 // =============================================================================
-// _sass/_custom.scss (Muted Teal Theme – Same Layout, Square Corners)
+// _sass/_custom.scss (Muted Teal Theme – Square Corners, Greedy Nav)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
 $bg-light:       #f7f8f7;  // slightly neutral light background
 $teal-accent:    #3E6E68;  // muted teal
 $teal-hover:     #2F5D57;  // darker hover teal
+$dark-green:     #4a8d7c;
 $gray-border:    #d6dbd8;  // subtle gray border
 $card-shadow:    0 4px 12px rgba(0, 0, 0, 0.08);
 $transition-speed: 0.25s;
 
 //── Base ──────────────────────────────────────────────────────────────────────
 html {
-  font-size: 13px;
+  font-size: 14px; // root font size (adjusted for readability)
 }
 
 body {
@@ -86,7 +87,7 @@ body {
 }
 
 .sidebar-bio__name {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin-top: 1.25rem;
   margin-bottom: 1rem;
@@ -95,7 +96,7 @@ body {
 }
 
 .sidebar-bio__desc {
-  font-size: 1rem;
+  font-size: 0.95rem;
   margin: 1.5rem 0;
   line-height: 1.7;
   background: white;
@@ -132,62 +133,35 @@ body {
   text-decoration: none;
 }
 
-//── Navigation Bar ───────────────────────────────────────────────────────────
-.greedy-nav {
-  background: #fff;
-  box-shadow: $card-shadow;
-  border-radius: 0;
-  padding: 0.75rem 1.25rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.visible-links {
-  list-style: none;
-  display: flex;
-  gap: 0.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.masthead__menu-item a {
-  text-decoration: none;
-  color: $teal-accent;
-  font-weight: 600;
-  padding: 0.6rem 1.25rem;
-  border-radius: 0;
-  transition: all $transition-speed ease;
-  display: block;
-  font-size: 0.9rem;
-}
-
-/* Hover style */
-.masthead__menu-item a:hover {
-  color: $teal-hover;
-  background-color: rgba($teal-accent, 0.1);
-  transform: translateX(3px);
-}
-
-/* Active/current page style */
-.masthead__menu-item.active a {
-  font-weight: 700;
-  color: $teal-hover;
-  background-color: rgba($teal-accent, 0.12);
-  border-left: 3px solid $teal-accent;
-  transform: translateX(-6px);
-  padding-left: 1.75rem;
-}
-
-
 //── Page Title ───────────────────────────────────────────────────────────────
 .page__title {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: $teal-accent;
   font-weight: 700;
+}
+
+//── Section Headings ─────────────────────────────────────────────────────────
+h2, .section-title {
+  color: $teal-accent;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+h2::after, .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: $teal-accent;
 }
 
 //── Cards ────────────────────────────────────────────────────────────────────
@@ -209,27 +183,6 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-//── Section Headings ─────────────────────────────────────────────────────────
-h2, .section-title {
-  color: $teal-accent;
-  font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.75rem;
-  position: relative;
-  padding-bottom: 0.75rem;
-}
-
-h2::after, .section-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background-color: $teal-accent;
-}
-
 //── Links ────────────────────────────────────────────────────────────────────
 a {
   color: $teal-accent;
@@ -246,8 +199,7 @@ a:hover {
   border-radius: 0 !important;
 }
 
-/* ─── Nav: Adjust current page name spacing and style ───────────────────────── */
-
+//── Masthead / Greedy Nav ─────────────────────────────────────────────────────
 .nav-wrapper {
   display: flex;
   align-items: center;
@@ -255,13 +207,13 @@ a:hover {
 }
 
 .nav-brand {
-  margin-right: 2rem; /* controls space between page title and nav links */
+  margin-right: 2rem; /* space between brand/title and nav links */
   font-weight: 600;
-  font-size: 1rem; /* reduce if 16px felt too big */
+  font-size: 1rem;
 }
 
 .nav-brand a {
-  color: var(--dark-green);
+  color: $dark-green;
   text-decoration: none;
 }
 
@@ -269,9 +221,49 @@ a:hover {
   text-decoration: underline;
 }
 
-/* optional styling for active/current page title */
-.nav-brand a {
-  border-left: 3px solid var(--dark-green);
-  padding-left: 0.5rem;
+/* Visible links */
+.visible-links {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
 }
 
+.masthead__menu-item a {
+  text-decoration: none;
+  color: $teal-accent;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0;
+  display: block;
+  font-size: 0.9rem;
+  transition: all $transition-speed ease;
+}
+
+/* Hover for non-active links */
+.masthead__menu-item a:hover {
+  color: $teal-hover;
+  background-color: rgba($teal-accent, 0.1);
+  transform: translateX(3px);
+}
+
+/* Active/current page styling */
+.masthead__menu-item.active a {
+  font-weight: 700;
+  color: $teal-hover;
+  background-color: rgba($teal-accent, 0.12);
+  border-left: 3px solid $teal-accent;
+  transform: translateX(-6px);
+  padding-left: 1.75rem;
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: $teal-accent;
+  cursor: pointer;
+}
