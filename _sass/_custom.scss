@@ -137,7 +137,7 @@ body {
   max-width: 700px;
   margin: 2.5rem auto;
   position: relative;
-  left: 90px;  
+  left: 90px;
   padding: 0.75rem 1.25rem;
   background: #fff;
   border-radius: 0;
@@ -178,13 +178,29 @@ body {
   padding: 0.6rem 1.25rem;
   border-radius: 0;
   display: block;
+  font-size: 0.9rem; // slightly smaller text for nav
 }
 
-.nav-menu li a:hover {
+/* Hover only applies to non-active links */
+.nav-menu li a:hover:not(.current):not(.active) {
   color: $teal-hover;
   background-color: rgba($teal-accent, 0.1);
+  transform: translateX(3px);
 }
 
+/* Active/current page link */
+.nav-menu li a.current,
+.nav-menu li a.active {
+  font-weight: 700;
+  color: $teal-hover;
+  background-color: rgba($teal-accent, 0.1);
+  border-left: 3px solid $teal-accent;
+  transform: translateX(-6px);
+  padding-left: 1.75rem;
+  transition: all $transition-speed ease;
+}
+
+/* Mobile nav toggle (if used) */
 .nav-toggle {
   display: none;
   font-size: 2rem;
@@ -193,6 +209,7 @@ body {
   color: $teal-accent;
   cursor: pointer;
 }
+
 
 //── Page Title ───────────────────────────────────────────────────────────────
 .page__title {
