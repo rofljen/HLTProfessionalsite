@@ -1,14 +1,14 @@
-<header class="masthead">
-  <div class="masthead__inner-wrap">
-    <nav id="site-nav" class="greedy-nav">
-      <ul class="visible-links">
-        <li class="masthead__menu-item"><a href="/">Home</a></li>
-        <li class="masthead__menu-item"><a href="/cv/">CV</a></li>
-        <li class="masthead__menu-item"><a href="/portfolio/">Portfolio</a></li>
-        <li class="masthead__menu-item"><a href="/contact/">Contact</a></li>
-      </ul>
-      <button class="hidden" aria-label="Toggle menu">☰</button>
-      <ul class="hidden-links hidden"></ul>
-    </nav>
-  </div>
-</header>
+<ul class="visible-links">
+  <li class="masthead__menu-item {% if page.url == '/' %}active{% endif %}">
+    <a href="/">Home</a>
+  </li>
+  <li class="masthead__menu-item {% if page.url contains '/cv/' %}active{% endif %}">
+    <a href="/cv/">CV</a>
+  </li>
+  <li class="masthead__menu-item {% if page.url contains '/portfolio/' %}active{% endif %}">
+    <a href="/portfolio/">Portfolio</a>
+  </li>
+  <li class="masthead__menu-item {% if page.url contains '/contact/' %}active{% endif %}">
+    <a href="/contact/">Contact</a>
+  </li>
+</ul>
