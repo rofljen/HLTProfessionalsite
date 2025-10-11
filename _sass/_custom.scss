@@ -245,3 +245,33 @@ a:hover {
 * {
   border-radius: 0 !important;
 }
+
+/* ─── Nav: Adjust current page name spacing and style ───────────────────────── */
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  margin-right: 2rem; /* controls space between page title and nav links */
+  font-weight: 600;
+  font-size: 1rem; /* reduce if 16px felt too big */
+}
+
+.nav-brand a {
+  color: var(--dark-green);
+  text-decoration: none;
+}
+
+.nav-brand a:hover {
+  text-decoration: underline;
+}
+
+/* optional styling for active/current page title */
+.nav-brand a {
+  border-left: 3px solid var(--dark-green);
+  padding-left: 0.5rem;
+}
+
