@@ -133,81 +133,50 @@ body {
 }
 
 //── Navigation Bar ───────────────────────────────────────────────────────────
-#site-nav {
-  max-width: 700px;
-  margin: 2.5rem auto;
-  position: relative;
-  left: 90px;
-  padding: 0.75rem 1.25rem;
+.greedy-nav {
   background: #fff;
-  border-radius: 0;
   box-shadow: $card-shadow;
-}
-
-.nav-wrapper {
+  border-radius: 0;
+  padding: 0.75rem 1.25rem;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-.nav-brand a {
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: $teal-accent;
-  text-decoration: none;
-  transition: color $transition-speed ease;
-}
-
-.nav-brand a:hover {
-  color: $teal-hover;
-}
-
-.nav-menu {
+.visible-links {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   gap: 0.5rem;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-menu li a {
+.masthead__menu-item a {
   text-decoration: none;
   color: $teal-accent;
   font-weight: 600;
-  transition: all $transition-speed ease;
   padding: 0.6rem 1.25rem;
   border-radius: 0;
+  transition: all $transition-speed ease;
   display: block;
-  font-size: 0.9rem; // slightly smaller text for nav
+  font-size: 0.9rem;
 }
 
-/* Hover only applies to non-active links */
-.nav-menu li a:hover:not(.current):not(.active) {
+/* Hover style */
+.masthead__menu-item a:hover {
   color: $teal-hover;
   background-color: rgba($teal-accent, 0.1);
   transform: translateX(3px);
 }
 
-/* Active/current page link */
-.nav-menu li a.current,
-.nav-menu li a.active {
+/* Active/current page style */
+.masthead__menu-item.active a {
   font-weight: 700;
   color: $teal-hover;
-  background-color: rgba($teal-accent, 0.1);
+  background-color: rgba($teal-accent, 0.12);
   border-left: 3px solid $teal-accent;
   transform: translateX(-6px);
   padding-left: 1.75rem;
-  transition: all $transition-speed ease;
-}
-
-/* Mobile nav toggle (if used) */
-.nav-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: $teal-accent;
-  cursor: pointer;
 }
 
 
