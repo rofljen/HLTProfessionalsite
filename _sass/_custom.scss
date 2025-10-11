@@ -1,19 +1,18 @@
 // =============================================================================
-// _sass/_custom.scss (Muted Teal Theme – Square Corners, Greedy Nav)
+// _sass/_custom.scss (Muted Teal Theme – Same Layout, Square Corners)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
 $bg-light:       #f7f8f7;  // slightly neutral light background
 $teal-accent:    #3E6E68;  // muted teal
 $teal-hover:     #2F5D57;  // darker hover teal
-$dark-green:     #4a8d7c;
 $gray-border:    #d6dbd8;  // subtle gray border
 $card-shadow:    0 4px 12px rgba(0, 0, 0, 0.08);
 $transition-speed: 0.25s;
 
 //── Base ──────────────────────────────────────────────────────────────────────
 html {
-  font-size: 14px; // root font size (adjusted for readability)
+  font-size: 16px;
 }
 
 body {
@@ -87,7 +86,7 @@ body {
 }
 
 .sidebar-bio__name {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin-top: 1.25rem;
   margin-bottom: 1rem;
@@ -96,7 +95,7 @@ body {
 }
 
 .sidebar-bio__desc {
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin: 1.5rem 0;
   line-height: 1.7;
   background: white;
@@ -133,35 +132,74 @@ body {
   text-decoration: none;
 }
 
+//── Navigation Bar ───────────────────────────────────────────────────────────
+#site-nav {
+  max-width: 550px;
+  margin: 2.5rem auto;
+  padding: 0.75rem 1.25rem;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: $card-shadow;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-brand a {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: $teal-accent;
+  text-decoration: none;
+  transition: color $transition-speed ease;
+}
+
+.nav-brand a:hover {
+  color: $teal-hover;
+}
+
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: $teal-accent;
+  font-weight: 600;
+  transition: all $transition-speed ease;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0;
+  display: block;
+}
+
+.nav-menu li a:hover {
+  color: $teal-hover;
+  background-color: rgba($teal-accent, 0.1);
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: $teal-accent;
+  cursor: pointer;
+}
+
 //── Page Title ───────────────────────────────────────────────────────────────
 .page__title {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: $teal-accent;
   font-weight: 700;
-}
-
-//── Section Headings ─────────────────────────────────────────────────────────
-h2, .section-title {
-  color: $teal-accent;
-  font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.4rem;
-  position: relative;
-  padding-bottom: 0.75rem;
-}
-
-h2::after, .section-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background-color: $teal-accent;
 }
 
 //── Cards ────────────────────────────────────────────────────────────────────
@@ -183,6 +221,27 @@ h2::after, .section-title::after {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+//── Section Headings ─────────────────────────────────────────────────────────
+h2, .section-title {
+  color: $teal-accent;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+h2::after, .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: $teal-accent;
+}
+
 //── Links ────────────────────────────────────────────────────────────────────
 a {
   color: $teal-accent;
@@ -197,77 +256,4 @@ a:hover {
 //── Utility: force square edges globally ─────────────────────────────────────
 * {
   border-radius: 0 !important;
-}
-
-//── Masthead / Greedy Nav ─────────────────────────────────────────────────────
-.nav-wrapper, .masthead__inner-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; // brand left, links right
-  width: 100%;
-}
-
-
-.nav-brand {
-  margin-right: 2rem; /* space between brand/title and nav links */
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.nav-brand a {
-  color: $dark-green;
-  text-decoration: none;
-}
-
-.nav-brand a:hover {
-  text-decoration: underline;
-}
-
-.visible-links {
-  display: flex;          // ensures items are horizontal
-  flex-direction: row;    // just in case
-  align-items: center;    // vertically center items
-  justify-content: flex-end; // push to the right
-  gap: 1rem;              // spacing between links
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.masthead__menu-item a {
-  text-decoration: none;
-  color: $teal-accent;
-  font-weight: 600;
-  padding: 0.6rem 1.25rem;
-  border-radius: 0;
-  display: block;
-  font-size: 0.9rem;
-  transition: all $transition-speed ease;
-}
-
-/* Hover for non-active links */
-.masthead__menu-item a:hover {
-  color: $teal-hover;
-  background-color: rgba($teal-accent, 0.1);
-  transform: translateX(3px);
-}
-
-/* Active/current page styling */
-.masthead__menu-item.active a {
-  font-weight: 700;
-  color: $teal-hover;
-  background-color: rgba($teal-accent, 0.12);
-  border-left: 3px solid $teal-accent;
-  transform: translateX(-6px);
-  padding-left: 1.75rem;
-}
-
-/* Mobile nav toggle */
-.nav-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: $teal-accent;
-  cursor: pointer;
 }
