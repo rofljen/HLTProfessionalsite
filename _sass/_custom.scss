@@ -200,11 +200,13 @@ a:hover {
 }
 
 //── Masthead / Greedy Nav ─────────────────────────────────────────────────────
-.nav-wrapper {
+.nav-wrapper, .masthead__inner-wrap {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; // brand left, links right
+  width: 100%;
 }
+
 
 .nav-brand {
   margin-right: 2rem; /* space between brand/title and nav links */
@@ -221,11 +223,13 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Visible links */
 .visible-links {
+  display: flex;          // ensures items are horizontal
+  flex-direction: row;    // just in case
+  align-items: center;    // vertically center items
+  justify-content: flex-end; // push to the right
+  gap: 1rem;              // spacing between links
   list-style: none;
-  display: flex;
-  gap: 0.5rem;
   margin: 0;
   padding: 0;
 }
