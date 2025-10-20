@@ -1,12 +1,12 @@
 // =============================================================================
-// _sass/_custom.scss (Muted Teal Theme – Same Layout, Square Corners)
+// _sass/_custom.scss (Muted Teal Theme – Responsive, Square Corners)
 // =============================================================================
 
 //── Colors ───────────────────────────────────────────────────────────────────
-$bg-light:       #f7f8f7;  // slightly neutral light background
-$teal-accent:    #3E6E68;  // muted teal
-$teal-hover:     #2F5D57;  // darker hover teal
-$gray-border:    #d6dbd8;  // subtle gray border
+$bg-light:       #f7f8f7;
+$teal-accent:    #3E6E68;
+$teal-hover:     #2F5D57;
+$gray-border:    #d6dbd8;
 $card-shadow:    0 4px 12px rgba(0, 0, 0, 0.08);
 $transition-speed: 0.25s;
 
@@ -70,7 +70,7 @@ body {
   width: 170px;
   height: 170px;
   object-fit: cover;
-  border-radius: 0; // square
+  border-radius: 0;
   margin-bottom: 1.5rem;
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
   display: block;
@@ -134,18 +134,19 @@ body {
 
 //── Navigation Bar ───────────────────────────────────────────────────────────
 #site-nav {
-  max-width: 100%;       // full width
-  margin: 0;             // remove centering
-  padding: 0.75rem 2rem; // optional: adjust horizontal padding
+  max-width: 100%;
+  margin: 0;
+  padding: 0.75rem 2rem;
   background: #fff;
   border-radius: 0;
   box-shadow: $card-shadow;
 }
+
 .nav-wrapper {
   display: flex;
-  justify-content: space-between; // brand on left, links on right
+  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;               // optional for smaller screens
+  flex-wrap: wrap;
 }
 
 .nav-brand a {
@@ -165,8 +166,8 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: row; // ensures horizontal layout
-  gap: 1rem;           // optional: slightly larger spacing
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .nav-menu li a {
@@ -257,4 +258,80 @@ a:hover {
 //── Utility: force square edges globally ─────────────────────────────────────
 * {
   border-radius: 0 !important;
+}
+
+//── Responsive Styles ─────────────────────────────────────────────────────────
+@media (max-width: 1024px) {
+  #main {
+    gap: 3rem;
+    padding: 0 1.5rem;
+  }
+
+  .sidebar {
+    flex: 0 0 200px;
+  }
+
+  .page__title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #main {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem;
+    margin: 2rem auto;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    margin-bottom: 2rem;
+    top: auto;
+  }
+
+  .page {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .sidebar-bio__img {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1rem;
+  }
+
+  .page__title {
+    font-size: 2rem;
+  }
+
+  .sidebar-bio__desc,
+  .card {
+    padding: 1rem;
+  }
+
+  body {
+    font-size: 12px;
+  }
+}
+
+//── Ensure images scale on mobile ─────────────────────────────────────────────
+img {
+  max-width: 100%;
+  height: auto;
 }
