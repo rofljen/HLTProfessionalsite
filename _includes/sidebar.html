@@ -2,9 +2,19 @@
   <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="sidebar-bio__img">
   <div class="sidebar-bio__text">
     <h2 class="sidebar-bio__name">{{ site.author.name }}</h2>
+
+    <!-- Mobile contacts (duplicate of author.links) -->
+    <ul class="sidebar-bio__contacts">
+      {% for link in site.author.links %}
+        <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+      {% endfor %}
+    </ul>
+
     {% if site.author.bio %}
       <p class="sidebar-bio__desc">{{ site.author.bio }}</p>
     {% endif %}
+
+    <!-- Original links, desktop & below bio -->
     <ul class="sidebar-bio__links">
       {% for link in site.author.links %}
         <li><a href="{{ link.url }}">{{ link.name }}</a></li>
