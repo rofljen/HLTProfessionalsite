@@ -16,6 +16,7 @@
       padding: 0;
       background-color: #f7f7f7;
       color: #333;
+      line-height: 1.6;
     }
 
     header {
@@ -72,12 +73,15 @@
       padding: 10px;
       border-left: 5px solid var(--dark-green);
       font-family: monospace;
+      overflow-x: auto;
+      white-space: pre-wrap;
     }
 
     .diagram {
       display: flex;
       align-items: center;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
 
     .box {
@@ -87,11 +91,24 @@
       background-color: #fff;
       margin-right: 20px;
       text-align: center;
+      margin-bottom: 10px;
     }
 
     .arrow {
       font-size: 24px;
       margin-right: 20px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    code {
+      font-family: monospace;
+      background: #e8f5e9;
+      padding: 2px 4px;
+      border-radius: 4px;
     }
 
     /* Responsive */
@@ -109,26 +126,167 @@
 
 <header>
   <h1>Jennifer Haliewicz – Data Portfolio</h1>
-  <p>Sample Work: Donor Database Design</p>
+  <p>Work Sample: Cleaning & Normalizing a Mock Donor Database</p>
 </header>
 
 <main>
   <aside>
-    <h2>About This Project</h2>
-    <p>This work sample demonstrates my ability to design and document a relational database schema for a nonprofit donor management system. It highlights attention to data integrity, key constraints, and relationships.</p>
+    <h2>Project Overview</h2>
+    <p>This work sample demonstrates my ability to clean and normalize messy donor data, design a proper schema, and implement SQL solutions to enforce data integrity and consistency.</p>
 
     <h2>Skills Highlighted</h2>
     <ul>
-      <li>Database Design & Schema Documentation</li>
-      <li>Relational Modeling (1-to-many relationships)</li>
-      <li>Data Integrity & Auto-incremented Keys</li>
-      <li>Portfolio-ready Data Visualization</li>
+      <li>Data Cleaning & Normalization</li>
+      <li>SQL / Database Design</li>
+      <li>Data Quality Management</li>
+      <li>Schema Design & Relationships</li>
+      <li>Portfolio-ready Documentation</li>
     </ul>
   </aside>
 
   <section>
+    <h2>1. Generate Mock Data with Common Data-Quality Issues</h2>
+    <p>I created a synthetic donor dataset containing realistic problems often encountered in nonprofit CRMs, including:</p>
+    <ul>
+      <li>Duplicate donor records</li>
+      <li>Non-uniform data entry, such as inconsistent address/phone formats, varying capitalization of names, and mixed date formats</li>
+      <li>Structural issue: the database creates a new donor record for each donation instead of maintaining a one-to-many relationship between donors and donations</li>
+    </ul>
+
+    <h2>2. Cleaning and Normalizing</h2>
+    <h3>a. Schema Design</h3>
+    <p>Created a normalized database structure:</p>
+    <ul>
+      <li><strong>Donors Table:</strong> Stores unique donor information.</li>
+      <li><strong>Donations Table:</strong> Stores donation records linked to donors via <code>donor_id</code>.</li>
+    </ul>
+
+    <pre>
+CREATE TABLE donors (
+    donor_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(225) NOT NULL,
+    last_name VARCHAR(225) NOT NULL,
+    email VARCHAR(225),
+    address VARCHAR(225) NOT NULL,
+    city VARCHAR(225) NOT NULL,
+    phone VARCHAR(20),
+    state VARCHAR(225) NOT NULL
+);
+
+CREATE TABLE donations (
+    donation_id SERIAL PRIMARY KEY,
+    donor_id INT NOT NULL,
+    donation_amount DECIMAL(10,2),
+    donation_date DATE,
+    campaign VARCHAR(225),
+    donation_type VARCHAR(225),
+    FOREIGN KEY (donor_id) REFERENCES donors(donor_id)
+);
+    </pre>
+
+    <h3>b. Populating the Donors Table</h3>
+    <p>To populate donors while avoiding duplicates:</p>
+    <pre>
+INSERT INTO donors (first_name, last_name, email, address, city, phone, state)
+SELECT first_name, last_name, email, address, city, phone, state
+FROM (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY address ORDER BY donation_date DESC) AS rn
+    FROM donors_donations
+) AS ranked
+WHERE rn = 1;
+    </pre>
+
+    <h3>c. Linking Donations to Donors</h3>
+    <pre>
+ALTER TABLE donors_donations
+ADD COLUMN donor_id INT;
+
+UPDATE donors_donations dd
+SET donor_id = d.donor_id
+FROM donors d
+WHERE dd.first_name = d.first_name
+  AND dd.last_name = d.last_name
+  AND dd.email = d.email;
+    </pre>
+
+    <h3>d. Cleaning and Standardizing Dates</h3>
+    <pre>
+UPDATE donors_donations
+SET donation_date = 
+    CASE
+        WHEN donation_date ~ '^\d{2}/\d{2}/\d{4}$' THEN TO_DATE(REPLACE(donation_date,'/','-'), 'MM-DD-YYYY')
+        WHEN donation_date ~ '^\d{2}-[A-Za-z]{3}-\d{4}$' THEN TO_DATE(donation_date, 'DD-Mon-YYYY')
+        ELSE donation_date::DATE
+    END;
+    </pre>
+
+    <h3>e. Populating the Donations Table</h3>
+    <pre>
+INSERT INTO donations (donor_id, donation_amount, donation_date, campaign, donation_type)
+SELECT donor_id, donation_amount, donation_date, campaign, donation_type
+FROM donors_donations;
+    </pre>
+
+    <h3>f. Standardizing Address Abbreviations</h3>
+    <pre>
+UPDATE donors
+SET address = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+               REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+               REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(address,
+               'Drive', 'Dr'),
+               'Road', 'Rd'),
+               'Street', 'St'),
+               'Avenue', 'Ave'),
+               'Trail', 'Trl'),
+               'Expressway', 'Expy'),
+               'Extension', 'Ext'),
+               'Parkway', 'Pkwy'),
+               'Station', 'Sta'),
+               'Loop', 'Loop'),
+               'Causeway', 'Cswy'),
+               'Throughway', 'Thwy'),
+               'Place', 'Pl'),
+               'Bridge', 'Brg'),
+               'Mount', 'Mt'),
+               'Mountain', 'Mtn'),
+               'Terrace', 'Ter'),
+               'Village', 'Vlg'),
+               'Haven', 'Hvn'),
+               'Island', 'Is'),
+               'Motorway', 'Mtwy');
+    </pre>
+
+    <h3>g. Formatting Phone Numbers</h3>
+    <pre>
+UPDATE donors
+SET phone = CASE
+    WHEN phone ~ '^\d{10}$' THEN
+        REGEXP_REPLACE(phone, '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3')
+    WHEN phone ~ '^\d{7}$' THEN
+        REGEXP_REPLACE(phone, '(\d{3})(\d{4})', '\1-\2')
+    ELSE
+        phone
+END;
+    </pre>
+
+    <h3>h. Normalizing Name Capitalization</h3>
+    <pre>
+UPDATE donors
+SET
+    first_name = INITCAP(LOWER(first_name)),
+    last_name = INITCAP(LOWER(last_name));
+    </pre>
+
+    <h2>3. Next Steps / Best Practices</h2>
+    <ul>
+      <li>Use appropriate data types for dates and numeric fields.</li>
+      <li>Enforce consistent formats for phone numbers, postal codes, and other fields using constraints or regex.</li>
+      <li>Implement stored procedures or triggers to automate data cleaning on new entries.</li>
+    </ul>
+
     <h2>Database Schema</h2>
-    <p>This schema shows two core tables for managing donors and donations. IDs are auto-incremented, and relationships are enforced with foreign keys.</p>
+    <p>Normalized tables with auto-incremented IDs:</p>
 
     <h3>Donors Table</h3>
     <table>
@@ -140,36 +298,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>donor_id</td>
-          <td>INTEGER</td>
-          <td>Primary Key, Auto-increment</td>
-        </tr>
-        <tr>
-          <td>first_name</td>
-          <td>TEXT</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>last_name</td>
-          <td>TEXT</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>email</td>
-          <td>TEXT</td>
-          <td>Unique</td>
-        </tr>
-        <tr>
-          <td>phone</td>
-          <td>TEXT</td>
-          <td>Optional</td>
-        </tr>
-        <tr>
-          <td>created_at</td>
-          <td>DATETIME</td>
-          <td>Timestamp for record</td>
-        </tr>
+        <tr><td>donor_id</td><td>SERIAL</td><td>Primary Key, Auto-increment</td></tr>
+        <tr><td>first_name</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
+        <tr><td>last_name</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
+        <tr><td>email</td><td>VARCHAR(225)</td><td></td></tr>
+        <tr><td>address</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
+        <tr><td>city</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
+        <tr><td>phone</td><td>VARCHAR(20)</td><td></td></tr>
+        <tr><td>state</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
       </tbody>
     </table>
 
@@ -183,31 +319,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>donation_id</td>
-          <td>INTEGER</td>
-          <td>Primary Key, Auto-increment</td>
-        </tr>
-        <tr>
-          <td>donor_id</td>
-          <td>INTEGER</td>
-          <td>Foreign Key → Donors(donor_id)</td>
-        </tr>
-        <tr>
-          <td>amount</td>
-          <td>DECIMAL</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>donation_date</td>
-          <td>DATE</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>campaign</td>
-          <td>TEXT</td>
-          <td>Optional</td>
-        </tr>
+        <tr><td>donation_id</td><td>SERIAL</td><td>Primary Key, Auto-increment</td></tr>
+        <tr><td>donor_id</td><td>INT</td><td>Foreign Key → donors(donor_id)</td></tr>
+        <tr><td>donation_amount</td><td>DECIMAL(10,2)</td><td></td></tr>
+        <tr><td>donation_date</td><td>DATE</td><td></td></tr>
+        <tr><td>campaign</td><td>VARCHAR(225)</td><td></td></tr>
+        <tr><td>donation_type</td><td>VARCHAR(225)</td><td></td></tr>
       </tbody>
     </table>
 
@@ -218,6 +335,7 @@
       <div class="arrow">──&gt;</div>
       <div class="box">Donations<br>(donor_id)</div>
     </div>
+
   </section>
 </main>
 
