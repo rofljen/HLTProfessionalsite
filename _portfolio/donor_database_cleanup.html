@@ -3,18 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donor Database Schema</title>
+  <title>Portfolio – Donor Database Work Sample</title>
   <style>
+    :root {
+      --mint-green: #c8e6c9;
+      --dark-green: #2e7d32;
+    }
+
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       background-color: #f7f7f7;
       color: #333;
-      margin: 0;
+    }
+
+    header {
+      background-color: var(--dark-green);
+      color: white;
       padding: 20px;
+      text-align: center;
     }
+
+    main {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+      gap: 40px;
+    }
+
+    aside {
+      width: 25%;
+      background-color: #e8f5e9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    section {
+      width: 75%;
+    }
+
     h1, h2, h3 {
-      color: #2e7d32; /* dark green */
+      color: var(--dark-green);
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -22,135 +56,170 @@
       background: #fff;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
+
     th, td {
       padding: 10px;
       border: 1px solid #ddd;
       text-align: left;
     }
+
     th {
-      background-color: #c8e6c9; /* light green */
+      background-color: var(--mint-green);
     }
+
     pre {
       background: #e8f5e9;
       padding: 10px;
-      border-left: 5px solid #2e7d32;
+      border-left: 5px solid var(--dark-green);
       font-family: monospace;
     }
+
     .diagram {
       display: flex;
       align-items: center;
       margin-top: 20px;
     }
+
     .box {
       padding: 10px 20px;
-      border: 2px solid #2e7d32;
+      border: 2px solid var(--dark-green);
       border-radius: 8px;
       background-color: #fff;
       margin-right: 20px;
       text-align: center;
     }
+
     .arrow {
       font-size: 24px;
       margin-right: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+      }
+      aside, section {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Donor Database Schema</h1>
-  <p>This is a simplified schema for a donor management database, showing tables, fields, and relationships.</p>
+<header>
+  <h1>Jennifer Haliewicz – Data Portfolio</h1>
+  <p>Sample Work: Donor Database Design</p>
+</header>
 
-  <h2>Tables</h2>
+<main>
+  <aside>
+    <h2>About This Project</h2>
+    <p>This work sample demonstrates my ability to design and document a relational database schema for a nonprofit donor management system. It highlights attention to data integrity, key constraints, and relationships.</p>
 
-  <h3>Donors Table</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Column Name</th>
-        <th>Data Type</th>
-        <th>Key / Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>donor_id</td>
-        <td>INTEGER</td>
-        <td>Primary Key, Auto-increment</td>
-      </tr>
-      <tr>
-        <td>first_name</td>
-        <td>TEXT</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>last_name</td>
-        <td>TEXT</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>email</td>
-        <td>TEXT</td>
-        <td>Unique</td>
-      </tr>
-      <tr>
-        <td>phone</td>
-        <td>TEXT</td>
-        <td>Optional</td>
-      </tr>
-      <tr>
-        <td>created_at</td>
-        <td>DATETIME</td>
-        <td>Timestamp for record</td>
-      </tr>
-    </tbody>
-  </table>
+    <h2>Skills Highlighted</h2>
+    <ul>
+      <li>Database Design & Schema Documentation</li>
+      <li>Relational Modeling (1-to-many relationships)</li>
+      <li>Data Integrity & Auto-incremented Keys</li>
+      <li>Portfolio-ready Data Visualization</li>
+    </ul>
+  </aside>
 
-  <h3>Donations Table</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Column Name</th>
-        <th>Data Type</th>
-        <th>Key / Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>donation_id</td>
-        <td>INTEGER</td>
-        <td>Primary Key, Auto-increment</td>
-      </tr>
-      <tr>
-        <td>donor_id</td>
-        <td>INTEGER</td>
-        <td>Foreign Key → Donors(donor_id)</td>
-      </tr>
-      <tr>
-        <td>amount</td>
-        <td>DECIMAL</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>donation_date</td>
-        <td>DATE</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>campaign</td>
-        <td>TEXT</td>
-        <td>Optional</td>
-      </tr>
-    </tbody>
-  </table>
+  <section>
+    <h2>Database Schema</h2>
+    <p>This schema shows two core tables for managing donors and donations. IDs are auto-incremented, and relationships are enforced with foreign keys.</p>
 
-  <h2>Relationships</h2>
-  <p>Each donor can have multiple donations (1-to-many relationship):</p>
+    <h3>Donors Table</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Data Type</th>
+          <th>Key / Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>donor_id</td>
+          <td>INTEGER</td>
+          <td>Primary Key, Auto-increment</td>
+        </tr>
+        <tr>
+          <td>first_name</td>
+          <td>TEXT</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>last_name</td>
+          <td>TEXT</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>email</td>
+          <td>TEXT</td>
+          <td>Unique</td>
+        </tr>
+        <tr>
+          <td>phone</td>
+          <td>TEXT</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td>created_at</td>
+          <td>DATETIME</td>
+          <td>Timestamp for record</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <div class="diagram">
-    <div class="box">Donors<br>(donor_id)</div>
-    <div class="arrow">──&gt;</div>
-    <div class="box">Donations<br>(donor_id)</div>
-  </div>
+    <h3>Donations Table</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Data Type</th>
+          <th>Key / Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>donation_id</td>
+          <td>INTEGER</td>
+          <td>Primary Key, Auto-increment</td>
+        </tr>
+        <tr>
+          <td>donor_id</td>
+          <td>INTEGER</td>
+          <td>Foreign Key → Donors(donor_id)</td>
+        </tr>
+        <tr>
+          <td>amount</td>
+          <td>DECIMAL</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>donation_date</td>
+          <td>DATE</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>campaign</td>
+          <td>TEXT</td>
+          <td>Optional</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Relationships</h2>
+    <p>Each donor can have multiple donations (1-to-many relationship):</p>
+    <div class="diagram">
+      <div class="box">Donors<br>(donor_id)</div>
+      <div class="arrow">──&gt;</div>
+      <div class="box">Donations<br>(donor_id)</div>
+    </div>
+  </section>
+</main>
 
 </body>
 </html>
