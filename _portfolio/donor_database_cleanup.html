@@ -1,210 +1,87 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cleaning & Normalizing a Donor Database — Portfolio</title>
-  <meta name="description" content="Data cleaning and normalization case study: SQL scripts and methodology for cleaning donor CRM data." />
-  <style>
-    /* Minimal styling so this page drops in nicely anywhere */
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height:1.6; color:#111; margin:0; padding:0; background:#fff; }
-    .container { max-width:980px; margin:36px auto; padding:24px; }
-    header.hero { display:grid; grid-template-columns:1fr; gap:16px; align-items:center; margin-bottom:24px; }
-    .hero img { width:100%; height:auto; border-radius:8px; object-fit:cover; }
-    h1 { margin:0 0 8px 0; font-size:28px; }
-    .subtitle { color:#555; margin-bottom:8px; }
-    nav.meta { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; color:#666; font-size:14px; }
-    section { margin-top:20px; }
-    h2 { margin-top:16px; font-size:20px; color:#0b3d91; }
-    pre { background:#0f1724; color:#e6eef8; padding:12px; border-radius:6px; overflow:auto; font-size:13px; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; }
-    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
-    .visual { border:1px solid #e6e6e6; padding:12px; border-radius:6px; background:#fafafa; }
-    .btn { display:inline-block; padding:8px 12px; background:#0b57d0; color:#fff; text-decoration:none; border-radius:6px; }
-    @media (max-width:700px) { .grid { grid-template-columns:1fr; } }
-    .muted { color:#666; font-size:14px; }
-    ul { margin:8px 0 8px 20px; }
-  </style>
-</head>
-<body>
-  <div class="container">
+<div class="table-schema">
 
-    <header class="hero">
-      <div>
-        <h1>Cleaning & Normalizing a Mock Donor Database</h1>
-        <div class="subtitle">Data quality, schema normalization, and SQL-based cleaning for nonprofit CRM records</div>
-        <div class="meta">
-          <span class="muted">Tools: PostgreSQL, SQL, regex</span>
-          <span class="muted">Deliverables: cleaned `donors` & `donations` tables, SQL scripts</span>
-        </div>
-      </div>
-      <img src="/assets/images/donor-data-cover.png" alt="Donor data cleaning cover image" />
-    </header>
+  <h3>Donors Table</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Key / Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>donor_id</td>
+        <td>INTEGER</td>
+        <td>Primary Key, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>first_name</td>
+        <td>TEXT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>last_name</td>
+        <td>TEXT</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>email</td>
+        <td>TEXT</td>
+        <td>Unique</td>
+      </tr>
+      <tr>
+        <td>phone</td>
+        <td>TEXT</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>created_at</td>
+        <td>DATETIME</td>
+        <td>Timestamp for record</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <section>
-      <h2>Overview</h2>
-      <p>
-        This case study demonstrates a compact, repeatable process to clean messy donor CRM data, normalize it into a relational schema,
-        and produce high-quality records for reporting and outreach. The dataset intentionally included realistic issues such as duplicate donor rows,
-        inconsistent capitalization, mixed date formats, and variable address/phone formats.
-      </p>
-    </section>
+  <h3>Donations Table</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Column Name</th>
+        <th>Data Type</th>
+        <th>Key / Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>donation_id</td>
+        <td>INTEGER</td>
+        <td>Primary Key, Auto-increment</td>
+      </tr>
+      <tr>
+        <td>donor_id</td>
+        <td>INTEGER</td>
+        <td>Foreign Key → Donors(donor_id)</td>
+      </tr>
+      <tr>
+        <td>amount</td>
+        <td>DECIMAL</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>donation_date</td>
+        <td>DATE</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>campaign</td>
+        <td>TEXT</td>
+        <td>Optional</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <section>
-      <h2>Data issues simulated</h2>
-      <ul>
-        <li>Duplicate donor records (multiple rows per donor)</li>
-        <li>Non-uniform data entry: addresses, phone formats, capitalization</li>
-        <li>Mixed date formats (e.g., <code>MM/DD/YYYY</code>, <code>DD-Mon-YYYY</code>, <code>YYYY-MM-DD</code>)</li>
-        <li>Structural issue: donations and donor info stored in one table rather than two related tables</li>
-      </ul>
-    </section>
+  <h3>Relationship</h3>
+  <pre>Donors (donor_id) 1 ──< Donations (donor_id)</pre>
 
-    <section>
-      <h2>Design: normalize schema</h2>
-      <p>
-        I separated donors and donations to enforce a one-to-many relationship and make reporting and deduplication straightforward.
-      </p>
-
-      <pre><code class="language-sql">-- donors table
-CREATE TABLE donors (
-  donor_id SERIAL PRIMARY KEY,
-  first_name VARCHAR(225) NOT NULL,
-  last_name VARCHAR(225) NOT NULL,
-  email VARCHAR(225),
-  address VARCHAR(225) NOT NULL,
-  city VARCHAR(225) NOT NULL,
-  phone VARCHAR(20),
-  state VARCHAR(225) NOT NULL
-);
-
--- donations table
-CREATE TABLE donations (
-  donation_id SERIAL PRIMARY KEY,
-  donor_id INT NOT NULL REFERENCES donors(donor_id),
-  donation_amount DECIMAL(10,2),
-  donation_date DATE,
-  campaign VARCHAR(225),
-  donation_type VARCHAR(225)
-);</code></pre>
-    </section>
-
-    <section>
-      <h2>Key cleaning steps (high level)</h2>
-
-      <div class="grid">
-        <div class="visual">
-          <strong>Deduplicate & pick latest contact</strong>
-          <p class="muted">Choose the most recent row per donor (address from latest donation).</p>
-          <pre><code class="language-sql">INSERT INTO donors (first_name, last_name, email, address, city, phone, state)
-SELECT first_name, last_name, email, address, city, phone, state
-FROM (
-  SELECT *,
-         ROW_NUMBER() OVER (PARTITION BY email ORDER BY donation_date DESC) AS rn
-  FROM donors_donations
-) ranked
-WHERE rn = 1;</code></pre>
-        </div>
-
-        <div class="visual">
-          <strong>Link original donations to cleaned donors</strong>
-          <p class="muted">Add donor_id to donation rows and populate by matching email + name.</p>
-          <pre><code class="language-sql">ALTER TABLE donors_donations ADD COLUMN donor_id INT;
-
-UPDATE donors_donations dd
-SET donor_id = d.donor_id
-FROM donors d
-WHERE dd.email = d.email
-  AND dd.first_name = d.first_name
-  AND dd.last_name = d.last_name;</code></pre>
-        </div>
-
-        <div class="visual">
-          <strong>Normalize dates safely</strong>
-          <p class="muted">Convert multiple input formats to ISO before casting to DATE.</p>
-          <pre><code class="language-sql">-- example: standardize to YYYY-MM-DD text then ALTER TYPE to DATE
-UPDATE donors_donations
-SET donation_date = CASE
-  WHEN donation_date ~ '^\d{1,2}/\d{1,2}/\d{4}$' THEN TO_CHAR(TO_DATE(donation_date,'MM/DD/YYYY'),'YYYY-MM-DD')
-  WHEN donation_date ~ '^\d{1,2}-[A-Za-z]{3}-\d{4}$' THEN TO_CHAR(TO_DATE(donation_date,'DD-Mon-YYYY'),'YYYY-MM-DD')
-  ELSE donation_date
-END;
-
-ALTER TABLE donors_donations ALTER COLUMN donation_date TYPE DATE USING donation_date::DATE;</code></pre>
-        </div>
-
-        <div class="visual">
-          <strong>Populate donations table</strong>
-          <p class="muted">Insert cleaned donation rows with real DATE values & the new donor_id.</p>
-          <pre><code class="language-sql">INSERT INTO donations (donor_id, donation_amount, donation_date, campaign, donation_type)
-SELECT donor_id, donation_amount, donation_date, campaign, donation_type
-FROM donors_donations;</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Field-level normalization</h2>
-
-      <ul>
-        <li><strong>Addresses:</strong> normalized common suffixes (Drive → Dr, Street → St, Avenue → Ave etc.).</li>
-        <li><strong>Phone numbers:</strong> stripped non-digits then formatted to <code>(XXX) XXX-XXXX</code> or <code>XXX-XXXX</code>.</li>
-        <li><strong>Names:</strong> converted to proper case with <code>INITCAP(LOWER(...))</code>.</li>
-      </ul>
-
-      <pre><code class="language-sql">-- phone formatting example
-UPDATE donors
-SET phone = CASE
-  WHEN phone ~ '^\d{10}$' THEN REGEXP_REPLACE(phone,'(\d{3})(\d{3})(\d{4})','(\1) \2-\3')
-  WHEN phone ~ '^\d{7}$' THEN REGEXP_REPLACE(phone,'(\d{3})(\d{4})','\1-\2')
-  ELSE phone END;
-
--- normalize names
-UPDATE donors SET
-  first_name = INITCAP(LOWER(first_name)),
-  last_name  = INITCAP(LOWER(last_name));</code></pre>
-    </section>
-
-    <section>
-      <h2>Results</h2>
-      <p>
-        The dataset was normalized into two relational tables, duplicates were consolidated, address and phone formats were standardized, and donation dates became reliable DATE values suitable for reporting and analytics.
-      </p>
-
-      <p class="muted">Typical improvements to highlight in a portfolio: unique donor count before vs after deduplication, number of corrected dates, and percent of phone numbers reformatted.</p>
-    </section>
-
-    <section>
-      <h2>Downloads & visuals</h2>
-      <p>
-        <a class="btn" href="/assets/files/donor_database_cleaning.pdf" download>Download full SQL script (PDF)</a>
-      </p>
-
-      <div class="grid" style="margin-top:12px;">
-        <div class="visual">
-          <strong>Schema — before / after</strong>
-          <img src="/assets/images/schema-before.png" alt="Schema before" style="width:100%;height:auto;margin-top:8px;border-radius:4px">
-        </div>
-        <div class="visual">
-          <strong>Sample data — before / after</strong>
-          <img src="/assets/images/sample-data-before-after.png" alt="Sample data before/after" style="width:100%;height:auto;margin-top:8px;border-radius:4px">
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Next steps & productionization</h2>
-      <ul>
-        <li>Enforce data types and CHECK constraints (phone regex, required dates).</li>
-        <li>Implement triggers or stored procedures to normalize new incoming records.</li>
-        <li>Set up monitoring or periodic validation reports (daily/weekly) to catch new data-quality regressions.</li>
-      </ul>
-    </section>
-
-    <footer style="margin-top:28px;border-top:1px solid #eee;padding-top:16px;color:#666;">
-      <div>Want the raw CSV or SQL scripts? <a href="/assets/files/donor_database_cleaning.zip">Download dataset & scripts</a> or contact me at <a href="mailto:jennifer.haliewicz@gmail.com">jennifer.haliewicz@gmail.com</a>.</div>
-    </footer>
-
-  </div>
-</body>
-</html>
+</div>
