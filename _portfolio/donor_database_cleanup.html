@@ -1,4 +1,66 @@
-<div class="table-schema">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donor Database Schema</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #2e7d32; /* dark green */
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background: #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #c8e6c9; /* light green */
+    }
+    pre {
+      background: #e8f5e9;
+      padding: 10px;
+      border-left: 5px solid #2e7d32;
+      font-family: monospace;
+    }
+    .diagram {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .box {
+      padding: 10px 20px;
+      border: 2px solid #2e7d32;
+      border-radius: 8px;
+      background-color: #fff;
+      margin-right: 20px;
+      text-align: center;
+    }
+    .arrow {
+      font-size: 24px;
+      margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Donor Database Schema</h1>
+  <p>This is a simplified schema for a donor management database, showing tables, fields, and relationships.</p>
+
+  <h2>Tables</h2>
 
   <h3>Donors Table</h3>
   <table>
@@ -81,7 +143,14 @@
     </tbody>
   </table>
 
-  <h3>Relationship</h3>
-  <pre>Donors (donor_id) 1 ──< Donations (donor_id)</pre>
+  <h2>Relationships</h2>
+  <p>Each donor can have multiple donations (1-to-many relationship):</p>
 
-</div>
+  <div class="diagram">
+    <div class="box">Donors<br>(donor_id)</div>
+    <div class="arrow">──&gt;</div>
+    <div class="box">Donations<br>(donor_id)</div>
+  </div>
+
+</body>
+</html>
