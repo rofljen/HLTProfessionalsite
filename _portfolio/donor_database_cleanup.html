@@ -27,9 +27,8 @@
     }
 
     .header {
-  color: white;
-}
-
+      color: white;
+    }
 
     main {
       display: flex;
@@ -53,6 +52,17 @@
 
     h1, h2, h3 {
       color: var(--dark-green);
+      margin-top: 1.2em;
+      margin-bottom: 0.4em;
+    }
+
+    ul {
+      margin: 0 0 1em 1.5em;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 0.4em;
     }
 
     table {
@@ -74,12 +84,21 @@
     }
 
     pre {
-      background: #e8f5e9;
-      padding: 10px;
+      background: #f1f8e9;
+      padding: 12px;
       border-left: 5px solid var(--dark-green);
       font-family: monospace;
       overflow-x: auto;
       white-space: pre-wrap;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    code {
+      background: #e8f5e9;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
     }
 
     .diagram {
@@ -105,15 +124,17 @@
       margin-bottom: 10px;
     }
 
-    ul {
-      padding-left: 20px;
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #e8f5e9;
+      color: #555;
+      margin-top: 40px;
     }
 
-    code {
-      font-family: monospace;
-      background: #e8f5e9;
-      padding: 2px 4px;
-      border-radius: 4px;
+    footer a {
+      color: var(--dark-green);
+      text-decoration: none;
     }
 
     /* Responsive */
@@ -131,7 +152,7 @@
 
 <header>
   <h1 class="header">Jennifer Haliewicz – Data Portfolio</h1>
-  <h2 class="header">Work Sample: Cleaning & Normalizing a Mock Donor Database</h2>
+  <h2>Work Sample: Cleaning & Normalizing a Mock Donor Database</h2>
 </header>
 
 <main>
@@ -151,27 +172,32 @@
 
   <section>
     <h2>1. Generate Mock Data with Common Data-Quality Issues</h2>
-    <p>I generated a synthetic donor dataset containing realistic problems often encountered in nonprofit CRMs, including:</p>
+    <p>I created a synthetic donor dataset containing realistic problems often encountered in nonprofit CRMs, including:</p>
     <ul>
       <li>Duplicate donor records</li>
       <li>Non-uniform data entry such as:
         <ul>
-          <li>inconsistent address/phone formats</li>
-          <li>varying capitalization of names</li>
-          <li>mixed date formats</li>
+          <li>Inconsistent address and phone formats</li>
+          <li>Varying capitalization of names</li>
+          <li>Mixed date formats</li>
         </ul>
-      <li>Structural issue: 
+      </li>
+      <li>Structural issue:
         <ul>
-          <li>the database creates a new donor record for each donation instead of maintaining a one-to-many relationship between donors and donations</li>
-        </ul></li></li>
+          <li>The database creates a new donor record for each donation instead of maintaining a one-to-many relationship between donors and donations</li>
+        </ul>
+      </li>
     </ul>
+
     <h2>2. Cleaning and Normalizing</h2>
+
     <h3>a. Schema Design</h3>
     <p>Created a normalized database structure with the goal of separating donor records from donation records to ensure a one-to-many relationship:</p>
     <ul>
       <li><strong>Donors Table:</strong> Stores unique donor information.</li>
       <li><strong>Donations Table:</strong> Stores donation records linked to donors via <code>donor_id</code>.</li>
     </ul>
+
     <pre>
 CREATE TABLE donors (
     donor_id SERIAL PRIMARY KEY,
@@ -196,11 +222,8 @@ CREATE TABLE donations (
     </pre>
 
     <h3>b. Populating the Donors Table</h3>
-    <p>To populate donors while avoiding duplicates I:
-    <ul>
-      <li>Selected unique donors using their email address as a differentiator.</li>
-      <li>Chose the most recent donation (using the field <i>donation_date</i> to ensure the current donor info is accurate.</i></li>
-    </ul></p>
+    <p>To populate donors while avoiding duplicates, I selected unique donors using their email address as a differentiator and chose the most recent donation (using <code>donation_date</code>) to ensure accuracy.</p>
+
     <pre>
 INSERT INTO donors (first_name, last_name, email, address, city, phone, state)
 SELECT first_name, last_name, email, address, city, phone, state
@@ -213,14 +236,14 @@ WHERE rn = 1;
     </pre>
 
     <h3>c. Linking Donations to Donors</h3>
+    <p>To relate donation records to their corresponding donors I did the following:</p>
+    <ul>
+      <li>Added a <code>donor_id</code> column to the donors table that is automatically generated upon new entry.</li>
+      <li>Updated the donations table entries by joining to the donors table on <code>first_name</code>, <code>last_name</code>, and <code>email</code>.</li>
+    </ul>
+
     <pre>
-      <p>To relate donation records to their corresponding donors I did the following:</p>
-      <ul>
-        <li>Added a donor_id column to the donors table that is automatically generated upon new entry.</li>
-        <li>Updated the donations table entries by joining to the donors table joining on first_name, last_name, email.</li>
-      </ul>
-      ALTER TABLE donors_donations
-ADD COLUMN donor_id INT;
+ALTER TABLE donors_donations ADD COLUMN donor_id INT;
 
 UPDATE donors_donations dd
 SET donor_id = d.donor_id
@@ -358,6 +381,10 @@ SET
 
   </section>
 </main>
+
+<footer>
+  © 2025 Jennifer Haliewicz | <a href="https://www.jenniferhaliewicz.com">jenniferhaliewicz.com</a>
+</footer>
 
 </body>
 </html>
