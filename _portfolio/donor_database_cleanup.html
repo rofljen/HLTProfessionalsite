@@ -146,21 +146,27 @@
 
   <section>
     <h2>1. Generate Mock Data with Common Data-Quality Issues</h2>
-    <p>I created a synthetic donor dataset containing realistic problems often encountered in nonprofit CRMs, including:</p>
+    <p>I generated a synthetic donor dataset containing realistic problems often encountered in nonprofit CRMs, including:</p>
     <ul>
       <li>Duplicate donor records</li>
-      <li>Non-uniform data entry, such as inconsistent address/phone formats, varying capitalization of names, and mixed date formats</li>
-      <li>Structural issue: the database creates a new donor record for each donation instead of maintaining a one-to-many relationship between donors and donations</li>
+      <li>Non-uniform data entry such as:
+        <ul>
+          <li>inconsistent address/phone formats</li>
+          <li>varying capitalization of names</li>
+          <li>mixed date formats</li>
+        </ul>
+      <li>Structural issue: 
+        <ul>
+          <li>the database creates a new donor record for each donation instead of maintaining a one-to-many relationship between donors and donations</li>
+        </ul></li></li>
     </ul>
-
     <h2>2. Cleaning and Normalizing</h2>
     <h3>a. Schema Design</h3>
-    <p>Created a normalized database structure:</p>
+    <p>Created a normalized database structure with the goal of separating donor records from donation records to ensure a one-to-many relationship:</p>
     <ul>
       <li><strong>Donors Table:</strong> Stores unique donor information.</li>
       <li><strong>Donations Table:</strong> Stores donation records linked to donors via <code>donor_id</code>.</li>
     </ul>
-
     <pre>
 CREATE TABLE donors (
     donor_id SERIAL PRIMARY KEY,
@@ -185,7 +191,11 @@ CREATE TABLE donations (
     </pre>
 
     <h3>b. Populating the Donors Table</h3>
-    <p>To populate donors while avoiding duplicates:</p>
+    <p>To populate donors while avoiding duplicates I:
+    <ul>
+      <li>Selected unique donors using their email address as a differentiator.</li>
+      <li>Chose the most recent donation (using the field <i>donation_date</i> to ensure the current donor info is accurate.</i></li>
+    </ul></p>
     <pre>
 INSERT INTO donors (first_name, last_name, email, address, city, phone, state)
 SELECT first_name, last_name, email, address, city, phone, state
@@ -199,7 +209,12 @@ WHERE rn = 1;
 
     <h3>c. Linking Donations to Donors</h3>
     <pre>
-ALTER TABLE donors_donations
+      <p>To relate donation records to their corresponding donors I did the following:</p>
+      <ul>
+        <li>Added a donor_id column to the donors table that is automatically generated upon new entry.</li>
+        <li>Updated the donations table entries by joining to the donors table joining on first_name, last_name, email.</li>
+      </ul>
+      ALTER TABLE donors_donations
 ADD COLUMN donor_id INT;
 
 UPDATE donors_donations dd
