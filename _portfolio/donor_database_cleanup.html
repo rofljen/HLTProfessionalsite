@@ -329,50 +329,12 @@ SET
     </ul>
 
     <h2>Database Schema</h2>
+    
+    <p>Original data in one table</p>
+    <img src="https://www.jenniferhaliewicz.com/files/old%20schema.png" width=400px>
     <p>Normalized tables with auto-incremented IDs:</p>
-
-    <img src="files/old_schema.png">
-    <img src="https://www.jenniferhaliewicz.com/files/new%20schema.png">
-    <h3>Donors Table</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Column Name</th>
-          <th>Data Type</th>
-          <th>Key / Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>donor_id</td><td>SERIAL</td><td>Primary Key, Auto-increment</td></tr>
-        <tr><td>first_name</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
-        <tr><td>last_name</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
-        <tr><td>email</td><td>VARCHAR(225)</td><td></td></tr>
-        <tr><td>address</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
-        <tr><td>city</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
-        <tr><td>phone</td><td>VARCHAR(20)</td><td></td></tr>
-        <tr><td>state</td><td>VARCHAR(225)</td><td>Not Null</td></tr>
-      </tbody>
-    </table>
-
-    <h3>Donations Table</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Column Name</th>
-          <th>Data Type</th>
-          <th>Key / Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>donation_id</td><td>SERIAL</td><td>Primary Key, Auto-increment</td></tr>
-        <tr><td>donor_id</td><td>INT</td><td>Foreign Key → donors(donor_id)</td></tr>
-        <tr><td>donation_amount</td><td>DECIMAL(10,2)</td><td></td></tr>
-        <tr><td>donation_date</td><td>DATE</td><td></td></tr>
-        <tr><td>campaign</td><td>VARCHAR(225)</td><td></td></tr>
-        <tr><td>donation_type</td><td>VARCHAR(225)</td><td></td></tr>
-      </tbody>
-    </table>
-
+    <img src="https://www.jenniferhaliewicz.com/files/new%20schema.png" width=400px>
+    
     <h2>Relationships</h2>
     <p>Each donor can have multiple donations (1-to-many relationship):</p>
     <div class="diagram">
