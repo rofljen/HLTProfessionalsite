@@ -46,11 +46,63 @@ author_profile: false
 <section>
   <h2>Database schema & interface</h2>
   <div class="card">
-    <p>
-      The project used a PostgreSQL schema built around four core tables: <code>Languages</code>, <code>Datasets</code>, <code>Models</code>, and <code>Contributors</code>. The schema is documented in a data dictionary and visualized in the ERD shown below.
-    </p>
+<p>
+  The project uses a PostgreSQL 17.1 + PostGIS schema with **6 core tables**: 
+  <code>continent</code>, <code>languagefamily</code>, <code>languagesubfamily</code>, 
+  <code>languagenew</code> (ISO codes, Glottocodes, ASR/NMT/TTs metadata), 
+  <code>nmtpairs</code>, and <code>nmtpairssource</code> (38K+ NMT evaluation metrics).
+  <br><small><strong>Key features:</strong> Geographic coordinates, language hierarchies, CHRF+/SpBLEU scores</small>
+</p>
     <img src="/images/erd.png" alt="ERD of Languages, Datasets, Models, and Contributors">
-
+    <h3>Schema overview</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Primary Key</th>
+      <th>Key Fields</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>continent</code></td>
+      <td><code>id</code></td>
+      <td><code>name</code></td>
+      <td>Regions (Africa, Asia)</td>
+    </tr>
+    <tr>
+      <td><code>languagefamily</code></td>
+      <td><code>id</code></td>
+      <td><code>name</code></td>
+      <td>Families (Afro-Asiatic, Indo-European)</td>
+    </tr>
+    <tr>
+      <td><code>languagesubfamily</code></td>
+      <td><code>id</code></td>
+      <td><code>name</code>, <code>familyid</code></td>
+      <td>Subfamilies (Cushitic, Kwa)</td>
+    </tr>
+    <tr>
+      <td><code>languagenew</code></td>
+      <td><code>id</code></td>
+      <td><code>isocode</code>, <code>glottocode</code>, <code>coordinates</code>, <code>asrhours</code></td>
+      <td>Core language metadata (55+ languages)</td>
+    </tr>
+    <tr>
+      <td><code>nmtpairs</code></td>
+      <td><code>id</code></td>
+      <td><code>sourcelangid</code>, <code>chrfscore</code></td>
+      <td>NMT translation pairs</td>
+    </tr>
+    <tr>
+      <td><code>nmtpairssource</code></td>
+      <td><code>id</code></td>
+      <td><code>Source</code>, <code>Target</code>, <code>chrfplus</code></td>
+      <td>NMT model metrics (38K+ rows)</td>
+    </tr>
+  </tbody>
+</table>
     <p>
       Screenshots of the internal curation tool and example queries demonstrate how the database powers the user‑facing interface.
     </p>
