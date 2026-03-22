@@ -21,367 +21,109 @@ author_profile: false
     </p>
   </div>
 </section>
-
 <section>
-  <h2>Content</h2>
+  <h2>Project background</h2>
   <div class="card">
     <p>
-      I cleaned and processed large volumes of multilingual text, trained models, and built custom evaluation scripts using tools like Python, spaCy, scikit-learn, and PostgreSQL.
+      Low‑resource languages often lack accessible datasets and language models, which limits their representation in NLP and voice technology.
     </p>
     <p>
-      I applied knowledge from courses including NLP, Corpus Linguistics, and Machine Learning, and developed a deeper understanding of real-world data challenges, annotation inconsistencies, and pipeline deployment.
-    </p>
-    <p>
-      This internship also sharpened my programming and problem-solving skills, and gave me practical experience with collaborative version control, agile workflows, and defining scope with stakeholders.
+      This project aimed to reduce that gap by creating a curated, searchable inventory of datasets and models for low‑resource languages, powered by a standardized database and a user‑friendly web interface.
     </p>
   </div>
-  <section>
+</section>
+<section>
   <h2>Language curation & data workflow</h2>
   <div class="card">
     <ul>
       <li>Processed batches of languages grouped by region or language family, and inventoried whether datasets or language‑aware LLMs already existed on platforms such as Hugging Face, GitHub, and Mozilla Common Voice.</li>
-      <li>Added available resources to the PostgreSQL database with detailed metadata such as language family, subfamily, region, number of speakers, translation directions, ISO codes, Glottocodes, model accuracy metrics, and provenance links.</li>
+      <li>Added available resources to the PostgreSQL database with metadata such as language family, subfamily, region, number of speakers, translation directions, ISO codes, Glottocodes, model accuracy metrics, and provenance links.</li>
       <li>For languages with little or no online presence, either trained new models on open‑source data or explicitly recorded them as “no data found,” helping identify critical resource gaps.</li>
       <li>Standardized entries across diverse dialects and varieties by researching and assigning ISO 639‑3 codes wherever possible, following SIL’s documentation requirements and handling edge cases such as dialects, macrolanguages, and umbrella varieties that did not qualify for their own ISO 639‑3 code.</li>
     </ul>
   </div>
 </section>
-</section>
-
 <section>
-  <h2>Process</h2>
-
- <section>
-  <h2>Requirements Gathering & Data Dictionary</h2>
-
+  <h2>Database schema & interface</h2>
   <div class="card">
     <p>
-      To document the existing database supporting <em>Bridging the Digital Divide</em>, I created a data dictionary that describes each table, its fields, types, and purpose. This helps ensure clarity and consistency for future users and developers.
+      The project used a PostgreSQL schema built around four core tables: <code>Languages</code>, <code>Datasets</code>, <code>Models</code>, and <code>Contributors</code>. The schema is documented in a data dictionary and visualized in the ERD shown below.
     </p>
+    <img src="/images/erd.png" alt="ERD of Languages, Datasets, Models, and Contributors">
 
-    <!-- Schema Overview -->
-    <h3>Schema Overview</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Table</th>
-          <th>Primary Key</th>
-          <th>Related Tables</th>
-          <th>Purpose</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Languages</td>
-          <td><code>language_id</code></td>
-          <td>Datasets</td>
-          <td>Stores metadata for each language</td>
-        </tr>
-        <tr>
-          <td>Datasets</td>
-          <td><code>dataset_id</code></td>
-          <td>Models</td>
-          <td>Contains dataset information per language</td>
-        </tr>
-        <tr>
-          <td>Models</td>
-          <td><code>model_id</code></td>
-          <td>Datasets</td>
-          <td>Tracks trained ML models</td>
-        </tr>
-        <tr>
-          <td>Contributors</td>
-          <td><code>contributor_id</code></td>
-          <td>Datasets / Models</td>
-          <td>Tracks contributors and their roles</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>
+      Screenshots of the internal curation tool and example queries demonstrate how the database powers the user‑facing interface.
+    </p>
+    <img src="/images/tool-screenshot-1.png" alt="Curation tool UI">
+    <img src="/images/sql-query-example.png" alt="Sample PostgreSQL query over languages and datasets">
   </div>
-
- <details>
-  <summary><strong>Language Tables</strong></summary>
-
-  <table class="data-dict">
-    <thead>
-      <h3>Languages</h3>
-      <tr>
-        <th>Field Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-        <th>Example / Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>language_id</code></td>
-        <td>INT</td>
-        <td>Unique identifier for each language</td>
-        <td>1, 2</td>
-      </tr>
-      <tr>
-        <td><code>language_name</code></td>
-        <td>VARCHAR</td>
-        <td>Official name of the language</td>
-        <td>"Hausa", "Navajo"</td>
-      </tr>
-      <tr>
-        <td><code>iso_code</code></td>
-        <td>VARCHAR</td>
-        <td>ISO 639-3 language code</td>
-        <td>"hau", "nav"</td>
-      </tr>
-      <tr>
-        <td><code>geo_center</code></td>
-        <td>VARCHAR</td>
-        <td>Geographic region or center</td>
-        <td>"West Africa"</td>
-      </tr>
-      <tr>
-        <td><code>num_speakers</code></td>
-        <td>INT</td>
-        <td>Estimated number of speakers</td>
-        <td>52,000,000</td>
-      </tr>
-      <tr>
-        <td><code>status</code></td>
-        <td>VARCHAR</td>
-        <td>Vitality status</td>
-        <td>"Vigorous", "Endangered"</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Related Tables:</strong> <code>datasets.language_id</code> → <code>languages.language_id</code></p>
-</details>
-
-
-<details>
-  <summary><strong>Datasets Table</strong></summary>
-
-  <table class="data-dict">
-    <thead>
-      <tr>
-        <th>Field Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-        <th>Example / Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>dataset_id</code></td>
-        <td>INT</td>
-        <td>Unique identifier for each dataset</td>
-        <td>101, 102</td>
-      </tr>
-      <tr>
-        <td><code>language_id</code></td>
-        <td>INT</td>
-        <td>Reference to associated language</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td><code>dataset_name</code></td>
-        <td>VARCHAR</td>
-        <td>Name of the dataset</td>
-        <td>"Hausa Speech Corpus"</td>
-      </tr>
-      <tr>
-        <td><code>data_type</code></td>
-        <td>VARCHAR</td>
-        <td>Type of data</td>
-        <td>"ASR", "TTS", "NMT"</td>
-      </tr>
-      <tr>
-        <td><code>num_samples</code></td>
-        <td>INT</td>
-        <td>Number of data items</td>
-        <td>10,000</td>
-      </tr>
-      <tr>
-        <td><code>license</code></td>
-        <td>VARCHAR</td>
-        <td>Licensing info</td>
-        <td>"CC-BY"</td>
-      </tr>
-      <tr>
-        <td><code>source_url</code></td>
-        <td>VARCHAR</td>
-        <td>URL or reference to dataset</td>
-        <td>"https://..."</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Related Tables:</strong>  
-  <code>datasets.language_id</code> → <code>languages.language_id</code>  
-  <code>models.dataset_id</code> → <code>datasets.dataset_id</code></p>
-</details>
-
-
-<details>
-  <summary><strong>Models Table</strong></summary>
-
-  <table class="data-dict">
-    <thead>
-      <tr>
-        <th>Field Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-        <th>Example / Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>model_id</code></td>
-        <td>INT</td>
-        <td>Unique identifier for each model</td>
-        <td>201, 202</td>
-      </tr>
-      <tr>
-        <td><code>dataset_id</code></td>
-        <td>INT</td>
-        <td>Reference to dataset</td>
-        <td>101</td>
-      </tr>
-      <tr>
-        <td><code>model_type</code></td>
-        <td>VARCHAR</td>
-        <td>Type of model</td>
-        <td>"ASR", "TTS", "MT"</td>
-      </tr>
-      <tr>
-        <td><code>framework</code></td>
-        <td>VARCHAR</td>
-        <td>ML framework used</td>
-        <td>"Kaldi", "ESPnet"</td>
-      </tr>
-      <tr>
-        <td><code>accuracy_metric</code></td>
-        <td>FLOAT</td>
-        <td>Performance metric</td>
-        <td>0.87</td>
-      </tr>
-      <tr>
-        <td><code>last_trained</code></td>
-        <td>DATE</td>
-        <td>Date model was last trained</td>
-        <td>2025-07-15</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Related Tables:</strong>  
-  <code>models.dataset_id</code> → <code>datasets.dataset_id</code></p>
-</details>
-
-
-<details>
-  <summary><strong>Contributors Table</strong></summary>
-
-  <table class="data-dict">
-    <thead>
-      <tr>
-        <th>Field Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-        <th>Example / Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>contributor_id</code></td>
-        <td>INT</td>
-        <td>Unique identifier for each contributor</td>
-        <td>1, 2</td>
-      </tr>
-      <tr>
-        <td><code>name</code></td>
-        <td>VARCHAR</td>
-        <td>Full name of contributor</td>
-        <td>"Jennifer Haliewicz"</td>
-      </tr>
-      <tr>
-        <td><code>affiliation</code></td>
-        <td>VARCHAR</td>
-        <td>Organization or institution</td>
-        <td>"University of Arizona"</td>
-      </tr>
-      <tr>
-        <td><code>role</code></td>
-        <td>VARCHAR</td>
-        <td>Role in project</td>
-        <td>"Data Curation", "Model Training"</td>
-      </tr>
-      <tr>
-        <td><code>email</code></td>
-        <td>VARCHAR</td>
-        <td>Contact email</td>
-        <td>"jennifer@example.com"</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Related Tables:</strong>  
-  Link to datasets/models via project mapping table if needed.</p>
-</details>
-
-  <!-- Week-by-Week Summary -->
-  <details class="card collapsible-section">
-    <summary><strong>Week-by-Week Summary</strong></summary>
-    <div class="card-content">
-      <h4>Weeks 1–4: Planning & Requirements</h4>
-      <ul>
-        <li>Defined project goals, data scope, and low-resource criteria</li>
-        <li>Designed database schema and metadata structure</li>
-      </ul>
-
-      <h4>Weeks 5–8: Database Implementation</h4>
-      <ul>
-        <li>Built and populated foundational schema with ISO codes, Glottocodes, and region data</li>
-      </ul>
-
-      <h4>Weeks 9–12: Tool Development & Tag Standardization</h4>
-      <ul>
-        <li>Developed Replit-based prototype of mapping tool</li>
-        <li>Standardized language-pair tags and added NMT metrics</li>
-      </ul>
-
-      <h4>Weeks 13–16: Conference Prep</h4>
-      <ul>
-        <li>Created visualizations and presentation for external audiences</li>
-        <li>Refined the tool and expanded dataset coverage post-event</li>
-      </ul>
-
-      <h4>Weeks 17–20: Feedback & Metadata Expansion</h4>
-      <ul>
-        <li>Integrated speaker population estimates</li>
-        <li>Refined UI based on feedback from users and partners</li>
-      </ul>
-
-      <h4>Weeks 21–Present: Ongoing Maintenance</h4>
-      <ul>
-        <li>Continued model and dataset entry</li>
-        <li>Resolved duplicate tags and standardized metadata</li>
-      </ul>
-    </div>
-  </details>
+</section>
+<section>
+  <h2>Learning outcomes</h2>
+  <div class="card">
+    <ul>
+      <li>Applied corpus‑linguistic and NLP concepts (e.g., language families, metadata standards) to real‑world resource‑gap analysis for low‑resource languages.</li>
+      <li>Designed and normalized a relational schema scaling to hundreds of languages and datasets, reinforcing database design and SQL best practices.</li>
+      <li>Developed automated workflows for language‑model curation, including ISO 639‑3 code assignment and metadata standardization.</li>
+      <li>Documented project work in a public‑facing website and GitHub, strengthening skills in technical communication and portfolio‑style documentation.</li>
+    </ul>
+  </div>
 </section>
 <section>
   <h2>Tools & Technologies</h2>
   <div class="card">
     <ul>
-      <li><strong>Languages:</strong> Python, SQL</li>
-      <li><strong>Libraries:</strong> spaCy, scikit-learn, pandas</li>
-      <li><strong>Tools:</strong> PostgreSQL/PostGIS, Replit, GitHub</li>
+      <li><strong>Programming languages:</strong> Python, SQL</li>
+      <li><strong>Libraries & frameworks:</strong> spaCy, scikit‑learn, pandas, NumPy</li>
+      <li><strong>Database:</strong> PostgreSQL (with schema design and ERD creation)</li>
+      <li><strong>Language‑tech platforms:</strong> Hugging Face, GitHub, Mozilla Common Voice</li>
+      <li><strong>Development & collaboration:</strong> Replit, Git/GitHub, command‑line tools</li>
+      <li><strong>Visualization & deployment:</strong> HTML/CSS, GitHub Pages</li>
     </ul>
   </div>
 </section>
-
 <section>
-  <div class="card code-link">
-    <p><strong>Code:</strong> 
-    <a href="https://github.com/yourusername/yourproject" target="_blank">View Project on GitHub</a></p>
+  <h2>Process & timeline</h2>
+  <div class="card">
+    <details class="collapsible-section">
+      <summary><strong>Project timeline by phase</strong></summary>
+      <div class="card-content">
+        <h4>Weeks 1–4: Planning & requirements</h4>
+        <ul>
+          <li>Defined project goals, low‑resource language criteria, and data‑scope boundaries.</li>
+          <li>Designed the PostgreSQL schema and agreed on metadata fields with the team.</li>
+        </ul>
+
+        <h4>Weeks 5–8: Database implementation</h4>
+        <ul>
+          <li>Populated core tables (<code>Languages</code>, <code>Datasets</code>, <code>Models</code>, <code>Contributors</code>) with metadata, ISO codes, and Glottocodes.</li>
+          <li>Built and tested initial queries joining languages, datasets, and models.</li>
+        </ul>
+
+        <h4>Weeks 9–12: Tool development & standardization</h4>
+        <ul>
+          <li>Developed a Replit‑based prototype of the curation and mapping tool.</li>
+          <li>Standardized language‑pair tags and added NMT‑specific metrics and provenance links.</li>
+        </ul>
+
+        <h4>Weeks 13–16: Conference & external demo</h4>
+        <ul>
+          <li>Prepared visualizations and slides presenting the project to external audiences.</li>
+          <li>Refined the web interface and expanded dataset coverage based on stakeholder feedback.</li>
+        </ul>
+
+        <h4>Weeks 17–20: Feedback & metadata expansion</h4>
+        <ul>
+          <li>Integrated speaker population estimates and language‑status data into the schema.</li>
+          <li>Refined UI labels and filters based on partner feedback.</li>
+        </ul>
+
+        <h4>Weeks 21–present: Ongoing maintenance</h4>
+        <ul>
+          <li>Continued adding new datasets and trained models to the database.</li>
+          <li>Resolved duplicate tags and standardized metadata to improve consistency across languages.</li>
+        </ul>
+      </div>
+    </details>
   </div>
 </section>
